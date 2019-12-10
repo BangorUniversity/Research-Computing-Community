@@ -8,11 +8,11 @@
 #SBATCH --output=hello_world.%J.out
 #SBATCH --error=hello_world.%J.err
 
+#SBATCH --partition=htc
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 
-#SBATCH --partition=htc
 #SBATCH --account=scw1124
 #SBATCH --time=00-00:01
 
