@@ -8,11 +8,11 @@
 #SBATCH --output=map.%J.out
 #SBATCH --error=map.%J.err
 
+#SBATCH --partition=htc
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 
-#SBATCH --partition=htc
 #SBATCH --account=scw1124
 #SBATCH --time=00-00:05
 
