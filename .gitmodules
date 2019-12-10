@@ -1,0 +1,3 @@
+[submodule "apps/creative/meshroom/monstree/dataset_monstree"]
+	path = apps/creative/meshroom/monstree/dataset_monstree
+	url = https://github.com/alicevision/dataset_monstree
