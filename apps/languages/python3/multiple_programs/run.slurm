@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Run main.py on 4 cores
+# Launch multiple python programs in parallel
 # Usage: sbatch run.slurm
 
 #SBATCH --job-name=multiple-programs
