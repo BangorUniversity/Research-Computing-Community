@@ -1,7 +1,8 @@
 % Setup cluster
 pc = parcluster;
 pc.JobStorageLocation = job_storage;
-parpool(pc);
+num_cores = feature('numcores');
+parpool(pc, num_cores);
 
 tic
 ticBytes(gcp);

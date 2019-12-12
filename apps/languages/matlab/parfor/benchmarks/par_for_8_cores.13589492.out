@@ -1,0 +1,27 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2019 The MathWorks, Inc.
+              R2019a Update 5 (9.6.0.1174912) 64-bit (glnxa64)
+                               July 31, 2019
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+Starting parallel pool (parpool) using the 'local' profile ...
+Connected to the parallel pool (number of workers: 8).
+             BytesSentToWorkers    BytesReceivedFromWorkers
+             __________________    ________________________
+
+    1                 18736                 12376          
+    2                 18736                 12376          
+    3                 18736                 12376          
+    4                 18736                 12376          
+    5                 18736                 12376          
+    6                 18736                 12376          
+    7                 18736                 12376          
+    8                 18736                 12376          
+    Total        1.4989e+05                 99008          
+
+Elapsed time is 4.222847 seconds.
+Parallel pool using the 'local' profile is shutting down.
