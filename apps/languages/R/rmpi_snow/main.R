@@ -1,7 +1,7 @@
 library(Rmpi)
 library(snow)
 
-num_cores = mpi.universe.size() - 1
+num_cores = mpi.universe.size()-1
 cluster = makeMPIcluster(num_cores)
 
 # Call each process to print nodename and machine
@@ -18,7 +18,7 @@ parallel_sum = function(m, n) {
     row.sums = parApply(cluster, A, 1, sum)
     print(sum(row.sums))
 }
-stime = system.time(parallel_sum(50000, 50000))[3]
+stime = system.time(parallel_sum(10000, 3000))[3]
 stime
 
 stopCluster(cluster)
