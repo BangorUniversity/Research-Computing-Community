@@ -1,0 +1,9 @@
+Seq	Host	Starttime	JobRuntime	Send	Receive	Exitval	Signal	Command
+4	:	1576273295.626	     0.256	0	95	0	0	Rscript main.R caryophyllia_inornata
+2	:	1576273295.622	     0.260	0	93	0	0	Rscript main.R alcyonium_digitatum
+3	:	1576273295.624	     0.259	0	94	0	0	Rscript main.R alcyonium_glomeratum
+1	:	1576273295.621	     0.266	0	95	0	0	Rscript main.R alcyonidium_diaphanum
+5	:	1576273295.887	     0.263	0	92	0	0	Rscript main.R cerianthus_lloydii
+8	:	1576273295.898	     0.253	0	88	0	0	Rscript main.R tethya_citrina
+6	:	1576273295.891	     0.267	0	94	0	0	Rscript main.R haliclona_grant_1835
+7	:	1576273295.895	     0.266	0	92	0	0	Rscript main.R pentapora_foliacea

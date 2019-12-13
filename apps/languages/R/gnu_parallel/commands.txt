@@ -1,0 +1,8 @@
+Rscript main.R alcyonidium_diaphanum
+Rscript main.R alcyonium_digitatum
+Rscript main.R alcyonium_glomeratum
+Rscript main.R caryophyllia_inornata
+Rscript main.R cerianthus_lloydii
+Rscript main.R haliclona_grant_1835
+Rscript main.R pentapora_foliacea
+Rscript main.R tethya_citrina
