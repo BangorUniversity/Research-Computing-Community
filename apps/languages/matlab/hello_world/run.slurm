@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# Run main.m on a single core
 # Usage: sbatch run.slurm
 
 #SBATCH --job-name=hello_world
@@ -19,4 +18,4 @@
 module purge
 module load matlab/R2019a
 
-matlab -nodisplay -r main
+matlab -nodisplay -r "main;exit"
