@@ -5,8 +5,8 @@
 
 #SBATCH --job-name=map
 
-#SBATCH --output=map.%J.out
-#SBATCH --error=map.%J.err
+#SBATCH --output=logs/map.%J.out
+#SBATCH --error=logs/map.%J.err
 
 #SBATCH --partition=htc
 #SBATCH --nodes=1

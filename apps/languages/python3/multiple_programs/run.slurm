@@ -5,8 +5,8 @@
 
 #SBATCH --job-name=multiple-programs
 
-#SBATCH --output=multiple-programs.%J.out
-#SBATCH --error=multiple-programs.%J.err
+#SBATCH --output=logs/multiple-programs.%J.out
+#SBATCH --error=logs/multiple-programs.%J.err
 
 #SBATCH --partition=htc
 #SBATCH --nodes=1

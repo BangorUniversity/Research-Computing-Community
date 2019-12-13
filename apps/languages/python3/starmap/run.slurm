@@ -5,8 +5,8 @@
 
 #SBATCH --job-name=starmap
 
-#SBATCH --output=starmap.%J.out
-#SBATCH --error=starmap.%J.err
+#SBATCH --output=logs/starmap.%J.out
+#SBATCH --error=logs/starmap.%J.err
 
 #SBATCH --partition=htc
 #SBATCH --nodes=1

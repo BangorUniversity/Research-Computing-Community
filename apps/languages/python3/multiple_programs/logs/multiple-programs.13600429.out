@@ -1,0 +1,9 @@
+Found 4 cores
+Hello from script_2.py
+Hello from script_1.py
+Hello from script_4.py
+Hello from script_3.py
+script_2.py will be launched on process <ForkProcess(ForkPoolWorker-2, started daemon)>
+script_1.py will be launched on process <ForkProcess(ForkPoolWorker-1, started daemon)>
+script_3.py will be launched on process <ForkProcess(ForkPoolWorker-3, started daemon)>
+script_4.py will be launched on process <ForkProcess(ForkPoolWorker-4, started daemon)>

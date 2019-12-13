@@ -5,8 +5,8 @@
 
 #SBATCH --job-name=hello_world
 
-#SBATCH --output=hello_world.%J.out
-#SBATCH --error=hello_world.%J.err
+#SBATCH --output=logs/hello_world.%J.out
+#SBATCH --error=logs/hello_world.%J.err
 
 #SBATCH --partition=htc
 #SBATCH --nodes=1

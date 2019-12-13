@@ -1,0 +1,11 @@
+Found 4 cores
+worker_func is running on process <ForkProcess(ForkPoolWorker-3, started daemon)>, data=2
+worker_func is running on process <ForkProcess(ForkPoolWorker-1, started daemon)>, data=0
+worker_func is running on process <ForkProcess(ForkPoolWorker-1, started daemon)>, data=4
+worker_func is running on process <ForkProcess(ForkPoolWorker-1, started daemon)>, data=5
+worker_func is running on process <ForkProcess(ForkPoolWorker-1, started daemon)>, data=8
+worker_func is running on process <ForkProcess(ForkPoolWorker-2, started daemon)>, data=1
+worker_func is running on process <ForkProcess(ForkPoolWorker-2, started daemon)>, data=6
+worker_func is running on process <ForkProcess(ForkPoolWorker-2, started daemon)>, data=7
+worker_func is running on process <ForkProcess(ForkPoolWorker-2, started daemon)>, data=9
+worker_func is running on process <ForkProcess(ForkPoolWorker-4, started daemon)>, data=3
