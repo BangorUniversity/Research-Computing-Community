@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# Execute for-loop iterations in parallel on workers
 # Usage: sbatch run.slurm
 
 #SBATCH --job-name=parfor
