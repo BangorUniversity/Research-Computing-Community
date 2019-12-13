@@ -5,8 +5,8 @@
 
 #SBATCH --job-name=parfor
 
-#SBATCH --output=parfor.%J.out
-#SBATCH --error=parfor.%J.err
+#SBATCH --output=logs/parfor.%J.out
+#SBATCH --error=logs/parfor.%J.err
 
 #SBATCH --partition=htc
 #SBATCH --nodes=1
