@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# Usage: ./submit
+
+readonly start_idx=1
+readonly step_idx=1
+readonly end_idx=4
+
+for i in $(seq ${start_idx} ${step_idx} ${end_idx}); do
+	echo "Submitting job ${i}"
+
+	if ((i == 1)); then
+		stmt="sbatch step_${i}.slurm"
+	else
+		stmt="sbatch --dependency=afterok:${latest_job_id} step_${i}.slurm"
+	fi
+
+	latest_job_id=$($stmt | awk '{print $4}')
+	echo "${latest_job_id}"
+done
+
+echo "All jobs have been submitted"
