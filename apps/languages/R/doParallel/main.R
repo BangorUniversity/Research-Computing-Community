@@ -1,23 +1,23 @@
 library(doParallel)
 
-num_nodes=strtoi(Sys.getenv('SLURM_JOB_NUM_NODES'))
-cat('SLURM_JOB_NUM_NODES:', num_nodes, '\n')
+# Register the parallel backend with the foreach package
+registerDoParallel(cores=(Sys.getenv("SLURM_NTASKS_PER_NODE")))
 
-num_tasks_per_node=strtoi(Sys.getenv('SLURM_NTASKS_PER_NODE'))
-cat('SLURM_NTASKS_PER_NODE:', num_tasks_per_node, '\n')
+# Get the name of the registered backend
+getDoParName()
 
-num_cores=num_nodes*num_tasks_per_node
-cat('Num cores:', num_cores, '\n')
+# Get the version of the registered backend
+getDoParVersion()
 
-cl=makeCluster(num_cores-1, type="MPI")
-registerDoParallel(cl)
-
+# Check the doPar backend has been registered
 getDoParRegistered()
+
+# Get the number of workers foreach is going to use
 getDoParWorkers()
 
+# Run bootstrap iterations in parallel
 x=iris[which(iris[,5] != "setosa"), c(1,5)]
-trials=5000
-
+trials=20000
 stime=system.time({
 	r <- foreach(icount(trials), .combine=cbind) %dopar% {
 		ind <- sample(100, 100, replace=TRUE)
@@ -26,8 +26,4 @@ stime=system.time({
 	}
 })[3]
 stime
-
-cat('Finished')
-
-stopCluster(cl)
 
