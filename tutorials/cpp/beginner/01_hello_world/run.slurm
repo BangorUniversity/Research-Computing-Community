@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Usage:
-#   module load compiler/intel/2019
-#   c++ main.cpp
+#   module load compiler/gnu/9/2.0
+#   g++ main.cpp -o hello_world
 #   sbatch run.slurm
 
 #SBATCH --job-name=hello_world
@@ -19,6 +19,6 @@
 #SBATCH --time=00-00:01
 
 module purge
-module load compiler/intel/2019
+module load compiler/gnu/9/2.0
 
-./a.out
+./hello_world
