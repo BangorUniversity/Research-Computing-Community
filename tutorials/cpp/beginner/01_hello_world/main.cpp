@@ -8,6 +8,6 @@ int main(int argc, char* argv[]) try {
   std::cerr << e.what() << "\n";
   return 1;
 } catch (...) {
-  std::cout << "An exception occurred.\n";
+  std::cerr << "An exception occurred.\n";
   return 2;
 }
