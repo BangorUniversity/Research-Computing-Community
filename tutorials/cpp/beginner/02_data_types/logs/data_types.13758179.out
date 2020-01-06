@@ -1,5 +1,5 @@
-b = 1			         size of 'b' is 1 byte(s) 
-c = a			         size of 'c' is 1 byte(s) 
-i = 1000		         size of 'i' is 4 byte(s) 
+b = 1			 size of 'b' is 1 byte(s) 
+c = a			 size of 'c' is 1 byte(s) 
+i = 1000		 size of 'i' is 4 byte(s) 
 f = 1.111111164093018	 size of 'f' is 4 byte(s) 
 d = 1.111111111111111	 size of 'd' is 8 byte(s) 
