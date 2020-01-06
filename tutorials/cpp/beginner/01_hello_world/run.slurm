@@ -2,7 +2,7 @@
 
 # Usage:
 #   module load compiler/gnu/9/2.0
-#   g++ main.cpp -o hello_world
+#   g++ main.cpp -o hello_world -std=c++17
 #   sbatch run.slurm
 
 #SBATCH --job-name=hello_world

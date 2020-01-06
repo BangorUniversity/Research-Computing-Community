@@ -2,13 +2,13 @@
 
 # Usage:
 #   module load compiler/gnu/9/2.0
-#   g++ main.cpp -o hello_world -std=c++17 -pthread
+#   g++ main.cpp -o data_types -std=c++17
 #   sbatch run.slurm
 
-#SBATCH --job-name=hello_world
+#SBATCH --job-name=data_types
 
-#SBATCH --output=logs/hello_world.%J.out
-#SBATCH --error=logs/hello_world.%J.err
+#SBATCH --output=logs/data_types.%J.out
+#SBATCH --error=logs/data_types.%J.err
 
 #SBATCH --partition=htc
 #SBATCH --nodes=1
@@ -21,4 +21,4 @@
 module purge
 module load compiler/gnu/9/2.0
 
-./hello_world
+./data_types
