@@ -1,0 +1,9 @@
+a = 1
+The address of 'a' is 0x7fff400e3dec
+b = 0x7fff400e3dec
+The contents of address 0x7fff400e3dec is 1
+
+c = x
+The address of 'c' is 0x7fff400e3deb
+d = 0x7fff400e3deb
+The contents of address 0x7fff400e3deb is x
