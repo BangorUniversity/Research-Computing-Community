@@ -24,6 +24,7 @@ int main(int argc, char* argv[]) try {
   std::cout << "c = " << c << "\n";
   std::cout << "d = " << d << "\n\n";
 
+  print_num(c);
   print_num(d);
 
   return 0;
