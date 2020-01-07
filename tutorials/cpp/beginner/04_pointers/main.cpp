@@ -19,6 +19,11 @@ int main(int argc, char* argv[]) try {
   std::cout << "The contents of address " << static_cast<void*>(d) << " is " << *d << "\n";
 
   double* e = nullptr;
+  if (e) {
+    std::cout << "e is not null";
+  } else {
+    std::cout << "e is null";
+  }
 
   return 0;
 } catch (const std::exception& e) {

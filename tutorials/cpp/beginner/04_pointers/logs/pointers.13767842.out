@@ -7,3 +7,5 @@ c = x
 The address of 'c' is 0x7fff400e3deb
 d = 0x7fff400e3deb
 The contents of address 0x7fff400e3deb is x
+
+e is null
