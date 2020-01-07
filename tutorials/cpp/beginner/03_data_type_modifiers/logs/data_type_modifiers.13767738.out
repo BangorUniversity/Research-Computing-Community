@@ -1,0 +1,17 @@
+Size of 'int' is		4 byte(s)	 range (-2147483648 to 2147483647)
+Size of 'signed int' is		4 byte(s)	 range (-2147483648 to 2147483647)
+Size of 'unsigned int' is	4 byte(s)	 range (0 to 4294967295)
+Size of 'long int' is		8 byte(s)	 range (-9223372036854775808 to 9223372036854775807)
+Size of 'short int' is		2 byte(s)	 range (-32768 to 32767)
+
+Size of 'signed long int' is	8 byte(s)	 range (-9223372036854775808 to 9223372036854775807)
+Size of 'unsigned long int' is	8 byte(s)	 range (0 to 18446744073709551615)
+Size of 'signed short int' is	2 byte(s)	 range (-32768 to 32767)
+Size of 'unsigned short int' is	2 byte(s)	 range (0 to 65535)
+
+Size of 'char' is		1 byte(s)	 range (-128 to 127)
+Size of 'signed char' is	1 byte(s)	 range (-128 to 127)
+Size of 'unsigned char' is	1 byte(s)	 range (0 to 255)
+
+Size of 'double' is		8 byte(s)	 range (2.22507e-308 to 1.79769e+308)
+Size of 'long double' is	16 byte(s)	 range (3.3621e-4932 to 1.18973e+4932)
