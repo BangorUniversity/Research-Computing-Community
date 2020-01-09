@@ -4,13 +4,13 @@
 
 void a() {
   for (int i = 0; i < 20; ++i) {
-    std::cout << "a\n";
+    std::cout << "a";
   }
 }
 
 void b() {
   for (int i = 0; i < 20; ++i) {
-    std::cout << "b\n";
+    std::cout << "b";
   }
 }
 
