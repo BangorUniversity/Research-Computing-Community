@@ -1,0 +1,2 @@
+40 concurrent threads are supported.
+SLURM_CPUS_PER_TASK: 2
