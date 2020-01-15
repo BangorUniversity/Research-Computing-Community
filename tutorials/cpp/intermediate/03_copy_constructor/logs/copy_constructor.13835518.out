@@ -1,0 +1,3 @@
+a : x=1
+A :: Copy constructor
+b : x=1
