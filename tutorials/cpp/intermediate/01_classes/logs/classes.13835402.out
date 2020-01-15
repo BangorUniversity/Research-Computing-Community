@@ -1,0 +1,9 @@
+A :: Constructor
+x=1
+A :: Constructor
+x=2
+B :: Constructor
+y=3
+B :: Deconstructor
+A :: Deconstructor
+A :: Deconstructor
