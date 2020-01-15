@@ -2,7 +2,7 @@
 #include <vector>
 
 void print_vector(const std::vector<int>& v) {
-  for (const auto i : v) {
+  for (const auto& i : v) {
     std::cout << i << " ";
   }
   std::cout << "\n";
