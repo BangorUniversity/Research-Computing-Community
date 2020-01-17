@@ -1,3 +1,10 @@
-a : x=1
-A :: Copy constructor
-b : x=1
+Address of a1 0x7fffb3476c14
+a1 : x=1
+
+A a2(a1) calls the copy constructor of class A
+Address of a2 0x7fffb3476c10
+a2 : x=1
+
+Address of b1 0x7fffb3476c00
+b1 : y=0x7fffb3476c0c
+

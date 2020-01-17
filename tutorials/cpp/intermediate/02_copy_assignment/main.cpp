@@ -2,38 +2,82 @@
 #include <iostream>
 
 class A {
- public:
-  explicit A(int i) : x(i) {}
+public:
+    explicit A(int i) : x(i) {}
 
-  ~A() {}
+    A& operator=(const A& other) {
+        std::cout << "copy assignment of A\n";
+        // Check for self assignment
+        if (&other == this) {
+            std::cout << "  Caught self assignment ";
+            return *this;
+        }
+        else {
+            x = other.x;
+            return *this;
+        }
+    }
 
-  A& operator=(const A& other) {
-    std::cout << "A :: Copy assignment\n";
-    x = other.x;
-    return *this;
-  }
+    int get_x() const { return x; }
 
-  int get_x() const { return x; }
+private:
+    int x;
+};
 
- private:
-  int x;
+class B {
+public:
+    explicit B(int i) : y(i) {}
+
+    B& operator=(const B& other) {
+        std::cout << "copy assignment of B\n";
+        // Check for self assignment
+        if (&other == this) {
+            std::cout << "  Caught self assignment ";
+            return *this;
+        }
+        else {
+            y = other.y;
+            return *this;
+        }
+    }
+
+    int get_y() const { return y; }
+
+private:
+    int y;
 };
 
 int main(int argc, char* argv[]) try {
-  A a(1);
-  std::cout << "a : x=" << a.get_x() << "\n";
+    A a1(1);
+    std::cout << "Address of a1 " << &a << "\n";
+    std::cout << "a1.get_x() returned " << a1.get_x() << "\n\n";
 
-  A b(2);
-  std::cout << "b : x=" << b.get_x() << "\n";
+    A a2(2);
+    std::cout << "Address of a2 " << &b << "\n";
+    std::cout << "a2.get_x() returned " << a2.get_x() << "\n\n";
 
-  b = a;
-  std::cout << "b : x=" << b.get_x() << "\n";
+    std::cout << "a2 = a1 calls the ";
+    a2 = a1;
+    std::cout << "Address of a2 " << &a2 << "\n";
+    std::cout << "a2.get_x() returned " << a2.get_x() << "\n\n";
 
-  return 0;
-} catch (const std::exception& e) {
-  std::cerr << e.what() << "\n";
-  return 1;
-} catch (...) {
-  std::cerr << "An exception occurred.\n";
-  return 2;
+    std::cout << "a2 = a2 calls the ";
+    a2 = a2
+
+    B b1(1);
+    std::cout << "Address of b1 " << &a << "\n";
+    std::cout << "a1.get_x() returned " << a1.get_x() << "\n\n";
+
+    B b2(2);
+
+
+    return 0;
+}
+catch (const std::exception & e) {
+    std::cerr << e.what() << "\n";
+    return 1;
+}
+catch (...) {
+    std::cerr << "An exception occurred.\n";
+    return 2;
 }
