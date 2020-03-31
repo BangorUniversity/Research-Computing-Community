@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
   <head>
     <title>Version Control Using Git</title>
     <meta charset="utf-8" />
@@ -255,8 +255,23 @@ Windows
 Use `git config` to change the Git configuration and preferences
 
 ---
+# RStudio and Git
 
-# Creating a Repository
+- Version control doesn't have to be at the command-line. It integrates nicely with Development Environments as well.
+
+- To use with RStudio, you must have these installed (for Windows):
+
+  - R
+    - https://cran.r-project.org/bin/windows/base/
+  - RStudio
+    - https://rstudio.com/products/rstudio/download/
+  - Git
+    - https://git-scm.com/download/win
+    
+- Once you have a repository in Github (creating a new one through Github's web interface is the easiest way, if necessary) you can check it out in RStudio and perform the full Version Control cycle therein.
+
+---
+# Command Line: Creating a Repository
 
 - `cd` Change your working directory to your *home* directory
 
@@ -306,7 +321,7 @@ Use `git config` to change the Git configuration and preferences
 
 ---
 
-# Tracking Changes
+# Command Line: Tracking Changes
 
 - `cd ~/hello_world &amp;&amp; nano data.txt` 
   - Inside the `hello_world` directory create a file called `data.txt`
@@ -327,7 +342,7 @@ Use `git config` to change the Git configuration and preferences
 
 ---
 
-# Tracking Changes
+# Command Line: Tracking Changes
 
 - Git knows to track `data.txt` but hasn't recorded these changes as a commit
 
@@ -346,7 +361,7 @@ a copy permanently inside the special `.git` directory
 
 ---
 
-# Tracking Changes
+# Command Line: Tracking Changes
 
 - `nano data.txt` Add a new line of data
 
@@ -363,8 +378,20 @@ a copy permanently inside the special `.git` directory
 - `git add` before `git commit` allows us to be selective on the files we want to commit to our repository
 
 ---
+# RStudio: Tracking Changes
+  - Modify a file from the working copy via the RStudio File Browser (bottom-right quadrant), once saved notice the 'Git' tab sees this file as *modified*:
+  
+  &lt;img src="images/rstudio-modified.png" width=33%&gt;
+  
+  - Now to *commit* this, we need to tick the box next to the file and press the commit button, after which we are presented with the *Review Changes* windows in which we see the commit being staged and also enter our *Commit message*:
+  
+  &lt;img src="images/rstudio-reviewchanges.png" width=33%&gt;
+  
+  - RStudio will then show the output of the Git commit.  We now see the message that "Your branch is ahead of 'origin/master' by 1 commit" showing that we have not pushed this change from the stage to the main repository origin.
 
-# Push changes to Github
+---
+
+# Command Line: Link Repos &amp; Push to Github
 
 Connect the online Github repo to your local git repo
 
@@ -385,8 +412,63 @@ Connect the online Github repo to your local git repo
   - `git push origin master`
 
 ---
+#### Command Line: Clone From and Push To Github
 
-# Pull changes from Github
+- Create a project on Github
+
+- Clone the repository
+  - `cd ~ &amp;&amp; git clone https://some/url`
+  
+- *We use HTTPS here because it does not require additional configuration. After the workshop, you may want to set up SSH access, which is more secure.*
+
+- `git push origin master` Push changes from the local repository to Github
+
+- `git pull origin master` Pull changes from Github to the local repository
+
+- Add files and push to GitHub
+
+---
+# RStudio: Cloning from Github
+
+- In RStudio start a new project: 
+
+  - File -&gt; New Project -&gt; Version Control -&gt; Git
+  
+  &lt;img src="images/rstudio-newproject.png" width=33%&gt;
+  &lt;img src="images/rstudio-createprojectfromversioncontrol.png" width=33%&gt;
+  
+  - *If 'Version Control' not available try restarting RStudio and/or reinstalling the required components as your system paths are most likely incorrect*
+  
+---
+# RStudio: Cloning from Github  
+  - Put the URL to the Github repository in (from the Github web interface under 'Clone or download'), and consider where the local clone will go
+  
+  &lt;img src="images/rstudio-clonegitrepo.png" width=33%&gt;
+  
+  - Click 'Create Project'
+  
+  - RStudio will clone the repository into a working copy and open therein.
+  
+  - Notice that the new window opened has a 'Git' option on the top-right pane:
+  
+  &lt;img src="images/rstudio-gittab.png" width=33%&gt;
+  
+  - Buttons here represent the principal Git functions:
+    - On the right we see the branch being used and are also able to create a new branch.
+    - On the left we see options to compare files, commit files, pull, push, view history and set options. 
+    
+---
+# RStudio: Push to Github
+  - Once we have staged changes and are ready to commit to the origin, this can be achieved either through the 'Review Changes' window or the main Git tab in the RStudio project editing window.
+  - Simply select the green up arrow, provide your GitHub credentials if prompted and see a push result:
+  
+  &lt;img src="images/rstudio-pushed.png" width=33%&gt;
+  
+  - Our chnages have now been pushed up to the repository on Github. 
+  
+  
+---
+# Command Line: Pull changes from Github
 
 1. Create a new file via Github's web-based graphical interface
   - 'Create new file' button
@@ -402,7 +484,11 @@ Connect the online Github repo to your local git repo
   - `git log --oneline`
 
 ---
-# GUI
+# RStudio: Pull changes from Github
+
+
+
+---
 
 #### Demo
 
@@ -443,9 +529,19 @@ Connect the online Github repo to your local git repo
 
 - Write a commit message that accurately describes your changes
 
+
+
+
+ 
+  
+
+  
+
+
+
 ---
 
-# Ignoring Files
+# Command Line: Ignoring Files
 
 What if we have files that we do not want to track?
   - backups or intermediate files created during data analysis?
@@ -469,25 +565,19 @@ What if we have files that we do not want to track?
 - Need to save our *.gitignore* file to our repository
 
 ---
+# RStudio: Ignoring Files
+Similarly, to ignore files in RStudio, under the 'Git' tab, we can click the Blue Settings Cog icon and choose ignore to adjust the list of ignored files (as itself stored in .gitignore):
+
+&lt;img src="images/rstudio-ignore.png" width=33%&gt;
+
+
+---
 
 # Github and Collaboration
 
 The power of version control systems comes into its own when we start to collaborate with other people
 
-#### Demo
 
-- Create a project on Github
-
-- Clone the repository
-  - `cd ~ &amp;&amp; git clone https://some/url`
-  
-- We use HTTPS here because it does not require additional configuration. After the workshop, you may want to set up SSH access, which is more secure.
-
-- `git push origin master` Push changes from the local repository to Github
-
-- `git pull origin master` Pull changes from Github to the local repository
-
-- Add files and push to GitHub
 
 ---
 
@@ -678,6 +768,32 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
 // adds .remark-code-has-line-highlighted class to <pre> parent elements
 // of code chunks containing highlighted lines with class .remark-code-line-highlighted
 (function(d) {
@@ -695,17 +811,6 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   }
   preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
 })(document);</script>
-
-<script>
-(function() {
-  var links = document.getElementsByTagName('a');
-  for (var i = 0; i < links.length; i++) {
-    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
-      links[i].target = '_blank';
-    }
-  }
-})();
-</script>
 
 <script>
 slideshow._releaseMath = function(el) {
