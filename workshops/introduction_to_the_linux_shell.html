@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Introduction to the Linux Shell</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Ade Fewings, Aaron Owen" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Introduction to the Linux Shell
+### Ade Fewings, Aaron Owen
+### Bangor University
+### 2019/11/10 (updated: 2020-03-31)
+
+---
+
+
+# Research Computing Community
+
+- Background
+
+  - High-Performance Computing Wales / SuperComputing Wales
+  
+  - Research Software Engineers
+
+- Future
+  
+  - Collate expert knowledge into an open and shared centralised repository
+  
+  - Workshops
+  
+  - Projects
+  
+  - Acknowledgements
+
+---
+
+# Workshops
+
+- **Introduction to the Linux Shell**
+  - *Monday 18 November 2019, 09:00–12:00*
+
+- Version Control Using Git
+  - *Tuesday 19 November 2019, 09:00–12:00*
+
+- Programming Principles and Exercise using Python
+  - *Monday 2 December 2019, 09:30–16:30*
+
+- Advanced Python 
+  - *Tuesday 3 December 2019, 09:30–16:30*
+
+- Parallel Processing in Python 
+  - *Wednesday 4 December 2019, 09:30–16:30*
+
+- Requests?
+
+---
+
+# What is a Shell?
+
+.left-column[
+  ![shell-layer](images/shell-layer.svg)
+]
+
+.right-column[
+
+- A program that provides a user interface for Unix-like operating systems (kernel)
+
+- Its job is to translate the user's commands into operating system instructions
+
+- The operating system starts a shell for each user when they log in or open a terminal window
+
+- Examples of Shells
+
+  - Bourne Family: sh, ash, ksh, **bash**
+
+  - C Family: csh, tcsh
+
+  - Perl Family: perlsh, zoidberg
+
+  - Microsoft Family: cmd.exe, Windows PowerShell
+]
+
+---
+
+# Why GNU Bash?
+
+- Installed as the default interactive shell for users on most Linux and macOS systems
+
+- The use of **G**raphical **U**ser **I**nterfaces does not scale well when delivering instructions to a computer
+
+- Repetitive tasks can be done automatically and quickly
+
+- Sequences of commands can be written into a script, improving the reproducibility of workflows
+
+- Two ways to use Bash: as a user interface and as a programming environment
+
+- Bash will take some time to get familiar with, however, a small number of commands gets you a long way
+
+- SCW platform
+
+---
+
+# Access a GNU/Linux machine
+
+- Open an application called 'Putty'
+
+- Host Name : `ssh.bangor.ac.uk`
+
+- Click 'Open'
+
+- Enter your university username and hit enter
+
+- Enter your university password and hit enter
+
+- Type `ssh compute` and hit enter
+
+- Can see last login credentials?
+  
+  - `Last login: Thu Nov 14 08:33:32 2019 from ssh.ad.bangor.ac.uk`
+  
+- `$` Presented with a prompt, indicating that the shell is ready to accept input 
+
+#### Summary
+
+Established a connection from your desktop to a remote GNU/Linux machine
+
+---
+
+# Explore
+
+When you see an **Exercise** section, feel free to run the commands in the shell
+
+### Exercise 
+
+- `cal` Display a calendar for the current month
+
+- `cal 2019` Display a calendar for 2019
+
+- `date` Print the system date and time
+
+- `w` See information about current users
+
+- `whoami` Print your user id
+
+- `users` Who is logged in?
+
+- `echo 'Welcome to Bash'` Print a message
+
+- `clear` or *Ctrl+L* Clear terminal
+
+- `ks` Command not found? Usually means a user has mistyped the command
+
+---
+
+# Getting Help
+
+- `help`    Provides information on commands in Bash
+
+- `man`     System manual
+
+  - Press **q** to exit, **Spacebar** Go to next screen, **b** Go to the previous screen
+  
+### Exercise
+
+- `help`
+
+- `man cal`
+
+- `man w`
+
+- `man whoami`
+
+- `man bash`
+
+- `man echo`
+
+---
+
+# The Working Directory
+
+.pull-left[
+
+- The **working directory** is the directory that the shell is currently looking at
+
+- Data in Unix is organised into files
+
+- Files are organised into directories
+
+- Directories are organised in a tree-like structure called the filesystem
+
+- The filesystem is responsible for managing files and directories
+
+- Absolute vs Relative Paths
+
+- `pwd` Print the working directory
+
+- `tree` Recursively list or display the content of a directory in a tree-like format
+]
+
+.pull-right[
+  ![file-hierarchy](images/file-hierarchy.svg)
+
+- Shell defaults to the home directory
+
+]
+
+---
+# Files and Directories
+
+#### ls
+
+- `ls` List the contents of a directory
+
+- `man ls`  What options are available? Press *q* to exit.
+
+- `ls /tmp/bash` List the contents of */tmp/bash*
+
+- `ls -a /tmp/bash` List contents of */tmp/bash*, including hidden files
+
+- `ls -l /tmp/bash` Use long listing format when printing 
+
+- `ls ~` List contents of *your home* directory. `~` denotes your home directory
+
+
+#### Wildcard
+
+- Metacharacters such as ** * ** and **?** have a special meaning in Unix.
+
+- `ls *.py` Matches zero or more characters in a filename
+
+- `ls ?c` Matches any single character
+
+---
+
+# Syntax of a Shell command
+
+`ls -l /tmp/bash`
+
+  - `ls` command
+
+  - `-l` option
+  
+  - `/tmp/bash` argument
+
+
+#### Help
+
+- `man ls`
+
+- `ls --help`
+
+- `ls --help | less`
+
+- `ls --x` Error
+
+- Many commands have a `--help` option to display more information on how to use the command or program.
+
+---
+
+# Files and Directories
+
+- `ls /tmp/bash` Lists contents by alphabetical order
+
+- `ls -t /tmp/bash` Lists contents by last modified time
+
+- `ls -r /tmp/bash` Reverse order when sorting
+
+- `ls -tr /tmp/bash` or `ls -t -r /tmp/bash`
+
+- `ls -ltr /tmp/bash` Use long listing format to verify
+
+#### Challenge
+
+- List files in `/tmp/bash` by reverse alphabetical order
+
+--
+
+#### Solution
+
+- `ls -lr /tmp/bash`
+
+---
+
+# Files and Directories
+
+```bash
+ls -l
+
+drwxr-xr-x. 2 issa16 is 4096 Nov 16 21:04 data
+-rw-r--r--. 1 issa16 is  270 Nov 16 14:28 logins.txt
+-rw-r--r--. 1 issa16 is   78 Nov 16 14:02 names.txt
+```
+
+#### Columns
+
+1. File type and permission given on the file (-,b,c,d,l,p,s)
+
+--
+
+2. Number of memory blocks taken by the file or directory
+
+--
+
+3. Owner of the file (creator)
+
+--
+
+4. Group owner. Each user will have a group.
+
+--
+
+5. File size in bytes.
+
+--
+
+6. Date and time the file was created or modified.
+
+--
+
+7. File or directory name.
+
+---
+
+# Navigating Directories
+
+#### cd
+
+- `man cd` What options are available? Press *q* to exit.
+
+- `cd` Change the working directory to your *home* directory
+
+- `cd /tmp/bash` Change the working directory to */tmp/bash*
+
+- `cd ..` Move up one directory
+
+- `ls -l`?
+
+- `pwd`
+
+- `cd /tmp/bash` Change the working directory to */tmp/bash*
+
+- `cd ../..` Move up two directories
+
+- `ls -l`?
+
+- `pwd`
+
+---
+
+# Navigating Directories
+
+#### Challenges
+
+- Change the working directory to *home* directory
+
+- Change the working directory to */tmp/bash*
+
+- What happens if you try to change the working directory to */home/aaron*?
+
+#### Solutions
+
+--
+
+- `cd`
+
+--
+
+- `cd /tmp/bash`
+
+--
+
+- Permission denied or No such file or directory
+
+--
+
+#### Tip
+
+- Use the *up* and *down* arrow keys on the command line to navigate command history
+
+---
+
+# Creating Files and Directories
+
+#### touch
+
+- `touch data.txt` Make an empty file called *data.txt*
+
+- `man touch`  What options are available? Press *q* to exit
+
+- Also used to change the timestamp on existing files and directories
+
+
+#### mkdir
+
+- `mkdir test` Make an empty directory called *test*
+
+- `man mkdir` What options are available?
+
+- `mkdir -vp ~/samples/feb` Make parent directories as needed
+
+
+#### Tips
+
+- Do not use spaces for file and directory names, prefer `-` or `_`
+
+- Do not begin file or directory names with `-`, usually reserved for options
+
+---
+
+# Creating Files and Directories
+
+#### Challenge
+
+Create the following in your *home* directory
+
+```
+samples
+  jan
+    01.txt
+  feb
+    01.txt
+```
+
+--
+
+#### Solution
+
+```bash
+cd
+
+mkdir -vp samples/jan
+touch samples/jan/01.txt
+
+mkdir -vp samples/feb
+touch samples/jan/01.txt
+```
+---
+
+# Removing Files and Directories
+
+#### rm
+
+- `rm -i filename.py` Prompt before removing *filename.py* (y|n)
+
+- `rm filename.py` Remove *filename.py* without prompt - Be careful
+
+- `rm *.py` Remove all files that end with *.py*
+
+- `rm -rfi ~/samples/feb` Remove all files and directories in the *path* directory
+
+#### rmdir
+
+- `rmdir samples/feb` 
+  - Remove an empty directory using a relative path
+
+- `rmdir /home/aaron/samples/feb` 
+  - Remove an empty directory using an absolute path
+
+---
+
+# Viewing Files
+
+#### cat
+
+- Reads a file and outputs its content
+
+- `cat /tmp/bash/names.txt` Print the contents of *names.txt*
+
+- `cat -b /tmp/bash/colours.txt` Print the contents of *colours.txt* with line numbers
+
+- `cat /tmp/bash/names.txt /tmp/bash/colours.txt` Print the contents of *names.txt* and *colours.txt*
+
+
+#### less
+
+- View files with many lines of content
+
+- `less /tmp/bash/colours.txt` View the contents of *colours.txt*
+
+- *Spacebar* Go to next screen, *b* Go to the previous screen
+
+- */* Search for a word
+
+- *q* Exit
+
+---
+
+# Editing Files
+
+#### nano
+
+- `nano some-file` Open nano and start editing
+
+- *Ctrl+O* Save changes
+
+- *Ctrl+X* Exit
+
+- `nano some-file` Open *some-file* for editing
+  
+#### vim
+
+- Opens in **command** mode, need to activate **insert** mode
+
+- `vi some-file`
+
+- `i` To start *insert* mode.
+
+- `Esc :wq` To exit vi and save changes
+
+- `Esc :q!` To exit vi and do not save changes
+  
+---
+
+# Copying Files and Directories
+
+#### cp
+
+- Copy source file or directory to destination file or directory
+
+- `cp /tmp/bash/names.txt ~` 
+  - Copy */tmp/bash/names.txt* to your *home* directory
+
+- `cp -r /tmp/bash ~` 
+  - Copy */tmp/bash* to your *home* directory
+
+- `cp /tmp/bash/names.txt /tmp/bash/planets.txt  ~` 
+  - Copy */tmp/bash/names.txt* and */tmp/bash/planets.txt* to your *home* directory
+
+---
+
+# Moving Files and Directories
+
+#### mv
+
+- Moves one or more files or directories from a source to a destination
+
+- `mv -i logins.txt logins_bk.txt` 
+  - Rename *logins.txt* as *logins_bk.txt* after confirmation from user (y|n)
+
+- `mv logins.txt logins_bk.txt` 
+  - Rename *old_file* as *new_file* without confirmation check
+
+- `mv *.txt data` 
+  - Move all python files to *data* directory
+
+---
+
+# Recap
+
+- What is a Shell?
+
+--
+
+- The Working Directory?
+
+--
+
+- Syntax of a Shell command?
+
+--
+
+- Files and Directories
+
+--
+
+  - Create, edit, move and delete a file
+
+--
+
+  - Create, edit, move and delete a directory
+
+--
+
+- Navigating Directories
+
+---
+
+# Filters
+
+A powerful feature in the Shell is the ability to combine commands and programs in new ways.
+
+- `cat` Displays the contents of its inputs
+
+- `head` Displays the first 10 lines of its input
+
+- `tail` Displays the last 10 lines of its input
+
+- `sort` Sorts its input
+
+- `wc` Counts lines, words and characters in its inputs
+
+- `uniq` Report or omit repeated lines
+
+---
+
+# Filters
+
+### Exercise
+
+- `cat /tmp/bash/colours.txt`?
+
+- `head -n 5 /tmp/bash/colours.txt`?
+
+- `tail -n 5 /tmp/bash/colours.txt`?
+
+- `sort /tmp/bash/colours.txt`?
+
+- `sort -R /tmp/bash/colours.txt`?
+
+- `wc -l /tmp/bash/colours.txt`?
+
+- `uniq /tmp/bash/colours.txt`
+
+---
+
+# Counting words in a file
+
+#### Challenge
+
+- Use the `wc` command to count the number of words in `/tmp/bash/names.txt`
+
+#### Options
+
+- `wc -l`
+
+- `wc -c`
+
+--
+
+#### Solution
+
+- `wc /tmp/bash/names.txt`
+
+  - 13 13 83 /tmp/bash/names.txt
+
+--
+
+#### Columns
+
+1. Total number of lines in the file
+
+2. Total number of words in the file
+
+3. Total number of bytes in the file (file size)
+
+4. Filename
+
+---
+
+# Sort
+
+#### Challenge
+
+- Apply the sort command to `/tmp/bash/planets.txt`
+
+--
+
+#### Solution
+
+- `sort /tmp/bash/planets.txt`
+
+--
+
+#### Challenge
+
+- Apply the sort command to `/tmp/bash/ages.txt` - numeric sort
+
+--
+
+#### Solution
+
+- `sort -n /tmp/bash/ages.txt`
+
+---
+
+# Sort
+
+#### Challenge
+
+- Use the `sort` command to get the maximum age in `/tmp/bash/ages.txt`
+
+--
+
+#### Solution
+
+- `sort -n /tmp/bash/ages.txt | tail -n 1`
+
+--
+
+#### Challenge
+
+- Use the `sort` command to get the minimum age in `/tmp/bash/ages.txt`
+
+--
+
+#### Solution
+
+- `sort -n /tmp/bash/ages.txt | head -n 1`
+
+---
+
+# Pipelines
+
+The `|` symbol between commands is called a **pipe**. It tells the shell that we want to use the output of the command on the left as input to the command on the right
+
+Best way to use the shell is to use pipes to combine simple single-purpose programs (filters)
+
+Task: Build a pipeline to count the number of unique login ids
+
+--
+
+- `cd` Change the working directory to your home directory
+
+--
+
+- `cp /tmp/bash/logins.txt .` Copy sample data to your home directory
+
+--
+
+- `cat logins.txt` View sample data
+
+--
+
+- `cat logins.txt | sort` Sort data
+
+--
+
+- `cat logins.txt | sort | uniq` View unique login ids
+
+--
+
+- `cat logins.txt | sort | uniq | wc -l` Count the number of unique login ids
+
+---
+
+# Redirection of data
+
+Syntax
+
+- `command-1 | command-2` 
+  - Use the output from command-1 as input to command-2
+
+- `command &gt; file` 
+  - Overwrite/create a file with output from the command
+
+- `command &gt;&gt; file` 
+  - Append/create a file with output from the command
+
+- `command &lt; file` 
+  - Feed file to command as input
+
+- `cat &lt; file1 &gt; file2` Any ideas?
+
+--
+
+- `cp file1 file2`
+    
+---
+
+# Redirection of data
+
+Exercise
+
+- `echo "Line 1" &gt; data.txt`
+
+- `cat data.txt`
+
+- `echo "Line 2" &gt;&gt; data.txt`
+
+- `cat data.txt`
+
+- `sort /tmp/bash/logins.txt &gt; logins_sorted.txt`
+
+- `cat logins_sorted.txt`
+
+- Save all unique login ids to *unique_logins.txt*?
+
+--
+
+- `cat /tmp/bash/logins.txt | sort | uniq &gt; unique_logins.txt`
+
+- Read the last line of all python files and save to `last_lines.txt`
+
+--
+
+- `tail -n1 *.py &gt; last_lines.txt`
+
+---
+
+# Search
+
+- `grep` Select lines from text files that match simple patterns
+
+- `find` Find files and directories whose names match simple patterns
+
+### Exercise
+
+- `cat /tmp/bash/colours.txt`
+
+- `grep -n Olive /tmp/bash/colours.txt`
+
+- `grep -n Olives /tmp/bash/colours.txt`
+
+- `grep -nv Olive /tmp/bash/colours.txt`
+
+- `find . -type d` Find directories in the working directory
+
+- `find . -name '*.txt'` Find all text files in the working directory
+
+- `wc -l $(find . -name '*.txt')` Count the lines in all text files
+
+---
+
+# Scripts
+
+- Move commands into script files
+
+- Commands can be either directly entered by the user or read from a file called the shell script
+
+- Scripts may contain commands, variables, loops, functions, conditionals etc.
+
+- `nano test.sh`
+
+  ```bash
+  #!/usr/bin/env bash
+
+  echo "Hello from inside the test.sh file"
+  ```
+
+- `#!/usr/bin/env bash` - Ensure script is portable across different UNIX-like operating systems. Known as the shebang.
+
+- `chmod +x test.sh` Convert the file to an exectuable
+
+- `./test.sh` or `bash test.sh`
+
+---
+
+# Loops
+
+- Allow us to repeat a command or set of commands for each item in a list
+
+- Key to productivity improvements through automation
+
+- Reduces the amount of code
+
+- `help`
+
+- `nano loop.sh`
+
+  ```bash
+  #!/usr/bin/env bash
+  
+  for idx in 1 2 3 4 5; do
+  
+      echo "Loop Index: ${idx}"
+  
+  done
+  ```
+  
+- `chmod +x loop.sh` Convert the file to an exectuable
+
+- `./loop.sh` or `bash loop.sh`
+
+---
+
+# Loops
+
+Task: Sort names, colours and planets and save results
+
+- `nano filesort.sh`
+
+  ```bash
+  #!/usr/bin/env bash
+  
+  for filename in names.txt colours.txt planets.txt; do
+  
+      sort "${filename}" &gt; "${filename%%.*}_sorted.txt"
+  
+  done
+  ```
+
+- `chmod +x filesort.sh` Convert the file to an exectuable
+
+- `./filesort.sh` or `bash filesort.sh`
+
+#### Extract filename without extension
+
+- `${filename%%.*}`
+
+---
+
+# Loops using a dry run
+
+Task: Print the command but do not execute
+
+- `nano dryrun.sh`
+
+  ```bash
+  #!/usr/bin/env bash
+  
+  for filename in *.txt; do
+  
+      echo "uniq ${filename} &gt; ${filename%%.*}_uniq.txt"
+      # uniq ${filename} &gt; ${filename%%.*}_uniq.txt
+  
+  done
+  ```
+  
+- `chmod +x dryrun.sh` Convert the file to an exectuable
+
+- `./dryrun.sh` or `bash dryrun.sh`  
+
+- `#` Comment, not code. Purely for documentation.
+
+---
+
+# Command Substitution
+
+- `nano users.sh`
+
+  ```bash
+  #!/usr/bin/env bash
+  
+  DATE=`date`
+  echo "Date is ${DATE}"
+  
+  USERS=`w | wc -l`
+  echo "There are ${USERS} users currently logged in"
+  ```
+- `chmod +x users.sh` Convert the file to an exectuable
+
+- `./users.sh` or `bash users.sh`
+
+- `./users.sh &gt; daily_users.txt` 
+
+---
+
+# Variables
+
+Task: Sum the integers from 1 to 10
+
+- `nano sum.sh`
+
+  ```bash
+  #!/usr/bin/env bash
+  
+  sum=0
+  
+  for i in `seq 1 10`; do
+          sum=$((sum+i))
+          echo "idx:${i} sum:${sum}"
+  done
+  
+  echo "Total Sum:${sum}"
+```
+
+- `chmod +x sum.sh` Convert the file to an exectuable
+
+- `./sum.sh` or `bash sum.sh` 
+
+- `seq` Print a sequence of numbers, defaults to a step of 1
+
+---
+
+# Conditionals
+
+- TODO
+
+---
+
+# Functions
+
+- TODO
+
+---
+
+# Local Variables
+
+- TODO
+
+---
+
+# User Environment
+
+- TODO
+
+---
+
+# Change Password
+
+- TODO
+
+---
+
+# Brace Expansion
+
+- TODO
+
+---
+
+# wget
+
+- TODO
+
+---
+
+# File Transfer
+
+- TODO
+
+---
+
+# Arrays
+
+- TODO
+
+---
+
+# Dictionaries
+
+- TODO
+
+---
+
+# Jobs
+
+- TODO
+
+---
+
+# Parallel
+
+- TODO
+
+---
+
+# Links
+
+- [GNU Bash](https://www.gnu.org/software/bash/)
+
+- [The Unix Shell](http://swcarpentry.github.io/shell-novice/)
+
+- [Bash scripting cheatsheet](https://devhints.io/bash)
+
+- [ShellCheck – shell script analysis tool](https://www.shellcheck.net)
+
+- [Shell Style Guide](https://google.github.io/styleguide/shell.xml)
+
+- [Learn X in Y minutes - Bash](https://learnxinyminutes.com/docs/bash/)
+
+---
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

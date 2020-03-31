@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>Version Control Using Git</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Ade Fewings, Aaron Owen" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Version Control Using Git
+### Ade Fewings, Aaron Owen
+### Bangor University
+### 2019/11/10 (updated: 2020-03-31)
+
+---
+
+
+# Research Computing Community
+
+- Background
+
+  - High-Performance Computing Wales / SuperComputing Wales
+  
+  - Research Software Engineers
+
+- Future
+  
+  - Collate expert knowledge into an open and shared centralised repository
+      - Yammer - Research Computing Community
+      - https://github.com/BangorUniversity/Research-Computing-Community
+  
+  - Workshops
+  
+  - Projects
+  
+  - Acknowledgements
+
+---
+
+# Workshops
+
+- Introduction to the Linux Shell
+
+- **Version Control Using Git**
+  - https://swcarpentry.github.io/git-novice/
+
+- Programming Principles and Practice using Python
+
+- Advanced Python
+
+- Parallel Processing in Python
+
+- Requests?
+
+---
+
+# Version Control Systems
+
+- A tool that records changes to files or a set of files over time
+
+- Can recall specific versions of files
+
+  - No need for *file-new, file-new-new, file-old, file-latest, file-working*
+
+- Not restricted to software development
+
+- Can be local, centralised and decentralised
+
+- Simplifies collaboration on a project with others
+  - Users are notified when there is a possibility your changes may conflict with another person's work
+
+---
+
+# Version Control Systems
+
+- Users can collaborate on documents in parallel - Paper Writing
+
+- Users can revert to a previous version - Unlimited undo
+
+- Many different version control systems
+
+  - CVS, SVN, **Git**, Mercurial
+
+---
+
+# Version Control Systems
+
+- Start with a base version of a document
+
+- Records changes you make each step of the way
+
+- Can rewind to the base document and playback each change
+
+&lt;img src="images/play-changes.svg"&gt;
+
+---
+
+# Version Control Systems
+
+- Think of the changes as separate from the document itself
+
+- Different sets of changes can result in different versions of the document
+
+- Two users can make independent sets of changes on the same document
+
+&lt;img src="images/versions.svg"&gt;
+
+---
+
+# Version Control Systems 
+
+- If users make changes to different parts of a document
+  - You can incorporate two sets of changes into the same base document
+  
+- If users make changes to the same part of a document
+  - This will result in a *conflict* and needs to be reviewed
+
+&lt;img src="images/merge.svg"&gt;
+
+---
+
+# Create a GitHub account
+
+### Github
+
+- GitHub is a Git repository hosting service, but it adds many of its own features
+
+- Git is a command-line tool
+
+- GitHub provides a web-based graphical interface 
+
+- Also provides access control and several collaboration features, such as wikis and basic task management tools for every project
+
+
+**Demo**
+  
+- Visit https://github.com/
+
+- Sign up
+
+- Verify account
+
+---
+
+# Access a GNU/Linux machine
+
+- Open an application called 'Putty'
+
+- Host Name : `ssh.bangor.ac.uk`
+
+- Click 'Open'
+
+- Enter your university username and hit enter
+
+- Enter your university password and hit enter
+
+- Type `ssh compute` and hit enter
+
+- Can see last login credentials?
+  
+  - `Last login: Thu Nov 14 08:33:32 2019 from ssh.ad.bangor.ac.uk`
+  
+- `$` Presented with a prompt, indicating that the **shell** is ready to accept input 
+
+---
+
+# What is a Shell?
+
+.left-column[
+  ![shell-layer](images/shell-layer.svg)
+]
+
+.right-column[
+
+- A program that provides a user interface for Unix-like operating systems (kernel)
+
+- Its job is to translate the user's commands into operating system instructions
+
+- The operating system starts a shell for each user when they log in or open a terminal window
+
+- Examples of Shells
+
+  - Bourne Family: sh, ash, ksh, **bash**
+
+  - C Family: csh, tcsh
+
+  - Perl Family: perlsh, zoidberg
+
+  - Microsoft Family: cmd.exe, Windows PowerShell
+]
+
+---
+
+# Configure Git
+
+- Need to configure Git on the `compute` machine for your account
+
+- Details below should match those when creating an account on GitHub
+
+- Need to set your username
+
+  - `git config --global user.name "issa16"`
+  
+- Need to set your email address
+
+  - `git config --global user.email "issa16@bangor.ac.uk"`
+
+- Optionally set the default text editor for Git
+
+  - `git config --global core.editor "nano -w"`
+
+- Username and password will be linked to your Git activity
+
+- `--global` For every Git project, use these settings
+
+---
+
+# Line Endings
+
+- Different Operating Systems using different characters to represent to the end of a line
+
+- Git uses these characters to compare files, it may cause unexpected issues when editing a file on different machines
+
+- `dos2unix` - Converts plain text files in DOS format to UNIX format
+
+Linux and macOS
+
+- `git config --global core.autocrlf input`
+
+Windows
+
+- `git config --global core.autocrlf true`
+
+---
+
+# Check Git Config
+
+`git config --list`
+
+- You can change your configuration as many times as you want
+
+#### Help
+
+- `git config --help`
+
+- Press **q** to exit, **Spacebar** Go to next screen, **b** Go to the previous screen
+  
+#### Summary
+
+Use `git config` to change the Git configuration and preferences
+
+---
+
+# Creating a Repository
+
+- `cd` Change your working directory to your *home* directory
+
+- `mkdir hello_world` Create a directory named *hello_world*
+
+- `cd hello_world` Change your working directory to the *hello_world* directory
+
+- `git init` Initialise a git repository
+
+  - Output: `Initialized empty Git repository in /some/path`?
+
+- `git status` Check git status
+  
+  ```bash
+  # On branch master
+  #
+  # Initial commit 
+  #
+  nothing to commit (create/copy files and use "git add" to track)
+  ```
+ 
+#### Note
+
+- `git init` will include subdirectories and their files
+
+---
+
+# Hello World Explained
+
+- We created a directory named *hello_world* to store versions of our files
+
+- `ls` Empty?
+
+- `ls -a` Hidden files?
+
+- Git uses a special sub-directory to store all the information about the project
+
+- If we were to delete the `.git` directory, we would lose the project's history
+
+- `git status`
+
+#### Summary
+
+- `git init` initialises a repository
+
+- Git stores all of its repository data in the `.git` directory
+
+---
+
+# Tracking Changes
+
+- `cd ~/hello_world &amp;&amp; nano data.txt` 
+  - Inside the `hello_world` directory create a file called `data.txt`
+
+- Add random text or favourite song title, save the file and exit
+
+- `cat data.txt` Verify save was successful
+
+- `git status` Git has picked up a new file?
+
+- `data.txt` is listed as an **Untracked File** 
+  - This means that Git is not keeping track of the file
+
+- `git add data.txt`
+  - Git will now track this file
+  
+- `git status`?
+
+---
+
+# Tracking Changes
+
+- Git knows to track `data.txt` but hasn't recorded these changes as a commit
+
+- `git commit -m "Added data.txt"`
+
+- `git status`?
+
+- `git commit` takes everything we have told it to save by using `git add` and stores
+a copy permanently inside the special `.git` directory
+
+- This permanent copy is called a *commit* or *revision*
+
+- `git log` View recent history for git repository
+
+- ` git log --oneline` Reduce the quantity of information 
+
+---
+
+# Tracking Changes
+
+- `nano data.txt` Add a new line of data
+
+- `git status`?
+
+- We have made changes, but we haven't told Git we want to save those changes
+
+- `git diff --color-words` Good practise to review the changes first
+
+- `git add data.txt`
+
+- `git commit -m "Updated data.txt"`
+
+- `git add` before `git commit` allows us to be selective on the files we want to commit to our repository
+
+---
+
+# Push changes to Github
+
+Connect the online Github repo to your local git repo
+
+1. Create a repo on Github using the web-based graphical interface 
+  - Clone url : `https://github.com/issa16/test.git`
+  
+2. In your local shell run the following command to connect the remote repo on Github to your local repo
+  - `git remote add origin https://github.com/issa16/test.git`
+  
+3. Check the two repos are connected
+  - `git remote -v`
+
+4. One time operation to store credentials
+  - `git config credential.helper store`
+
+5. Push changes from local repo to Github
+
+  - `git push origin master`
+
+---
+
+# Pull changes from Github
+
+1. Create a new file via Github's web-based graphical interface
+  - 'Create new file' button
+
+2. Retrieve (pull) the changes into your local repo
+  - `git pull origin master`
+      - Note: No need to re-enter credentials
+  
+3. List files to verify that the new file was downloaded
+  - `ls`
+  
+4. View commit log
+  - `git log --oneline`
+
+---
+# GUI
+
+#### Demo
+
+[GitHub Desktop](https://desktop.github.com/)
+
+---
+
+
+# Staging Area
+
+- Think of Git as taking snapshots or changes over the life of a project
+
+- `git add` specifies what will go in a snapshot (staging area)
+
+- `git commit` takes the snapshot and makes a permanent record of it (commit)
+
+&lt;img src="images/git-staging-area.svg"&gt;
+
+- `git diff --staged` View the difference between the last committed change and what's in the staging area
+
+---
+
+# Summary
+
+- `git status` shows the status of a repository
+
+- Files can be stored in
+
+  - A project's working directory (user sees)
+
+  - The staging area (where the next commit is being built-up)
+
+  - The local repository (where the commits are permanently recorded)
+  
+- `git add` Puts the files in the staging area
+
+- `git commit` Saves the staged content as a new commit in the local repository
+
+- Write a commit message that accurately describes your changes
+
+---
+
+# Ignoring Files
+
+What if we have files that we do not want to track?
+  - backups or intermediate files created during data analysis?
+  
+- `cd ~/hello_world`
+
+- `touch a.dat b.dat c.dat` Do not want these files to be tracked
+
+- `git status` Always listed and could distract us from changes that matter
+
+- `nano .gitignore`
+
+  - `*.dat` # Tells Git to ignore all .dat files
+  
+  - `!a.dat` # Except a.dat
+  
+  - `results` # Tells Git to ignore all files in the results directory
+  
+- `git status`? Much better
+
+- Need to save our *.gitignore* file to our repository
+
+---
+
+# Github and Collaboration
+
+The power of version control systems comes into its own when we start to collaborate with other people
+
+#### Demo
+
+- Create a project on Github
+
+- Clone the repository
+  - `cd ~ &amp;&amp; git clone https://some/url`
+  
+- We use HTTPS here because it does not require additional configuration. After the workshop, you may want to set up SSH access, which is more secure.
+
+- `git push origin master` Push changes from the local repository to Github
+
+- `git pull origin master` Pull changes from Github to the local repository
+
+- Add files and push to GitHub
+
+---
+
+# Github and Collaboration
+
+#### Demo
+
+- Settings &gt; Collaborators
+
+- Add a Collaborator
+
+- The collaborator must accept access
+
+- The collaborator must clone the repository
+
+- Create a file and name it with your university id
+
+- Add, commit, push
+
+- Should see changes in Github
+
+---
+
+# A Basic Collaborative Workflow
+
+- `git pull origin master` Update your local repository
+
+- `git add` Make your changes and stage them
+
+- `git commit -m` Commit your changes
+
+- `git push origin master` Upload the changes to GitHub
+
+---
+
+# Conflicts 
+ 
+- As soon as people can work on a document in parallel, conflicts will happen
+
+- Version Control helps us to manage conflicts by providing tools to resolve overlapping changes
+
+&lt;img src="images/conflict.svg"&gt;
+
+---
+
+# Conflicts
+
+#### Demo
+
+- Create a conflict
+
+- All users clone Aaron's repository on Github
+
+- Aaron updates **test.txt**
+
+- All users edit and upload **test.txt** to GitHub
+
+- Users can commit the change locally but Git won't let them push it to GitHub
+
+- Why?
+
+---
+
+# Conflicts
+
+#### Demo
+
+- Git rejects the push because it detects that the remote repository has new updates that have not been incorporated into the local branch
+
+- What we have to do is pull the changes from GitHub, merge them into the copy we’re currently working in, and then push that to Github
+
+- `git pull origin master` - Pull in latest updates
+
+- `nano test.txt`
+
+  ```
+  &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+  This is your edit
+  =======
+  This is aaron's edit
+  &gt;&gt;&gt;&gt;&gt;&gt;&gt;
+  ```
+
+- Need to decide which line is correct?
+
+---
+
+# Licensing
+
+- When code or other creative work becomes public, it should include a **LICENSE** or **LICENSE.txt** in the base directory of the repository
+
+- It should clearly state under which license the content is being made available
+
+- Reusing creative works without a license is dangerous because the copyright holders could sue you for copyright infringement
+
+- [Choose an open source license](https://choosealicense.com/)
+
+- People who incorporate General Public License (GPL’d) software into their own software must make their software also open under the GPL license; most other open licenses do not require this
+
+- The Creative Commons family of licenses allow people to mix and match requirements and restrictions on attribution, creation of derivative works, further sharing, and commercialisation
+
+- People who are not lawyers should not try to write licenses from scratch
+
+- [Beerware](https://en.wikipedia.org/wiki/Beerware)?!
+
+---
+
+# Citation
+
+#### Basic
+
+- You may want to include a file called **CITATION** or **CITATION.txt** that describes how to reference your project
+
+- More detailed advice and other ways to make your code citable can be found at the [Software Sustainability Institute](https://www.software.ac.uk/how-cite-and-describe-software)
+
+- [Example](http://swcarpentry.github.io/git-novice/12-citation/index.html)
+
+#### Advanced
+
+- [Official Tutorial: Making Your Code Citable](https://guides.github.com/activities/citable-code/)
+
+---
+
+# Intermediate
+
+---
+
+
+# Advanced
+
+---
+
+# Resources
+
+- https://swcarpentry.github.io/git-novice/
+
+- Yammer - Research Computing Community
+
+- https://github.com/BangorUniversity/Research-Computing-Community
+
+- https://guides.github.com/
+  
+---
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
