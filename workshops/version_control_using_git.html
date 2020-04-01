@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 # Version Control Using Git
 ### Ade Fewings, Aaron Owen
 ### Bangor University
-### 2019/11/10 (updated: 2020-03-31)
+### 2019/11/10 (updated: 2020-04-01)
 
 ---
 
@@ -24,9 +24,9 @@ class: center, middle, inverse, title-slide
 
 - Background
 
-  - High-Performance Computing Wales / SuperComputing Wales
+  - SuperComputing Wales
   
-  - Research Software Engineers
+  - Research Software Engineers supporting Bangor researchers
 
 - Future
   
@@ -40,9 +40,10 @@ class: center, middle, inverse, title-slide
   
   - Acknowledgements
 
+
 ---
 
-# Workshops
+# Training Workshops
 
 - Introduction to the Linux Shell
 
@@ -55,11 +56,18 @@ class: center, middle, inverse, title-slide
 
 - Parallel Processing in Python
 
-- Requests?
+See and Discuss on the Yammer group.
+
+Suggestions for new training welcome.
+
+---
+# Introduction
+
+TBC
 
 ---
 
-# Version Control Systems
+# Theory: Version Control Systems
 
 - A tool that records changes to files or a set of files over time
 
@@ -76,7 +84,7 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Version Control Systems
+# Theory: Version Control Systems
 
 - Users can collaborate on documents in parallel - Paper Writing
 
@@ -88,7 +96,7 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Version Control Systems
+# Theory: Version Control Systems
 
 - Start with a base version of a document
 
@@ -100,7 +108,7 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Version Control Systems
+# Theory: Version Control Systems
 
 - Think of the changes as separate from the document itself
 
@@ -112,7 +120,7 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Version Control Systems 
+# Theory: Version Control Systems 
 
 - If users make changes to different parts of a document
   - You can incorporate two sets of changes into the same base document
@@ -124,20 +132,21 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Create a GitHub account
+# Git and GitHub
 
 ### Github
 
-- GitHub is a Git repository hosting service, but it adds many of its own features
+- *GitHub* is a Git repository hosting service, but it adds many of its own features
 
-- Git is a command-line tool
+- *Git* is a command-line tool but Git also integrates with a wide variety of graphical development environments
+  - We include *command line*, *RStudio* and *Visual Studio Code* practical elements in this course.  Please follow which you need.
 
 - GitHub provides a web-based graphical interface 
 
 - Also provides access control and several collaboration features, such as wikis and basic task management tools for every project
 
 
-**Demo**
+**Create a GitHub account**
   
 - Visit https://github.com/
 
@@ -147,7 +156,7 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Access a GNU/Linux machine
+# Command Line: Access a Linux machine
 
 - Open an application called 'Putty'
 
@@ -169,7 +178,7 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# What is a Shell?
+# Command Line: What is a Shell?
 
 .left-column[
   ![shell-layer](images/shell-layer.svg)
@@ -196,7 +205,7 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Configure Git
+# Command Line: Configure Git
 
 - Need to configure Git on the `compute` machine for your account
 
@@ -220,7 +229,7 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Line Endings
+# Theory: Line Endings
 
 - Different Operating Systems using different characters to represent to the end of a line
 
@@ -238,7 +247,7 @@ Windows
 
 ---
 
-# Check Git Config
+# Command Line: Check Git Config
 
 `git config --list`
 
@@ -271,6 +280,11 @@ Use `git config` to change the Git configuration and preferences
 - Once you have a repository in Github (creating a new one through Github's web interface is the easiest way, if necessary) you can check it out in RStudio and perform the full Version Control cycle therein.
 
 ---
+# Visual Studio Code and Git
+
+
+
+---
 # Command Line: Creating a Repository
 
 - `cd` Change your working directory to your *home* directory
@@ -299,7 +313,7 @@ Use `git config` to change the Git configuration and preferences
 
 ---
 
-# Hello World Explained
+# Command Line: Hello World Explained
 
 - We created a directory named *hello_world* to store versions of our files
 
@@ -388,12 +402,16 @@ a copy permanently inside the special `.git` directory
   &lt;img src="images/rstudio-reviewchanges.png" width=33%&gt;
   
   - RStudio will then show the output of the Git commit.  We now see the message that "Your branch is ahead of 'origin/master' by 1 commit" showing that we have not pushed this change from the stage to the main repository origin.
+  
+---
+# VS Code: Tracking Changes
 
 ---
 
-# Command Line: Link Repos &amp; Push to Github
+# Command Line: Using Github
+There are a couple of ways to use a Github repo as the backend storage for a repository.
 
-Connect the online Github repo to your local git repo
+For an existing local repo, connect your local git repo to GitHub like this:
 
 1. Create a repo on Github using the web-based graphical interface 
   - Clone url : `https://github.com/issa16/test.git`
@@ -407,25 +425,16 @@ Connect the online Github repo to your local git repo
 4. One time operation to store credentials
   - `git config credential.helper store`
 
-5. Push changes from local repo to Github
+Alternatively, create the project initially on GitHub and begin local work with a clone thereof:
 
-  - `git push origin master`
+1. Create a project on Github
 
----
-#### Command Line: Clone From and Push To Github
-
-- Create a project on Github
-
-- Clone the repository
+2. Clone the repository
   - `cd ~ &amp;&amp; git clone https://some/url`
   
-- *We use HTTPS here because it does not require additional configuration. After the workshop, you may want to set up SSH access, which is more secure.*
+*We use HTTPS here because it does not require additional configuration. After the workshop, you may want to set up SSH access, which is more secure.*
 
-- `git push origin master` Push changes from the local repository to Github
 
-- `git pull origin master` Pull changes from Github to the local repository
-
-- Add files and push to GitHub
 
 ---
 # RStudio: Cloning from Github
@@ -439,6 +448,8 @@ Connect the online Github repo to your local git repo
   
   - *If 'Version Control' not available try restarting RStudio and/or reinstalling the required components as your system paths are most likely incorrect*
   
+
+
 ---
 # RStudio: Cloning from Github  
   - Put the URL to the Github repository in (from the Github web interface under 'Clone or download'), and consider where the local clone will go
@@ -458,6 +469,19 @@ Connect the online Github repo to your local git repo
     - On the left we see options to compare files, commit files, pull, push, view history and set options. 
     
 ---
+# VS Code: Cloning from Github
+    
+
+---
+#### Command Line: Push To Github
+
+Once we have a working clone locally, we can push our chnages to GitHub by first *committing* them as above, and then *pushing* them:
+
+- `git push origin master` Push changes from the local repository to Github
+
+- `git pull origin master` Pull changes from Github to the local repository    
+    
+---
 # RStudio: Push to Github
   - Once we have staged changes and are ready to commit to the origin, this can be achieved either through the 'Review Changes' window or the main Git tab in the RStudio project editing window.
   - Simply select the green up arrow, provide your GitHub credentials if prompted and see a push result:
@@ -466,77 +490,61 @@ Connect the online Github repo to your local git repo
   
   - Our chnages have now been pushed up to the repository on Github. 
   
+---
+# VS Code: Push to Github
+  
   
 ---
 # Command Line: Pull changes from Github
 
-1. Create a new file via Github's web-based graphical interface
-  - 'Create new file' button
+To *pull* (retrieve) changes to content stored that has been committed and pushed to the repo from elsewhere (perhaps, for example, we have a clone on another machine we use at home), we:
 
-2. Retrieve (pull) the changes into your local repo
   - `git pull origin master`
-      - Note: No need to re-enter credentials
   
-3. List files to verify that the new file was downloaded
+We can then see the changes:
+  
   - `ls`
-  
-4. View commit log
+
+And, we can view the commit logs that were pushed along with any code changes:
   - `git log --oneline`
 
 ---
 # RStudio: Pull changes from Github
 
+It's trivially easy to pull any changes from the GitHub repository for a working copy (clone) by pressing the blue down button:
+
+&lt;img src="images/rstudio-pull.png" width=33%&gt;
+
+Which will result in display of the Git activity:
+
+&lt;img src="images/rstudio-pullresult.png" width=33%&gt;
+
+---
+# VS Code: Pull changes from Github
+
 
 
 ---
 
-#### Demo
 
-[GitHub Desktop](https://desktop.github.com/)
+# Summary: Staging Area &amp; Repositories
 
----
+Think of Git as taking snapshots or changes over the life of a project.
 
+Files can be stored in
+  - A project's working directory (user sees)
+  - The staging area (where the next commit is being built-up)
+  - The local repository (where the commits are permanently recorded)
 
-# Staging Area
+- *ADD* specifies what will go in a snapshot (staging area)
 
-- Think of Git as taking snapshots or changes over the life of a project
-
-- `git add` specifies what will go in a snapshot (staging area)
-
-- `git commit` takes the snapshot and makes a permanent record of it (commit)
+- *COMMIT* takes the snapshot and makes a permanent record of it, multiple files typically being changed in one commit to represent a single functional change to the overall application.  Useful commit messages are a good idea for future tracking.
 
 &lt;img src="images/git-staging-area.svg"&gt;
 
-- `git diff --staged` View the difference between the last committed change and what's in the staging area
+- *PUSH* takes the permanent record and stores it in the main repository (typically on GitHub)
 
----
-
-# Summary
-
-- `git status` shows the status of a repository
-
-- Files can be stored in
-
-  - A project's working directory (user sees)
-
-  - The staging area (where the next commit is being built-up)
-
-  - The local repository (where the commits are permanently recorded)
-  
-- `git add` Puts the files in the staging area
-
-- `git commit` Saves the staged content as a new commit in the local repository
-
-- Write a commit message that accurately describes your changes
-
-
-
-
- 
-  
-
-  
-
+- *PULL* updates our local working copy (clone) with changes from the repository
 
 
 ---
@@ -613,7 +621,7 @@ The power of version control systems comes into its own when we start to collabo
 
 ---
 
-# Conflicts 
+# Theory: Conflicts 
  
 - As soon as people can work on a document in parallel, conflicts will happen
 
@@ -623,17 +631,17 @@ The power of version control systems comes into its own when we start to collabo
 
 ---
 
-# Conflicts
+# Theory: Conflicts
 
-#### Demo
+Conflicts exist when changes to a file in working copies occur concurrently and thus clash with the repository during commit/push.
 
-- Create a conflict
+E.g.
 
 - All users clone Aaron's repository on Github
 
 - Aaron updates **test.txt**
 
-- All users edit and upload **test.txt** to GitHub
+- All users edit and move to commit and push **test.txt**
 
 - Users can commit the change locally but Git won't let them push it to GitHub
 
@@ -643,11 +651,14 @@ The power of version control systems comes into its own when we start to collabo
 
 # Conflicts
 
-#### Demo
+### Practical
 
-- Git rejects the push because it detects that the remote repository has new updates that have not been incorporated into the local branch
+- Git rejects the push because it detects that the remote repository has new updates that have not been incorporated into the local clone working copy
 
 - What we have to do is pull the changes from GitHub, merge them into the copy we’re currently working in, and then push that to Github
+
+---
+# Command Line: Conflicts
 
 - `git pull origin master` - Pull in latest updates
 
@@ -662,6 +673,25 @@ The power of version control systems comes into its own when we start to collabo
   ```
 
 - Need to decide which line is correct?
+
+---
+# Command Line: Conflict Resolution
+
+
+---
+# RStudio: Conflicts
+
+
+---
+# VS Code: Conflicts
+
+
+
+---
+# Also: GitHub Desktop
+
+[GitHub Desktop](https://desktop.github.com/)
+
 
 ---
 
@@ -699,14 +729,6 @@ The power of version control systems comes into its own when we start to collabo
 
 - [Official Tutorial: Making Your Code Citable](https://guides.github.com/activities/citable-code/)
 
----
-
-# Intermediate
-
----
-
-
-# Advanced
 
 ---
 

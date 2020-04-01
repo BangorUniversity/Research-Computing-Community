@@ -278,7 +278,7 @@ Use `git config` to change the Git configuration and preferences
 
 
 ---
-# Command Line: Creating a Repository
+# Command Line: Creating a Local Repository
 
 - `cd` Change your working directory to your *home* directory
 
@@ -303,6 +303,22 @@ Use `git config` to change the Git configuration and preferences
 #### Note
 
 - `git init` will include subdirectories and their files
+
+---
+# RStudio: Creating a Local Repository
+
+It is not possible to create a local Git repository in RStudio's interface, but only to *clone* one that exists elsewhere - be it on a local file system or on GitHub.
+
+So, to create a local one, use the command line and run *git init*.
+In Windows, open *Command Prompt* and run something like this:
+
+- `mkdir myrepo`
+- `cd myrepo`
+- `git init`
+
+This local repository can then be *cloned* in RStudio via a local URL style like this:
+
+<img src="images/rstudio-clonelocalrepo.png" width=33%>
 
 ---
 
@@ -401,8 +417,10 @@ a copy permanently inside the special `.git` directory
 
 ---
 
-# Command Line: Connect & Push to Github
-Connect the online Github repo to your local git repo
+# Command Line: Using Github
+There are a couple of ways to use a Github repo as the backend storage for a repository.
+
+For an existing local repo, connect your local git repo to GitHub like this:
 
 1. Create a repo on Github using the web-based graphical interface 
   - Clone url : `https://github.com/issa16/test.git`
@@ -416,28 +434,21 @@ Connect the online Github repo to your local git repo
 4. One time operation to store credentials
   - `git config credential.helper store`
 
-5. Push changes from local repo to Github
+Alternatively, create the project initially on GitHub and begin local work with a clone thereof:
 
-  - `git push origin master`
+1. Create a project on Github
 
----
-#### Command Line: Clone From and Push To Github
-
-- Create a project on Github
-
-- Clone the repository
+2. Clone the repository
   - `cd ~ && git clone https://some/url`
   
-- *We use HTTPS here because it does not require additional configuration. After the workshop, you may want to set up SSH access, which is more secure.*
+*We use HTTPS here because it does not require additional configuration. After the workshop, you may want to set up SSH access, which is more secure.*
 
-- `git push origin master` Push changes from the local repository to Github
 
-- `git pull origin master` Pull changes from Github to the local repository
-
-- Add files and push to GitHub
 
 ---
 # RStudio: Cloning from Github
+
+To *clone* in RStudio from GitHub, we simply use a URL that points to the GitHub repo rather than a local repository.
 
 - In RStudio start a new project: 
 
@@ -446,21 +457,21 @@ Connect the online Github repo to your local git repo
   <img src="images/rstudio-newproject.png" width=33%>
   <img src="images/rstudio-createprojectfromversioncontrol.png" width=33%>
   
-  - *If 'Version Control' not available try restarting RStudio and/or reinstalling the required components as your system paths are most likely incorrect*
+  - If *Version Control* not available try restarting RStudio and/or reinstalling the required components as your system paths are most likely incorrect*
   
 
 
 ---
 # RStudio: Cloning from Github  
-  - Put the URL to the Github repository in (from the Github web interface under 'Clone or download'), and consider where the local clone will go
+  - Put the URL to the Github repository in (from the Github web interface under *Clone or download*), and consider where the local clone will go
   
   <img src="images/rstudio-clonegitrepo.png" width=33%>
   
-  - Click 'Create Project'
+  - Click *Create Project*
   
   - RStudio will clone the repository into a working copy and open therein.
   
-  - Notice that the new window opened has a 'Git' option on the top-right pane:
+  - Notice that the new window opened has a *Git* option in the top-right pane:
   
   <img src="images/rstudio-gittab.png" width=33%>
   
@@ -471,6 +482,16 @@ Connect the online Github repo to your local git repo
 ---
 # VS Code: Cloning from Github
     
+
+---
+#### Command Line: Push To Github
+
+Once we have a working clone locally, we can push our chnages to GitHub by first *committing* them as above, and then *pushing* them:
+
+- `git push origin master` Push changes from the local repository to Github
+
+- `git pull origin master` Pull changes from Github to the local repository    
+    
 ---
 # RStudio: Push to Github
   - Once we have staged changes and are ready to commit to the origin, this can be achieved either through the 'Review Changes' window or the main Git tab in the RStudio project editing window.
@@ -478,8 +499,7 @@ Connect the online Github repo to your local git repo
   
   <img src="images/rstudio-pushed.png" width=33%>
   
-  - Our chnages have now been pushed up to the repository on Github. 
-  
+  - Our changes have now been pushed up to the repository on Github. 
   
 ---
 # VS Code: Push to Github
@@ -488,21 +508,27 @@ Connect the online Github repo to your local git repo
 ---
 # Command Line: Pull changes from Github
 
-1. Create a new file via Github's web-based graphical interface
-  - 'Create new file' button
+To *pull* (retrieve) changes to content stored that has been committed and pushed to the repo from elsewhere (perhaps, for example, we have a clone on another machine we use at home), we:
 
-2. Retrieve (pull) the changes into your local repo
   - `git pull origin master`
-      - Note: No need to re-enter credentials
   
-3. List files to verify that the new file was downloaded
+We can then see the changes:
+  
   - `ls`
-  
-4. View commit log
+
+And, we can view the commit logs that were pushed along with any code changes:
   - `git log --oneline`
 
 ---
 # RStudio: Pull changes from Github
+
+It's trivially easy to pull any changes from the GitHub repository for a working copy (clone) by pressing the blue down button:
+
+<img src="images/rstudio-pull.png" width=33%>
+
+Which will result in display of the Git activity:
+
+<img src="images/rstudio-pullresult.png" width=33%>
 
 ---
 # VS Code: Pull changes from Github
@@ -512,46 +538,24 @@ Connect the online Github repo to your local git repo
 ---
 
 
-# Theory: Staging Area
+# Summary: Staging Area & Repositories
 
-- Think of Git as taking snapshots or changes over the life of a project
+Think of Git as taking snapshots or changes over the life of a project.
 
-- `git add` specifies what will go in a snapshot (staging area)
+Files can be stored in
+  - A project's working directory (user sees)
+  - The staging area (where the next commit is being built-up)
+  - The local repository (where the commits are permanently recorded)
 
-- `git commit` takes the snapshot and makes a permanent record of it (commit)
+- *ADD* specifies what will go in a snapshot (staging area)
+
+- *COMMIT* takes the snapshot and makes a permanent record of it, multiple files typically being changed in one commit to represent a single functional change to the overall application.  Useful commit messages are a good idea for future tracking.
 
 <img src="images/git-staging-area.svg">
 
-- `git diff --staged` View the difference between the last committed change and what's in the staging area
+- *PUSH* takes the permanent record and stores it in the main repository (typically on GitHub)
 
----
-
-# Summary
-
-- `git status` shows the status of a repository
-
-- Files can be stored in
-
-  - A project's working directory (user sees)
-
-  - The staging area (where the next commit is being built-up)
-
-  - The local repository (where the commits are permanently recorded)
-  
-- `git add` Puts the files in the staging area
-
-- `git commit` Saves the staged content as a new commit in the local repository
-
-- Write a commit message that accurately describes your changes
-
-
-
-
- 
-  
-
-  
-
+- *PULL* updates our local working copy (clone) with changes from the repository
 
 
 ---
@@ -585,20 +589,29 @@ Similarly, to ignore files in RStudio, under the 'Git' tab, we can click the Blu
 
 <img src="images/rstudio-ignore.png" width=33%>
 
-
 ---
-
-# Github and Collaboration
-
-The power of version control systems comes into its own when we start to collaborate with other people
-
+# VS Code: Ignoring Files
 
 
 ---
 
 # Github and Collaboration
 
-#### Demo
+The power of version control systems comes into its own when we start to collaborate with other people.
+
+It enables different people to develop different parts of a project, some elements experimentally, and eases the merging of these changes.
+
+Version control allows a particular project state at a point in time to be stored forever. Typically this would denote major changes, such as a new version.
+
+As changes are required to be attributed to a user, accountability is also introduced.  This, with helpful user interfaces and meaningful messages about change enable a far more collaborative working environment.
+
+
+
+---
+
+# Github Project Collaboration
+
+To configure a GitHub hosted repository for collaboration among users, some simple settings are applied in the GitHub interface:
 
 - Settings > Collaborators
 
@@ -608,11 +621,11 @@ The power of version control systems comes into its own when we start to collabo
 
 - The collaborator must clone the repository
 
-- Create a file and name it with your university id
+- Create a file with a unique name
 
-- Add, commit, push
+- Add, commit, push to the repo
 
-- Should see changes in Github
+- Should see changes in GitHub from multiple users
 
 ---
 
@@ -630,7 +643,7 @@ The power of version control systems comes into its own when we start to collabo
 
 # Theory: Conflicts 
  
-- As soon as people can work on a document in parallel, conflicts will happen
+As soon as people can work on a document in parallel, conflicts will happen
 
 - Version Control helps us to manage conflicts by providing tools to resolve overlapping changes
 
@@ -640,7 +653,7 @@ The power of version control systems comes into its own when we start to collabo
 
 # Theory: Conflicts
 
-Conflicts exist when changes to a file in working copies occur concurrently and thus clash with the repository during commit/push.
+Conflicts exist when changes to a file in different working copies occur concurrently and thus clash with the repository during commit/push.
 
 E.g.
 
@@ -656,7 +669,7 @@ E.g.
 
 ---
 
-# Conflicts
+# Theory: Conflicts
 
 ### Practical
 
@@ -679,7 +692,7 @@ E.g.
   >>>>>>>
   ```
 
-- Need to decide which line is correct?
+- Need to decide which line is correct?  User process.
 
 ---
 # Command Line: Conflict Resolution
