@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://www.bangor.ac.uk/mrc/brand/downloads/Bangor_Logo_A1.png" alt="Bangor University" width=128 height=128>
+    <img src="logo.png" alt="Bangor University" width=128 height=128>
     <h3 align="center">Research Computing Community</h3>
 </p>
 <p align="center">
