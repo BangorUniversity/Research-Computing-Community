@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
   <head>
     <title>Programming Principles and Practice using Python</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Ade Fewings, Aaron Owen, Sherena Huang" />
+    <meta name="author" content="Ade Fewings, Aaron Owen" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
@@ -13,9 +13,9 @@
 class: center, middle, inverse, title-slide
 
 # Programming Principles and Practice using Python
-### Ade Fewings, Aaron Owen, Sherena Huang
+### Ade Fewings, Aaron Owen
 ### Bangor University
-### 2019/12/02 (updated: 2020-03-31)
+### 2019/12/02 (updated: 2020-05-02)
 
 ---
 
@@ -24,13 +24,15 @@ class: center, middle, inverse, title-slide
 
 - Background
 
-  - High-Performance Computing Wales / SuperComputing Wales
+  - SuperComputing Wales
   
-  - Research Software Engineers
+  - Research Software Engineers supporting Bangor researchers
 
 - Future
   
   - Collate expert knowledge into an open and shared centralised repository
+      - [Yammer](https://www.yammer.com/bangor.ac.uk/#/threads/inGroup?type=in_group&amp;feedId=12756205568&amp;view=all)
+      - [Github](https://github.com/BangorUniversity/Research-Computing-Community)
   
   - Workshops
   
@@ -40,24 +42,24 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Workshops
+# Training Workshops
 
 - Introduction to the Linux Shell
-  - *Monday 18 November 2019, 09:00–12:00*
 
 - Version Control Using Git
-  - *Tuesday 19 November 2019, 09:00–12:00*
 
 - **Programming Principles and Practice using Python**
-  - *Monday 2 December 2019, 09:30–16:30*
 
 - Advanced Python
-  - *Tuesday 3 December 2019, 09:30–16:30*
 
-- Parallel Processing in Python 
-  - *Wednesday 4 December 2019, 09:30–16:30*
+- Parallel Processing in Python
 
-- Requests?
+- Machine Learning with Python*
+
+
+See and discuss on the Yammer group.
+
+Suggestions for new training welcome.
 
 ---
 
@@ -66,6 +68,8 @@ class: center, middle, inverse, title-slide
 .pull-left[
 
 #### Morning
+
+- Resources
 
 - Environment
 
@@ -107,16 +111,34 @@ class: center, middle, inverse, title-slide
 
 ---
 
+# Resources
+
+### Online Tutorials
+
+- [Software Carpentry - Programming with Python](https://swcarpentry.github.io/python-novice-inflammation/)
+
+- [Python.org - The Python Tutorial](https://docs.python.org/3/tutorial/)
+
+- [Google's Python Class](https://developers.google.com/edu/python)
+
+- [Introduction to Python](https://realpython.com/learning-paths/python3-introduction/)
+
+- [Real Python Tutorials](https://realpython.com/)
+
+---
+
 # Environment
 
 **Cross Platform**
 
-- https://repl.it/languages/python3
+- [Google Colaboratory](https://colab.research.google.com/notebooks/welcome.ipynb) - Recommend
 
-- https://www.python.org/shell/
+- [Online Python compiler, Online Python IDE, and online Python REPL](https://repl.it/languages/python3)
+
+- [python.org shell](https://www.python.org/shell/)
 
 
-**Linux**
+**Connect to a Linux machine from Windows**
 
 - Open an application called 'Putty'
 
@@ -129,8 +151,6 @@ class: center, middle, inverse, title-slide
 - Enter your university password and hit enter
 
 - Type `ssh compute` and hit enter
-
-- `python3 --version`
 
 ---
 
@@ -154,7 +174,7 @@ class: center, middle, inverse, title-slide
   
 - Many developers will test ideas and protoypes in Python and drop down to a lower level language if required.
 
-- https://docs.python.org/3.6/ 
+- https://docs.python.org/3/
 ---
 
 # Workshop
@@ -162,12 +182,6 @@ class: center, middle, inverse, title-slide
 - Using Python as a vehicle to learn good programming practises.
 
 - Reflect on the concepts.
-    
-    - How are they represented and used in different programming languages.
-
-- https://realpython.com/learning-paths/python3-introduction/
-  
-    - Online tutorial
 
 - Feel free to ask questions.
 
@@ -175,7 +189,7 @@ class: center, middle, inverse, title-slide
 
 # Python Shell
 
-- For those using `repl.it` a Python Shell is ready to use.
+- For those using an online platform a Python Shell is ready to use.
 
 - For those using the `compute` node, type `python3` and an interactive Python Shell will open.
 
@@ -261,7 +275,7 @@ class: center, middle, inverse, title-slide
 
 - Often a style will be defined for open source projects.
 
-- *Personal preference* is to use snake case for variables and functions and use Pascal Case for class names.
+- Personal preference is to use snake case for variables and functions and use Pascal Case for class names.
 
 ---
 
@@ -270,8 +284,6 @@ class: center, middle, inverse, title-slide
 - Strings are sequences of character data.
 
 - String may be delimited using either a single or double quote.
-
-- String formatting - After variables section.
 
   ```py
   name='Aaron'
@@ -292,6 +304,9 @@ class: center, middle, inverse, title-slide
   string that spans
   across several lines""")
   ```
+  
+- [String Methods](https://docs.python.org/3/library/stdtypes.html#string-methods)
+
 ---
 
 # Integer (int)
@@ -308,6 +323,8 @@ class: center, middle, inverse, title-slide
   b
   
   type(b)
+  
+  # Advanced
   
   c=0b10   # Binary 2
   
@@ -422,6 +439,8 @@ type(c)  # bool
 
 - **repl.it** provides a file (main.py) and calls `python3 main.py` when you click run.
 
+- **Google Colab** provides a notebook that can be saved to your Google drive.
+
 - Demo
 
 ---
@@ -432,7 +451,7 @@ type(c)  # bool
 
 - Demo
 
-  - Create a new file called `script1.py`
+  - Create a new file called `main.py`
   
   ```py
   def main():
@@ -443,7 +462,7 @@ type(c)  # bool
   ```
   
   ```sh
-  python3 script1.py
+  python3 main.py
   ```
 
 - Demo without `__name__`
@@ -610,14 +629,14 @@ To add an item at the specified index, use the insert() method:
 ```py
 person = {
   "name": "Aaron",
-  "age": 31,
+  "age": 32,
   "title": "Mr"
 }
 print(person)
 ```
 
 ```sh
-{'name': 'Aaron', 'age': 31, 'title': 'Mr'}
+{'name': 'Aaron', 'age': 32, 'title': 'Mr'}
 ```
 ---
 
@@ -628,7 +647,7 @@ print(person)
 ```py
 person = {
   "name": "Aaron",
-  "age": 31,
+  "age": 32,
   "title": "Mr"
 }
 print(person["name"])
@@ -651,7 +670,7 @@ default if x does not exist
 ```py
 person = {
   "name": "Aaron",
-  "age": 31,
+  "age": 32,
   "title": "Mr"
 }
 person["name"]="Beth"
@@ -674,7 +693,7 @@ print(person)
 ```py
 person = {
   "name": "Aaron",
-  "age": 31,
+  "age": 32,
   "title": "Mr"
 }
 
@@ -697,7 +716,7 @@ Yes, 'name' is one of the keys in the person dictionary
 ```py
 person = {
   "name": "Aaron",
-  "age": 31,
+  "age": 32,
   "title": "Mr"
 }
 person["job"]="Research Software Engineer"
@@ -717,7 +736,7 @@ print(person)
 ```py
 person = {
   "name": "Aaron",
-  "age": 31,
+  "age": 32,
   "title": "Mr"
 }
 person.pop("age")
@@ -758,6 +777,83 @@ print(pets["mia"]["age"])
 {'age': 4}
 4
 ```
+
+---
+
+# Read data from files
+
+- Create a text file named `data.txt` and enter your name and age on seperate lines.
+
+```txt
+Aaron
+32
+```
+- Open the `data.txt` file using the built-in `open()` function that Python provides.
+
+```py
+data=[]
+
+with open('data.txt', 'r') as data_file:
+  for line in data_file:
+    line = line.strip() # Remove newline character
+    print(f"Add '{line}' to the data list")
+    data.append(line)
+
+print(data)
+```
+#### More on this in the Advanced Python workshop
+
+---
+
+# Write data to files
+
+- Write a list of data items to a file names `name-list.txt`
+
+```py
+data=['Aaron','Beth', 'George']
+
+with open('name-list.txt', 'w+') as data_file:
+  for item in data:
+    data_file.write(item + '\n')
+
+print(data)
+```
+
+#### More on this in the Advanced Python workshop
+
+---
+
+# Read, Update, Write
+
+- Open a file named `planets.txt`.
+- For each listed planet, reverse the name.
+- Write the reversed planet names to `planets-reversed.txt`.
+
+```py
+filename_input = 'planets.txt'
+filename_output = 'planets-reversed.txt'
+
+data=[]
+
+# Read data from the input file
+with open(filename_input, 'r') as data_file:
+  for line in data_file:
+    line = line.strip() # Remove newline character
+    data.append(line)
+
+# For each data item, reverse the string
+for i in range(len(data)):
+  data[i]=''.join(reversed(data[i]))
+
+# Write data to the output file
+with open(filename_output, 'w+') as data_file:
+  for item in data:
+    data_file.write(item + '\n')
+```
+
+
+#### More on this in the Advanced Python workshop
+
 ---
 
 # Conditional Statements
@@ -1008,7 +1104,7 @@ Finally finished!
 ```py
 person = {
   "name": "Aaron",
-  "age": 31,
+  "age": 32,
   "title": "Mr"
 }
 
@@ -1602,6 +1698,32 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
 // adds .remark-code-has-line-highlighted class to <pre> parent elements
 // of code chunks containing highlighted lines with class .remark-code-line-highlighted
 (function(d) {
@@ -1619,17 +1741,6 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   }
   preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
 })(document);</script>
-
-<script>
-(function() {
-  var links = document.getElementsByTagName('a');
-  for (var i = 0; i < links.length; i++) {
-    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
-      links[i].target = '_blank';
-    }
-  }
-})();
-</script>
 
 <script>
 slideshow._releaseMath = function(el) {
