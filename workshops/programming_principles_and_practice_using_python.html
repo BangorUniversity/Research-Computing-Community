@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 # Programming Principles and Practice using Python
 ### Ade Fewings, Aaron Owen
 ### Bangor University
-### 2019/12/02 (updated: 2020-05-02)
+### 2019/12/02 (updated: 2020-05-04)
 
 ---
 
@@ -780,82 +780,32 @@ print(pets["mia"]["age"])
 
 ---
 
-# Read data from files
+# List of Dictionaries
 
-- Create a text file named `data.txt` and enter your name and age on seperate lines.
-
-```txt
-Aaron
-32
-```
-- Open the `data.txt` file using the built-in `open()` function that Python provides.
+- Lists can store any data type, including dictionaries.
 
 ```py
-data=[]
+participants = []
 
-with open('data.txt', 'r') as data_file:
-  for line in data_file:
-    line = line.strip() # Remove newline character
-    print(f"Add '{line}' to the data list")
-    data.append(line)
+print(participants)
 
-print(data)
-```
-#### More on this in the Advanced Python workshop
+person_1 = {
+  "name" : "Aaron",
+  "age" : 32,
+}
 
----
+person_2 = {
+  "name" : "Beth",
+  "age" : 29,
+}
 
-# Write data to files
+participants.append(person_1)
+participants.append(person_2)
 
-- Write a list of data items to a file names `name-list.txt`
-
-```py
-data=['Aaron','Beth', 'George']
-
-with open('name-list.txt', 'w+') as data_file:
-  for item in data:
-    data_file.write(item + '\n')
-
-print(data)
+print(participants)
 ```
 
-#### More on this in the Advanced Python workshop
-
 ---
-
-# Read, Update, Write
-
-- Open a file named `planets.txt`.
-- For each listed planet, reverse the name.
-- Write the reversed planet names to `planets-reversed.txt`.
-
-```py
-filename_input = 'planets.txt'
-filename_output = 'planets-reversed.txt'
-
-data=[]
-
-# Read data from the input file
-with open(filename_input, 'r') as data_file:
-  for line in data_file:
-    line = line.strip() # Remove newline character
-    data.append(line)
-
-# For each data item, reverse the string
-for i in range(len(data)):
-  data[i]=''.join(reversed(data[i]))
-
-# Write data to the output file
-with open(filename_output, 'w+') as data_file:
-  for item in data:
-    data_file.write(item + '\n')
-```
-
-
-#### More on this in the Advanced Python workshop
-
----
-
 # Conditional Statements
 
 - Python supports the usual logical conditions from mathematics:
@@ -1373,6 +1323,82 @@ help(func_1)
 
 ---
 
+
+# Read data from files
+
+- Create a text file named `data.txt` and enter your name and age on seperate lines.
+
+```txt
+Aaron
+32
+```
+- Open the `data.txt` file using the built-in `open()` function that Python provides.
+
+```py
+data=[]
+
+with open('data.txt', 'r') as data_file:
+  for line in data_file:
+    line = line.strip() # Remove newline character
+    print(f"Add '{line}' to the data list")
+    data.append(line)
+
+print(data)
+```
+#### More on this in the Advanced Python workshop
+
+---
+
+# Write data to files
+
+- Write a list of data items to a file names `name-list.txt`
+
+```py
+data=['Aaron','Beth', 'George']
+
+with open('name-list.txt', 'w+') as data_file:
+  for item in data:
+    data_file.write(item + '\n')
+
+print(data)
+```
+
+#### More on this in the Advanced Python workshop
+
+---
+
+# Read, Update, Write
+
+- Open a file named `planets.txt`.
+- For each listed planet, reverse the name.
+- Write the reversed planet names to `planets-reversed.txt`.
+
+```py
+filename_input = 'planets.txt'
+filename_output = 'planets-reversed.txt'
+
+data=[]
+
+# Read data from the input file
+with open(filename_input, 'r') as data_file:
+  for line in data_file:
+    line = line.strip() # Remove newline character
+    data.append(line)
+
+# For each data item, reverse the string
+for i in range(len(data)):
+  data[i]=''.join(reversed(data[i]))
+
+# Write data to the output file
+with open(filename_output, 'w+') as data_file:
+  for item in data:
+    data_file.write(item + '\n')
+```
+
+
+#### More on this in the Advanced Python workshop
+
+---
 # Errors
 
 - All programmers encounter errors, from beginner to expert.
