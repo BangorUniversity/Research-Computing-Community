@@ -1,6 +1,6 @@
 ---
 title: "Advanced Python"
-author: "Ade Fewings, Aaron Owen, Sherena Huang"
+author: "Ade Fewings, Aaron Owen"
 institute: "Bangor University"
 date: "2019/12/02 (updated: `r Sys.Date()`)" 
 output:
@@ -17,13 +17,15 @@ output:
 
 - Background
 
-  - High-Performance Computing Wales / SuperComputing Wales
+  - SuperComputing Wales
   
-  - Research Software Engineers
+  - Research Software Engineers supporting Bangor researchers
 
 - Future
   
   - Collate expert knowledge into an open and shared centralised repository
+      - [Yammer](https://www.yammer.com/bangor.ac.uk/#/threads/inGroup?type=in_group&feedId=12756205568&view=all)
+      - [Github](https://github.com/BangorUniversity/Research-Computing-Community)
   
   - Workshops
   
@@ -33,24 +35,24 @@ output:
 
 ---
 
-# Workshops
+# Training Workshops
 
 - Introduction to the Linux Shell
-  - *Monday 18 November 2019, 09:00–12:00*
 
 - Version Control Using Git
-  - *Tuesday 19 November 2019, 09:00–12:00*
 
 - Programming Principles and Practice using Python
-  - *Monday 2 December 2019, 09:30–16:30*
 
 - **Advanced Python**
-  - *Tuesday 3 December 2019, 09:30–16:30*
 
-- Parallel Processing in Python 
-  - *Wednesday 4 December 2019, 09:30–16:30*
+- Parallel Processing in Python
 
-- Requests?
+- Machine Learning with Python*
+
+
+See and discuss on the Yammer group.
+
+Suggestions for new training welcome.
 
 ---
 
@@ -452,13 +454,13 @@ print(p1.name)
 - Fall into three categories
 
   - Precondition
-    - A condition must be true at the start of a function for it to work correctly. Example, checking input args.
+      - A condition must be true at the start of a function for it to work correctly. Example, checking input args.
   
   - Postcondition
-    - A condition that the function guarantees is true when it finishes. Example, checking result is valid.
+      - A condition that the function guarantees is true when it finishes. Example, checking result is valid.
   
   - Invariant
-    - A condition that is always true at a particular point inside a piece of code. Example, age can't be negative.
+      - A condition that is always true at a particular point inside a piece of code. Example, age can't be negative.
 
 - Extremely useful to ensure your object maintains a valid state (age?).
 

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
   <head>
     <title>Advanced Python</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Ade Fewings, Aaron Owen, Sherena Huang" />
+    <meta name="author" content="Ade Fewings, Aaron Owen" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
@@ -13,9 +13,9 @@
 class: center, middle, inverse, title-slide
 
 # Advanced Python
-### Ade Fewings, Aaron Owen, Sherena Huang
+### Ade Fewings, Aaron Owen
 ### Bangor University
-### 2019/12/02 (updated: 2020-03-31)
+### 2019/12/02 (updated: 2020-05-04)
 
 ---
 
@@ -24,13 +24,15 @@ class: center, middle, inverse, title-slide
 
 - Background
 
-  - High-Performance Computing Wales / SuperComputing Wales
+  - SuperComputing Wales
   
-  - Research Software Engineers
+  - Research Software Engineers supporting Bangor researchers
 
 - Future
   
   - Collate expert knowledge into an open and shared centralised repository
+      - [Yammer](https://www.yammer.com/bangor.ac.uk/#/threads/inGroup?type=in_group&amp;feedId=12756205568&amp;view=all)
+      - [Github](https://github.com/BangorUniversity/Research-Computing-Community)
   
   - Workshops
   
@@ -40,24 +42,24 @@ class: center, middle, inverse, title-slide
 
 ---
 
-# Workshops
+# Training Workshops
 
 - Introduction to the Linux Shell
-  - *Monday 18 November 2019, 09:00–12:00*
 
 - Version Control Using Git
-  - *Tuesday 19 November 2019, 09:00–12:00*
 
 - Programming Principles and Practice using Python
-  - *Monday 2 December 2019, 09:30–16:30*
 
 - **Advanced Python**
-  - *Tuesday 3 December 2019, 09:30–16:30*
 
-- Parallel Processing in Python 
-  - *Wednesday 4 December 2019, 09:30–16:30*
+- Parallel Processing in Python
 
-- Requests?
+- Machine Learning with Python*
+
+
+See and discuss on the Yammer group.
+
+Suggestions for new training welcome.
 
 ---
 
@@ -459,13 +461,13 @@ print(p1.name)
 - Fall into three categories
 
   - Precondition
-    - A condition must be true at the start of a function for it to work correctly. Example, checking input args.
+      - A condition must be true at the start of a function for it to work correctly. Example, checking input args.
   
   - Postcondition
-    - A condition that the function guarantees is true when it finishes. Example, checking result is valid.
+      - A condition that the function guarantees is true when it finishes. Example, checking result is valid.
   
   - Invariant
-    - A condition that is always true at a particular point inside a piece of code. Example, age can't be negative.
+      - A condition that is always true at a particular point inside a piece of code. Example, age can't be negative.
 
 - Extremely useful to ensure your object maintains a valid state (age?).
 
@@ -1093,6 +1095,32 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
 // adds .remark-code-has-line-highlighted class to <pre> parent elements
 // of code chunks containing highlighted lines with class .remark-code-line-highlighted
 (function(d) {
@@ -1110,17 +1138,6 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   }
   preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
 })(document);</script>
-
-<script>
-(function() {
-  var links = document.getElementsByTagName('a');
-  for (var i = 0; i < links.length; i++) {
-    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
-      links[i].target = '_blank';
-    }
-  }
-})();
-</script>
 
 <script>
 slideshow._releaseMath = function(el) {
