@@ -7,9 +7,15 @@
 </p>
 
 ---
-
 ### Workshops
 
-- [Programming Principles and Practice using Python](https://github.com/BangorUniversity/Research-Computing-Community/blob/master/workshops/programming_principles_and_practice_using_python.ipynb)
-- [Advanced Python](https://github.com/BangorUniversity/Research-Computing-Community/blob/master/workshops/advanced_python.ipynb)
-- [Parallel Processing in Python](https://github.com/BangorUniversity/Research-Computing-Community/blob/master/workshops/parallel_processing_in_python.ipynb)
+#### Python
+- [Programming Principles and Practice using Python](workshops/programming_principles_and_practice_using_python.ipynb)
+- [Advanced Python](workshops/advanced_python.ipynb)
+- [Parallel Processing in Python](workshops/parallel_processing_in_python.ipynb)
+
+---
+### Tutorials
+
+#### SSH
+- [Generate SSH keys](tutorials/ssh/generate_keys.md)
