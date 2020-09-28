@@ -31,7 +31,7 @@
 2. Upload the public key to the remote host.
 
     ```
-    ssh-copy-id -i ~/.ssh/id_ed25519.pub username@remote-host
+    ssh-copy-id username@remote-host
     ```
 
     - `i` Use only the key(s) contained in identity_file.
@@ -41,7 +41,7 @@
 3. Test the public key has been uploaded to the remote host.
 
     ```
-    ssh -i ~/.ssh/id_ed25519 username@remote-host
+    ssh username@remote-host
     ```
 
     
