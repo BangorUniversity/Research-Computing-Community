@@ -55,7 +55,7 @@
     ```
     Host remote-host 
       HostName remote-host.dev 
-      User aaron.owen   
+      User username
       IdentityFile ~/.ssh/id_ed25519
       IdentitiesOnly yes
     ```
