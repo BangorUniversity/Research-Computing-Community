@@ -1,4 +1,10 @@
-## Generate SSH keys
+### Tutorials
+
+- [Generate SSH key](generate-ssh-key)
+
+---
+
+#### Generate SSH keys
 1. Generate an SSH key that uses the Ed25519 algorithm.
 
     ```
@@ -76,7 +82,7 @@
 
 
 
-### Resources
+#### Resources
 
 ---
 - [Ed25519 Algorithm](https://ed25519.cr.yp.to/)
