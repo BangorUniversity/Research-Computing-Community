@@ -72,7 +72,7 @@
 
 6. Configure filezilla site manager to use key file.
 
-   ![](filezilla.png)
+   <img src="filezilla.png" width="500">
 
 
 
