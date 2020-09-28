@@ -72,7 +72,7 @@
 
 6. Configure filezilla site manager to use key file.
 
-   ![](/Users/tysta/Code/2020/Research-Computing-Community/tutorials/ssh/filezilla.png)
+   ![](filezilla.png)
 
 
 
