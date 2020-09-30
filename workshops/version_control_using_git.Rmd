@@ -24,15 +24,14 @@ output:
 - Future
   
   - Collate expert knowledge into an open and shared centralised repository
-      - Yammer - Research Computing Community
-      - https://github.com/BangorUniversity/Research-Computing-Community
+      - [Yammer](https://www.yammer.com/bangor.ac.uk/#/threads/inGroup?type=in_group&feedId=12756205568&view=all)
+      - [Github](https://github.com/BangorUniversity/Research-Computing-Community)
   
   - Workshops
   
   - Projects
   
   - Acknowledgements
-
 
 ---
 
@@ -42,21 +41,20 @@ output:
 
 - **Version Control Using Git**
   - https://swcarpentry.github.io/git-novice/
-
+  
 - Programming Principles and Practice using Python
 
 - Advanced Python
 
 - Parallel Processing in Python
 
-See and Discuss on the Yammer group.
+- Machine Learning with Python*
+
+
+See and discuss on the Yammer group.
 
 Suggestions for new training welcome.
 
----
-# Introduction
-
-TBC
 
 ---
 
@@ -149,7 +147,7 @@ TBC
 
 ---
 
-# Command Line: Access a Linux machine
+# Access a Linux machine
 
 - Open an application called 'Putty'
 
@@ -168,6 +166,16 @@ TBC
   - `Last login: Thu Nov 14 08:33:32 2019 from ssh.ad.bangor.ac.uk`
   
 - `$` Presented with a prompt, indicating that the **shell** is ready to accept input 
+
+---
+
+# Command Line: Access a Linux machine
+
+- `ssh bangor-username@ssh.bangor.ac.uk`
+
+- `ssh compute`
+
+<img src="images/cmd-ssh-compute.png" width=90%>
 
 ---
 
@@ -246,7 +254,12 @@ Windows
 
 - You can change your configuration as many times as you want
 
-#### Help
+<img src="images/cmd-git-config.png" width=90%>
+
+
+---
+
+# Git Config Help
 
 - `git config --help`
 
@@ -278,7 +291,7 @@ Use `git config` to change the Git configuration and preferences
 
 
 ---
-# Command Line: Creating a Local Repository
+# Command Line: Create Local Repository
 
 - `cd` Change your working directory to your *home* directory
 
@@ -299,10 +312,16 @@ Use `git config` to change the Git configuration and preferences
   #
   nothing to commit (create/copy files and use "git add" to track)
   ```
- 
+
+
+---
+# Command Line: Create Local Repository
+
 #### Note
 
 - `git init` will include subdirectories and their files
+
+<img src="images/cmd-git-init.png" width=90%>
 
 ---
 # RStudio: Creating a Local Repository
@@ -426,6 +445,7 @@ For an existing local repo, connect your local git repo to GitHub like this:
   - Clone url : `https://github.com/issa16/test.git`
   
 2. In your local shell run the following command to connect the remote repo on Github to your local repo
+  - `git init`
   - `git remote add origin https://github.com/issa16/test.git`
   
 3. Check the two repos are connected
@@ -433,6 +453,9 @@ For an existing local repo, connect your local git repo to GitHub like this:
 
 4. One time operation to store credentials
   - `git config credential.helper store`
+
+---
+# Command Line: Using Github
 
 Alternatively, create the project initially on GitHub and begin local work with a clone thereof:
 
@@ -484,9 +507,9 @@ To *clone* in RStudio from GitHub, we simply use a URL that points to the GitHub
     
 
 ---
-#### Command Line: Push To Github
+# Command Line: Push To Github
 
-Once we have a working clone locally, we can push our chnages to GitHub by first *committing* them as above, and then *pushing* them:
+Once we have a working clone locally, we can push our changes to GitHub by first *committing* them as above, and then *pushing* them:
 
 - `git push origin master` Push changes from the local repository to Github
 

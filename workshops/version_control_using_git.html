@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 # Version Control Using Git
 ### Ade Fewings, Aaron Owen
 ### Bangor University
-### 2019/11/10 (updated: 2020-04-01)
+### 2019/11/10 (updated: 2020-09-30)
 
 ---
 
@@ -31,15 +31,14 @@ class: center, middle, inverse, title-slide
 - Future
   
   - Collate expert knowledge into an open and shared centralised repository
-      - Yammer - Research Computing Community
-      - https://github.com/BangorUniversity/Research-Computing-Community
+      - [Yammer](https://www.yammer.com/bangor.ac.uk/#/threads/inGroup?type=in_group&amp;feedId=12756205568&amp;view=all)
+      - [Github](https://github.com/BangorUniversity/Research-Computing-Community)
   
   - Workshops
   
   - Projects
   
   - Acknowledgements
-
 
 ---
 
@@ -49,21 +48,20 @@ class: center, middle, inverse, title-slide
 
 - **Version Control Using Git**
   - https://swcarpentry.github.io/git-novice/
-
+  
 - Programming Principles and Practice using Python
 
 - Advanced Python
 
 - Parallel Processing in Python
 
-See and Discuss on the Yammer group.
+- Machine Learning with Python*
+
+
+See and discuss on the Yammer group.
 
 Suggestions for new training welcome.
 
----
-# Introduction
-
-TBC
 
 ---
 
@@ -156,7 +154,7 @@ TBC
 
 ---
 
-# Command Line: Access a Linux machine
+# Access a Linux machine
 
 - Open an application called 'Putty'
 
@@ -175,6 +173,16 @@ TBC
   - `Last login: Thu Nov 14 08:33:32 2019 from ssh.ad.bangor.ac.uk`
   
 - `$` Presented with a prompt, indicating that the **shell** is ready to accept input 
+
+---
+
+# Command Line: Access a Linux machine
+
+- `ssh bangor-username@ssh.bangor.ac.uk`
+
+- `ssh compute`
+
+&lt;img src="images/cmd-ssh-compute.png" width=90%&gt;
 
 ---
 
@@ -253,7 +261,12 @@ Windows
 
 - You can change your configuration as many times as you want
 
-#### Help
+&lt;img src="images/cmd-git-config.png" width=90%&gt;
+
+
+---
+
+# Git Config Help
 
 - `git config --help`
 
@@ -285,7 +298,7 @@ Use `git config` to change the Git configuration and preferences
 
 
 ---
-# Command Line: Creating a Repository
+# Command Line: Create Local Repository
 
 - `cd` Change your working directory to your *home* directory
 
@@ -306,10 +319,32 @@ Use `git config` to change the Git configuration and preferences
   #
   nothing to commit (create/copy files and use "git add" to track)
   ```
- 
+
+
+---
+# Command Line: Create Local Repository
+
 #### Note
 
 - `git init` will include subdirectories and their files
+
+&lt;img src="images/cmd-git-init.png" width=90%&gt;
+
+---
+# RStudio: Creating a Local Repository
+
+It is not possible to create a local Git repository in RStudio's interface, but only to *clone* one that exists elsewhere - be it on a local file system or on GitHub.
+
+So, to create a local one, use the command line and run *git init*.
+In Windows, open *Command Prompt* and run something like this:
+
+- `mkdir myrepo`
+- `cd myrepo`
+- `git init`
+
+This local repository can then be *cloned* in RStudio via a local URL style like this:
+
+&lt;img src="images/rstudio-clonelocalrepo.png" width=33%&gt;
 
 ---
 
@@ -417,6 +452,7 @@ For an existing local repo, connect your local git repo to GitHub like this:
   - Clone url : `https://github.com/issa16/test.git`
   
 2. In your local shell run the following command to connect the remote repo on Github to your local repo
+  - `git init`
   - `git remote add origin https://github.com/issa16/test.git`
   
 3. Check the two repos are connected
@@ -424,6 +460,9 @@ For an existing local repo, connect your local git repo to GitHub like this:
 
 4. One time operation to store credentials
   - `git config credential.helper store`
+
+---
+# Command Line: Using Github
 
 Alternatively, create the project initially on GitHub and begin local work with a clone thereof:
 
@@ -439,6 +478,8 @@ Alternatively, create the project initially on GitHub and begin local work with 
 ---
 # RStudio: Cloning from Github
 
+To *clone* in RStudio from GitHub, we simply use a URL that points to the GitHub repo rather than a local repository.
+
 - In RStudio start a new project: 
 
   - File -&gt; New Project -&gt; Version Control -&gt; Git
@@ -446,21 +487,21 @@ Alternatively, create the project initially on GitHub and begin local work with 
   &lt;img src="images/rstudio-newproject.png" width=33%&gt;
   &lt;img src="images/rstudio-createprojectfromversioncontrol.png" width=33%&gt;
   
-  - *If 'Version Control' not available try restarting RStudio and/or reinstalling the required components as your system paths are most likely incorrect*
+  - If *Version Control* not available try restarting RStudio and/or reinstalling the required components as your system paths are most likely incorrect*
   
 
 
 ---
 # RStudio: Cloning from Github  
-  - Put the URL to the Github repository in (from the Github web interface under 'Clone or download'), and consider where the local clone will go
+  - Put the URL to the Github repository in (from the Github web interface under *Clone or download*), and consider where the local clone will go
   
   &lt;img src="images/rstudio-clonegitrepo.png" width=33%&gt;
   
-  - Click 'Create Project'
+  - Click *Create Project*
   
   - RStudio will clone the repository into a working copy and open therein.
   
-  - Notice that the new window opened has a 'Git' option on the top-right pane:
+  - Notice that the new window opened has a *Git* option in the top-right pane:
   
   &lt;img src="images/rstudio-gittab.png" width=33%&gt;
   
@@ -473,9 +514,9 @@ Alternatively, create the project initially on GitHub and begin local work with 
     
 
 ---
-#### Command Line: Push To Github
+# Command Line: Push To Github
 
-Once we have a working clone locally, we can push our chnages to GitHub by first *committing* them as above, and then *pushing* them:
+Once we have a working clone locally, we can push our changes to GitHub by first *committing* them as above, and then *pushing* them:
 
 - `git push origin master` Push changes from the local repository to Github
 
@@ -488,7 +529,7 @@ Once we have a working clone locally, we can push our chnages to GitHub by first
   
   &lt;img src="images/rstudio-pushed.png" width=33%&gt;
   
-  - Our chnages have now been pushed up to the repository on Github. 
+  - Our changes have now been pushed up to the repository on Github. 
   
 ---
 # VS Code: Push to Github
@@ -578,20 +619,29 @@ Similarly, to ignore files in RStudio, under the 'Git' tab, we can click the Blu
 
 &lt;img src="images/rstudio-ignore.png" width=33%&gt;
 
-
 ---
-
-# Github and Collaboration
-
-The power of version control systems comes into its own when we start to collaborate with other people
-
+# VS Code: Ignoring Files
 
 
 ---
 
 # Github and Collaboration
 
-#### Demo
+The power of version control systems comes into its own when we start to collaborate with other people.
+
+It enables different people to develop different parts of a project, some elements experimentally, and eases the merging of these changes.
+
+Version control allows a particular project state at a point in time to be stored forever. Typically this would denote major changes, such as a new version.
+
+As changes are required to be attributed to a user, accountability is also introduced.  This, with helpful user interfaces and meaningful messages about change enable a far more collaborative working environment.
+
+
+
+---
+
+# Github Project Collaboration
+
+To configure a GitHub hosted repository for collaboration among users, some simple settings are applied in the GitHub interface:
 
 - Settings &gt; Collaborators
 
@@ -601,11 +651,11 @@ The power of version control systems comes into its own when we start to collabo
 
 - The collaborator must clone the repository
 
-- Create a file and name it with your university id
+- Create a file with a unique name
 
-- Add, commit, push
+- Add, commit, push to the repo
 
-- Should see changes in Github
+- Should see changes in GitHub from multiple users
 
 ---
 
@@ -623,7 +673,7 @@ The power of version control systems comes into its own when we start to collabo
 
 # Theory: Conflicts 
  
-- As soon as people can work on a document in parallel, conflicts will happen
+As soon as people can work on a document in parallel, conflicts will happen
 
 - Version Control helps us to manage conflicts by providing tools to resolve overlapping changes
 
@@ -633,7 +683,7 @@ The power of version control systems comes into its own when we start to collabo
 
 # Theory: Conflicts
 
-Conflicts exist when changes to a file in working copies occur concurrently and thus clash with the repository during commit/push.
+Conflicts exist when changes to a file in different working copies occur concurrently and thus clash with the repository during commit/push.
 
 E.g.
 
@@ -649,7 +699,7 @@ E.g.
 
 ---
 
-# Conflicts
+# Theory: Conflicts
 
 ### Practical
 
@@ -672,7 +722,7 @@ E.g.
   &gt;&gt;&gt;&gt;&gt;&gt;&gt;
   ```
 
-- Need to decide which line is correct?
+- Need to decide which line is correct?  User process.
 
 ---
 # Command Line: Conflict Resolution
