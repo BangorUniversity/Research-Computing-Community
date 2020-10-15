@@ -22,7 +22,7 @@
     \\sshfs\b.username@hawklogin.cf.ac.uk
     ```
 
-    <img src="images/home.png" width="500" align="left">
+    <img src="images/home.png" width="500">
 
 - To map your SCW **scratch** directory
 
@@ -32,11 +32,11 @@
      \\sshfs.r\b.username@hawklogin.cf.ac.uk\\scratch\b.username
     ```
 
-    <img src="images/scratch.png" width="500" align="left">
+    <img src="images/scratch.png" width="500" >
 
 - Both network drives should now be visible.
 
-  <img src="images/drives.png" width="300" align="left">
+  <img src="images/drives.png" width="300">
   
   
 
