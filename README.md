@@ -19,3 +19,9 @@
 
 #### SSH
 - [Generate SSH keys](tutorials/ssh/generate_keys.md)
+
+
+### Supercomputing Wales (SCW)
+
+#### Data Storage
+- [Map SCW network drives](tutorials/scw/data_storage/map_scw_network_drives.md)
