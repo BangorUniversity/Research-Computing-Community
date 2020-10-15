@@ -10,9 +10,9 @@
 
 ---
 
-- Install the latest stable installer of [WinFSP](https://github.com/billziss-gh/winfsp/releases/latest)
+- Install the latest stable version of [WinFSP](https://github.com/billziss-gh/winfsp/releases/latest)
 
-- Install the latest stable installer of [SSHFS-Win](https://github.com/billziss-gh/sshfs-win/releases/latest)
+- Install the latest stable version of [SSHFS-Win](https://github.com/billziss-gh/sshfs-win/releases/latest)
 
 - To map your SCW **home** directory
 
