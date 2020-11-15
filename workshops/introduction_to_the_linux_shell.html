@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
   <head>
     <title>Introduction to the Linux Shell</title>
     <meta charset="utf-8" />
@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 # Introduction to the Linux Shell
 ### Ade Fewings, Aaron Owen
 ### Bangor University
-### 2019/11/10 (updated: 2020-03-31)
+### 2019/11/10 (updated: 2020-11-15)
 
 ---
 
@@ -24,40 +24,41 @@ class: center, middle, inverse, title-slide
 
 - Background
 
-  - High-Performance Computing Wales / SuperComputing Wales
+  - SuperComputing Wales
   
-  - Research Software Engineers
+  - Research Software Engineers supporting Bangor researchers
 
 - Future
   
   - Collate expert knowledge into an open and shared centralised repository
+      - [Yammer](https://www.yammer.com/bangor.ac.uk/#/threads/inGroup?type=in_group&amp;feedId=12756205568&amp;view=all)
+      - [Github](https://github.com/BangorUniversity/Research-Computing-Community)
   
   - Workshops
   
   - Projects
   
   - Acknowledgements
-
 ---
 
-# Workshops
+# Training Workshops
 
 - **Introduction to the Linux Shell**
-  - *Monday 18 November 2019, 09:00–12:00*
 
 - Version Control Using Git
-  - *Tuesday 19 November 2019, 09:00–12:00*
+  
+- Programming Principles and Practice using Python
 
-- Programming Principles and Exercise using Python
-  - *Monday 2 December 2019, 09:30–16:30*
+- Advanced Python
 
-- Advanced Python 
-  - *Tuesday 3 December 2019, 09:30–16:30*
+- Parallel Processing in Python
 
-- Parallel Processing in Python 
-  - *Wednesday 4 December 2019, 09:30–16:30*
+- Machine Learning with Python*
 
-- Requests?
+
+See and discuss on the Yammer group.
+
+Suggestions for new training welcome.
 
 ---
 
@@ -105,8 +106,24 @@ class: center, middle, inverse, title-slide
 - SCW platform
 
 ---
+# Option 1: Access a GNU/Linux machine
 
-# Access a GNU/Linux machine
+- Visit https://jupyter.bangor.ac.uk/jupyter/hub/login
+
+- Login using your Bangor University credentials.
+
+- Select the `Terminal` application.
+
+- Type `ssh compute` and hit enter
+
+- Can see last login credentials?
+  
+  - `Last login: Thu Nov 14 08:33:32 2019 from ssh.ad.bangor.ac.uk`
+  
+- `$` Presented with a prompt, indicating that the shell is ready to accept input 
+---
+
+# Option 2: Access a GNU/Linux machine
 
 - Open an application called 'Putty'
 
@@ -140,7 +157,7 @@ When you see an **Exercise** section, feel free to run the commands in the shell
 
 - `cal` Display a calendar for the current month
 
-- `cal 2019` Display a calendar for 2019
+- `cal 2019` Display a calendar for 2020
 
 - `date` Print the system date and time
 
@@ -803,11 +820,11 @@ Exercise
 
 - `cat /tmp/bash/colours.txt`
 
-- `grep -n Olive /tmp/bash/colours.txt`
+- `grep -n olive /tmp/bash/colours.txt`
 
-- `grep -n Olives /tmp/bash/colours.txt`
+- `grep -n olives /tmp/bash/colours.txt`
 
-- `grep -nv Olive /tmp/bash/colours.txt`
+- `grep -nv olive /tmp/bash/colours.txt`
 
 - `find . -type d` Find directories in the working directory
 
@@ -930,8 +947,8 @@ Task: Print the command but do not execute
   DATE=`date`
   echo "Date is ${DATE}"
   
-  USERS=`w | wc -l`
-  echo "There are ${USERS} users currently logged in"
+  ACTIVE_SESSIONS=`users | wc -w`
+  echo "There are ${ACTIVE_SESSIONS} user sessions currently active"
   ```
 - `chmod +x users.sh` Convert the file to an exectuable
 
@@ -1102,6 +1119,32 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
 // adds .remark-code-has-line-highlighted class to <pre> parent elements
 // of code chunks containing highlighted lines with class .remark-code-line-highlighted
 (function(d) {
@@ -1119,17 +1162,6 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   }
   preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
 })(document);</script>
-
-<script>
-(function() {
-  var links = document.getElementsByTagName('a');
-  for (var i = 0; i < links.length; i++) {
-    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
-      links[i].target = '_blank';
-    }
-  }
-})();
-</script>
 
 <script>
 slideshow._releaseMath = function(el) {
