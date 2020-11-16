@@ -147,7 +147,24 @@ Suggestions for new training welcome.
 
 ---
 
-# Access a Linux machine
+# Option 1: Access a GNU/Linux machine
+
+- Visit https://jupyter.bangor.ac.uk/jupyter/hub/login
+
+- Login using your Bangor University credentials.
+
+- Select the `Terminal` application.
+
+- Type `ssh compute` and hit enter
+
+- Can see last login credentials?
+  
+  - `Last login: Thu Nov 14 08:33:32 2019 from ssh.ad.bangor.ac.uk`
+  
+- `$` Presented with a prompt, indicating that the shell is ready to accept input 
+---
+
+# Option 2: Access a Linux machine
 
 - Open an application called 'Putty'
 
@@ -511,9 +528,9 @@ To *clone* in RStudio from GitHub, we simply use a URL that points to the GitHub
 
 Once we have a working clone locally, we can push our changes to GitHub by first *committing* them as above, and then *pushing* them:
 
-- `git push origin master` Push changes from the local repository to Github
+- `git push origin main` Push changes from the local repository to Github
 
-- `git pull origin master` Pull changes from Github to the local repository    
+- `git pull origin main` Pull changes from Github to the local repository    
     
 ---
 # RStudio: Push to Github
@@ -533,7 +550,7 @@ Once we have a working clone locally, we can push our changes to GitHub by first
 
 To *pull* (retrieve) changes to content stored that has been committed and pushed to the repo from elsewhere (perhaps, for example, we have a clone on another machine we use at home), we:
 
-  - `git pull origin master`
+  - `git pull origin main`
   
 We can then see the changes:
   
@@ -654,13 +671,13 @@ To configure a GitHub hosted repository for collaboration among users, some simp
 
 # A Basic Collaborative Workflow
 
-- `git pull origin master` Update your local repository
+- `git pull origin main` Update your local repository
 
 - `git add` Make your changes and stage them
 
 - `git commit -m` Commit your changes
 
-- `git push origin master` Upload the changes to GitHub
+- `git push origin main` Upload the changes to GitHub
 
 ---
 
@@ -703,7 +720,7 @@ E.g.
 ---
 # Command Line: Conflicts
 
-- `git pull origin master` - Pull in latest updates
+- `git pull origin main` - Pull in latest updates
 
 - `nano test.txt`
 
