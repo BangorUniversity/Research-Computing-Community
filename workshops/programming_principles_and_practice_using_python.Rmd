@@ -131,19 +131,17 @@ Suggestions for new training welcome.
 - [python.org shell](https://www.python.org/shell/)
 
 
-**Connect to a Linux machine from Windows**
+**Python3 at Bangor**
 
-- Open an application called 'Putty'
+- Visit https://jupyter.bangor.ac.uk/jupyter/hub/login
 
-- Host Name : `ssh.bangor.ac.uk`
+- Login using your Bangor University credentials.
 
-- Click 'Open'
-
-- Enter your university username and hit enter
-
-- Enter your university password and hit enter
+- Select the `Terminal` application.
 
 - Type `ssh compute` and hit enter
+  
+- `$` Presented with a prompt, indicating that the shell is ready to accept input 
 
 ---
 
