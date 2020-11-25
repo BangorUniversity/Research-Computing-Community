@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 # Advanced Python
 ### Ade Fewings, Aaron Owen
 ### Bangor University
-### 2019/12/02 (updated: 2020-05-05)
+### 2019/12/02 (updated: 2020-11-25)
 
 ---
 
@@ -92,6 +92,27 @@ Suggestions for new training welcome.
 - Numpy and Pandas
 
 ]
+
+---
+
+# Environment
+
+**Cross Platform**
+
+- [Google Colaboratory](https://colab.research.google.com/notebooks/welcome.ipynb) - Recommend
+
+- [Online Python compiler, Online Python IDE, and online Python REPL](https://repl.it/languages/python3)
+
+- [python.org shell](https://www.python.org/shell/)
+
+
+**Python3 at Bangor**
+
+- Visit https://jupyter.bangor.ac.uk/jupyter/hub/login
+
+- Login using your Bangor University credentials.
+
+- Select the `Python 3.8` notebook.
 
 ---
 
@@ -543,6 +564,10 @@ class GreetingsTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+    
+# In jupyter notebook
+if __name__ == '__main__':
+    unittest.main(argv=['first-arg-is-ignored'], exit=False)
 ```
 
 ---
@@ -560,7 +585,7 @@ if __name__ == '__main__':
   words = sentence.split()
   word_lengths = []
   for word in words:
-    word_lengths.append(len(word))
+      word_lengths.append(len(word))
   print(words)
   print(word_lengths)
   ```
