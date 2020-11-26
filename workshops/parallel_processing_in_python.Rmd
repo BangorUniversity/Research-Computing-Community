@@ -54,6 +54,17 @@ See and discuss on the Yammer group.
 
 Suggestions for new training welcome.
 
+---
+
+# Environment
+
+**Python3 at Bangor**
+
+- Visit https://jupyter.bangor.ac.uk/jupyter/hub/login
+
+- Login using your Bangor University credentials.
+
+- Select the `Terminal` application.
 
 ---
 
@@ -430,7 +441,7 @@ print('done')
 
 # Serial I/0 heavy task
 
-- Let's write 100,000 lines to a file and time it.
+- Let's write 1000 lines to a file and time it.
 
 ```py
 import time
@@ -447,7 +458,7 @@ def io_heavy(n):
     
     print(f'io_heavy took {t1-t0}')
 
-io_heavy(100000)
+io_heavy(1000)
 
 ```
 
@@ -473,8 +484,8 @@ def io_heavy(num_lines, file_idx):
 
 work_pool=mp.Pool(num_cores)
 work_pool.starmap(io_heavy, [
-  (10,1,), # process 1
-  (100,2,)  # process 2
+  (500,1,), # process 1
+  (500,2,)  # process 2
 ])
 # starmap_async
 
@@ -499,7 +510,7 @@ def cpu_heavy(n):
     
     print(f'cpu_heavy took {t1-t0}')
         
-cpu_heavy(1000000)
+cpu_heavy(1000)
 
 ```
 
@@ -525,8 +536,8 @@ def cpu_heavy(n):
 
 work_pool=mp.Pool(num_cores)
 work_pool.starmap(cpu_heavy, [
-  (100,),   # process 1
-  (1000,),  # process 2
+  (500,),   # process 1
+  (500,),  # process 2
 ])
 # starmap_async
 
