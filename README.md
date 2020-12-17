@@ -7,6 +7,13 @@
 </p>
 
 ---
+### Online Software Environments
+
+- [Jupyter @ Bangor](https://jupyter.bangor.ac.uk/jupyter/)
+- [RStudio @ Bangor](https://rstudio.bangor.ac.uk/rstudio/)
+
+
+---
 ### Workshops
 
 #### Python
