@@ -20,6 +20,8 @@
 
 ### MacOS and Linux
 
+#### Setup
+
 - Install Rclone.
 
     ```
@@ -124,3 +126,7 @@ For this tutorial we will connect to OneDrive, however a full list of supported 
   ```
   e/n/d/r/c/s/q> q
   ```
+  
+#### Usage
+
+- todo
