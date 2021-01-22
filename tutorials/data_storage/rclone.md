@@ -1,4 +1,4 @@
-## Rclone connect to OneDrive
+## Rclone and OneDrive
 
 - [Setup on Windows](#setup-on-windows)
 - [Setup on MacOS and Linux](#setup-on-macos-and-linux)
