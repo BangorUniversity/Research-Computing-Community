@@ -1,4 +1,4 @@
-## Rclone connect to One Drive
+## Rclone connect to OneDrive
 
 
 - [Windows](#windows)
