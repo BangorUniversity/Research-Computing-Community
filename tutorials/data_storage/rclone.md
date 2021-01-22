@@ -37,7 +37,6 @@
     rclone --version
     ```
 
- 
 - For this tutorial we will connect to OneDrive, however a full list of supported providers and configuration details are available under the 'Supported Providers' heading on [Rclone's homepage](https://rclone.org/).
 
 - Create a remote called `bangor`.
