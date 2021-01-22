@@ -222,12 +222,10 @@ For this tutorial we will connect to OneDrive, however a full list of supported 
 
     ```sh
     rclone lsd bangor:
+    
+    
+    >> -1 2021-01-22 14:06:58         1 download_demo
     ```
-
-    Output example    
-
-    -1 2021-01-22 14:06:58         1 download_demo
-
 
 - Download a folder that exists in the `bangor` remote .
 
