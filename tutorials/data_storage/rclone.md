@@ -129,4 +129,73 @@ For this tutorial we will connect to OneDrive, however a full list of supported 
   
 #### Usage
 
-- todo
+#### List files on remote
+
+- View a list of files on `bangor` remote.
+
+  ```
+  rclone ls bangor:
+  ```
+  
+- View a list of directories `bangor` remote.
+
+  ```
+  rclone lsd bangor:
+  ```
+  
+##### Copy files to remote
+
+**Note** Rclone `copy` will copy files from source to destination, skipping already copied.
+
+###### Upload files to remote
+
+- Create a `copy_demo` directory.
+
+  ```
+  mkdir copy_demo
+  ```
+  
+- Create a test file in the `copy_demo` directory.
+
+  ```
+  echo "Hello, Rclone" > copy_demo/hello.txt
+  ```
+  
+- Copy the `copy_demo` directory to the `bangor` remote.
+
+  ```
+  rclone copy copy_demo bangor:copy_demo
+  ```
+
+- Verify directory and test file has been copied.
+
+  ```
+  rclone cat bangor:copy_demo/hello.txt
+  ```
+  
+###### Download files from remote
+  
+
+- View a list of directories `bangor` remote.
+
+  ```
+  rclone lsd bangor:
+  ```
+  
+  Output example
+  
+  ```
+  -1 2021-01-22 14:06:58         1 download_demo
+  ```
+  
+- Download a folder that exists in the `bangor` remote.
+
+  ```
+  rclone copy bangor:download_demo download_demo
+  ```
+
+  
+  
+  
+  
+  
