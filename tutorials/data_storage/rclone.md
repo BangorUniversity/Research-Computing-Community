@@ -72,7 +72,6 @@ For this tutorial we will connect to OneDrive, however a full list of supported 
     Storage> 23
     ```
 
- 
 - Leave Oauth Client Id empty and press `Enter`.
 
 
@@ -80,7 +79,6 @@ For this tutorial we will connect to OneDrive, however a full list of supported 
     client_id>
     ```
 
- 
 - Leave Oauth Client Secret empty and press `Enter`.
 
 
@@ -179,9 +177,12 @@ For this tutorial we will connect to OneDrive, however a full list of supported 
     ```
 
 
-##### Copy files to remote
+#### Copy files to remote
+
 **Note** Rclone `copy` will copy files from source to destination, skipping already copied.
-###### Upload files to remote
+
+##### Upload files to remote
+
 - Create a `copy_demo` directory.
 
 
@@ -214,7 +215,7 @@ For this tutorial we will connect to OneDrive, however a full list of supported 
     ```
 
 
-###### Download files from remote
+##### Download files from remote
 
 - View a list of directories `bangor` remote.
 
@@ -225,7 +226,7 @@ For this tutorial we will connect to OneDrive, however a full list of supported 
 
     Output example    
 
-    `-1 2021-01-22 14:06:58         1 download_demo`
+    -1 2021-01-22 14:06:58         1 download_demo
 
 
 - Download a folder that exists in the `bangor` remote .
