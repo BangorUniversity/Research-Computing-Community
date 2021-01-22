@@ -1,8 +1,10 @@
 ## Rclone connect to OneDrive
 
-
-- [Windows](#windows)
-- [MacOS and Linux](#macos-and-linux)
+- [Setup on Windows](#setup-on-windows)
+- [Setup on MacOS and Linux](#setup-on-macos-and-linux)
+- [List files on OneDrive](#list-files-on-onedrive)
+- [Upload files to OneDrive](#upload-files-to-onedrive)
+- [Download files from OneDrive](#download-files-from-onedrive)
 
 ---
 
@@ -12,16 +14,13 @@
 
 ---
 
-### Windows
+### Setup on Windows
 
 - TODO
 
 ---
 
-### MacOS and Linux
-
-#### Setup
----
+### Setup on MacOS and Linux
 
 - Install Rclone.
 
@@ -154,13 +153,11 @@ For this tutorial we will connect to OneDrive, however a full list of supported 
     ```sh
     e/n/d/r/c/s/q> q
     ```
-
-
-#### Usage
-
+    
 ---
 
-#### List files on remote
+### List files on OneDrive
+
 - View a list of files on `bangor` remote.
 
 
@@ -177,11 +174,9 @@ For this tutorial we will connect to OneDrive, however a full list of supported 
     ```
 
 
-#### Copy files to remote
+### Upload files to OneDrive
 
 **Note** Rclone `copy` will copy files from source to destination, skipping already copied.
-
-##### Upload files to remote
 
 - Create a `copy_demo` directory.
 
@@ -215,7 +210,9 @@ For this tutorial we will connect to OneDrive, however a full list of supported 
     ```
 
 
-##### Download files from remote
+### Download files from OneDrive
+
+**Note** Rclone `copy` will copy files from source to destination, skipping already copied.
 
 - View a list of directories `bangor` remote.
 
