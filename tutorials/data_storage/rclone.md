@@ -38,7 +38,7 @@
     ```
 
  
-For this tutorial we will connect to OneDrive, however a full list of supported providers and configuration details are available under the 'Supported Providers' heading on [Rclone's homepage](https://rclone.org/).
+- For this tutorial we will connect to OneDrive, however a full list of supported providers and configuration details are available under the 'Supported Providers' heading on [Rclone's homepage](https://rclone.org/).
 
 - Create a remote called `bangor`.
 
@@ -135,18 +135,18 @@ For this tutorial we will connect to OneDrive, however a full list of supported 
     ```
 
 
-- The `bangor` remote be listed in the current remotes output.  
+- The `bangor` remote should be listed in the current remotes output.  
 
 
     ```sh
     Current remotes:
-  
-    Name         Type
-    ====         ====
-    bangor       onedrive
+    
+    Name         Type
+    ====         ====
+    bangor       onedrive
     ```
-
-
+    
+    
 - Quit setup by typing `q` and press `Enter`.    
 
 
@@ -158,7 +158,7 @@ For this tutorial we will connect to OneDrive, however a full list of supported 
 
 ### List files on OneDrive
 
-- View a list of files on `bangor` remote.
+- View a list of files on the `bangor` remote.
 
 
     ```sh
@@ -166,17 +166,20 @@ For this tutorial we will connect to OneDrive, however a full list of supported 
     ```
 
 
-- View a list of directories `bangor` remote.
+- View a list of directories on the `bangor` remote.
 
 
     ```sh
     rclone lsd bangor:
     ```
 
+---
 
 ### Upload files to OneDrive
 
+
 **Note** Rclone `copy` will copy files from source to destination, skipping already copied.
+
 
 - Create a `copy_demo` directory.
 
@@ -209,12 +212,15 @@ For this tutorial we will connect to OneDrive, however a full list of supported 
     rclone cat bangor:copy_demo/hello.txt
     ```
 
+---
 
 ### Download files from OneDrive
 
+
 **Note** Rclone `copy` will copy files from source to destination, skipping already copied.
 
-- View a list of directories `bangor` remote.
+
+- View a list of directories on the `bangor` remote.
 
 
     ```sh
@@ -224,7 +230,7 @@ For this tutorial we will connect to OneDrive, however a full list of supported 
     >> -1 2021-01-22 14:06:58         1 download_demo
     ```
 
-- Download a folder that exists in the `bangor` remote .
+- Download a folder that exists on the `bangor` remote .
 
 
     ```sh
