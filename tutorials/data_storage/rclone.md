@@ -114,19 +114,19 @@
 
 - A browser window should open, prompting you to login with your OneDrive credentials. Upon a successful login, a 'Success. All Done. Please go back to rclone.' message should be returned.
 
-- Find the id number for 'Root Sharepoint site' from the site list, type the id number and press `Enter`.
-
-
-    ```sh
-    Your choice> 2
-    ```
-
-
-- Find the id number for 'Documents' from the drive list, type the id number and press `Enter` .
+- Find the id number for 'OneDrive Personal or Business' from the site list, type the id number and press `Enter`.
 
 
     ```sh
     Your choice> 1
+    ```
+
+
+- Find the id number for 'OneDrive (business)' from the drive list, type the id number and press `Enter` .
+
+
+    ```sh
+    Your choice> 0
     ```
 
 
