@@ -36,6 +36,13 @@
     ```sh
     rclone --version
     ```
+    
+    Example output
+    ```
+    rclone v1.54.0
+    - os/arch: darwin/amd64
+    - go version: go1.15.7
+    ```
 
 - For this tutorial we will connect to OneDrive, however a full list of supported providers and configuration details are available under the 'Supported Providers' heading on [Rclone's homepage](https://rclone.org/).
 
@@ -67,7 +74,7 @@
 
 
     ```sh
-    Storage> 23
+    Storage> 26
     ```
 
 - Leave Oauth Client Id empty and press `Enter`.
@@ -84,6 +91,11 @@
     client_secret>
     ```
 
+- Find the id number for 'Microsoft Cloud Global' from the list of national cloud regions, type the id number and press `Enter`.
+
+    ```sh
+    region> 1
+    ```
 
 - Omit editing the advanced config by typing `n` and press `Enter`.
 
@@ -91,7 +103,6 @@
     ```sh
     y/n> n
     ```
-
 
 - Select the auto config option by typing `y` and press `Enter`.    
 
@@ -102,6 +113,7 @@
 
 
 - A browser window should open, prompting you to login with your OneDrive credentials. Upon a successful login, a 'Success. All Done. Please go back to rclone.' message should be returned.
+
 - Find the id number for 'Root Sharepoint site' from the site list, type the id number and press `Enter`.
 
 
@@ -140,9 +152,9 @@
     ```sh
     Current remotes:
     
-    Name         Type
-    ====         ====
-    bangor       onedrive
+    Name         Type
+    ====         ====
+    bangor       onedrive
     ```
     
     
@@ -226,7 +238,7 @@
     rclone lsd bangor:
     
     
-    >> -1 2021-01-22 14:06:58         1 download_demo
+    >> -1 2021-01-22 14:06:58         1 download_demo
     ```
 
 - Download a folder that exists on the `bangor` remote .
