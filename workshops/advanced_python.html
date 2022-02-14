@@ -15,16 +15,16 @@ class: center, middle, inverse, title-slide
 # Advanced Python
 ### Ade Fewings, Aaron Owen
 ### Bangor University
-### 2019/12/02 (updated: 2020-11-25)
+### Updated: 2021-10-28
 
 ---
 
 
-# Research Computing Community
+# eResearch
 
 - Background
 
-  - SuperComputing Wales
+  - SuperComputing Wales, eResearch @ Bangor
   
   - Research Software Engineers supporting Bangor researchers
 
@@ -39,7 +39,7 @@ class: center, middle, inverse, title-slide
   - Projects
   
   - Acknowledgements
-
+  
 ---
 
 # Training Workshops
@@ -63,50 +63,19 @@ Suggestions for new training welcome.
 
 ---
 
-# Overview
-
-.pull-left[
-
-#### Morning
-
-- Recap
-  
-- Multiple Function Arguments
-
-- Exception Handling
-
-- Classes and Objects 
-
-]
-
-.pull-right[
-
-#### Afternoon
-
-- List Comprehension
-
-- File Handling
-
-- Lambdas
-
-- Numpy and Pandas
-
-]
-
----
 
 # Environment
 
 **Cross Platform**
 
-- [Google Colaboratory](https://colab.research.google.com/notebooks/welcome.ipynb) - Recommend
+- [Google Colaboratory](https://colab.research.google.com/notebooks/welcome.ipynb)
 
 - [Online Python compiler, Online Python IDE, and online Python REPL](https://repl.it/languages/python3)
 
 - [python.org shell](https://www.python.org/shell/)
 
 
-**Python3 at Bangor**
+**Python3 at Bangor** - Recommend
 
 - Visit https://jupyter.bangor.ac.uk/jupyter/hub/login
 
@@ -116,25 +85,32 @@ Suggestions for new training welcome.
 
 ---
 
-# Multiple Function Arguments
+# Formatted strings
+
+- Old style
 
 ```py
-def foo(a, b, c, *args):
-    print(args)
-
-foo(1,2,3,4,5,6)
-
-&gt; (4,5,6)
+name='Aaron'
+print('Hello %s', name)
 ```
+
+- New style
 
 ```py
-def bar(a, b, c, **kwargs):
-    print(kwargs)
-    
-bar(1,2,3,name='Aaron',age=31)
-
-&gt; {'name': 'Aaron', 'age': 31}
+print('Hello {n}'.format(n=name))
 ```
+
+- f-strings (Python 3.6+)
+
+```py
+print(f'Hello {name}')
+
+a=5
+b=10
+print(f'{2*(a+b)}')
+
+```
+
 
 ---
 
@@ -159,22 +135,40 @@ bar(1,2,3,name='Aaron',age=31)
 
   ```py
   def foo(first, second, third, *the_rest):
-      print(f'First: {first}')
-      print(f'Second: {second}')
-      print(f'Third: {third}')
+      print(f'First: {first}, Second: {second}, Third: {third}')
       print(f'And all the rest as a tuple ... {the_rest}')
       print(f'And all the rest as a list ... {list(the_rest)}')
       
   foo('a', 'b', 'c', 'd', 'e')
   
-  &gt; First: a
-  &gt; Second: b
-  &gt; Third: c
+  &gt; First: a,Second: b, Third: c
   &gt; And all the rest as a tuple ... ('d', 'e')
   &gt; And all the rest as a list ... ['d', 'e']
   ```
 
 - The `the_rest` variable is a list of variables, which receives all arguments which were given to the `foo` function after the first 3 arguments.
+
+---
+
+# Multiple Function Arguments
+
+```py
+def foo(a, b, c, *args):
+    print(args)
+
+foo(1,2,3,4,5,6)
+
+&gt; (4,5,6)
+```
+
+```py
+def bar(a, b, c, **kwargs):
+    print(kwargs)
+    
+bar(1,2,3,name='Aaron',age=31)
+
+&gt; {'name': 'Aaron', 'age': 31}
+```
 
 ---
 
@@ -429,7 +423,7 @@ class Person:
 p1 = Person("Aaron", 31)
 p1.my_func()
 
-print(dir(cat)) # Very advanced
+print(dir(p1)) # Very advanced
 ```
 
 ---
@@ -494,6 +488,353 @@ print(p1.name)
 
 ---
 
+# Modules
+
+- Consider a module to be the same as a code library.
+
+- A file containing a set of functions you want to include in your application.
+
+- To create a module just save the code in a file with the extension `.py`.
+
+  - Save this code to a file named `hello.py`
+
+    ```py
+    def greeting(name):
+      print(f"Hello {name}")
+    ```
+    
+  - Save this code to a file names `main.py`
+  
+    ```py
+    import hello
+    
+    hello.greeting("Aaron")
+    hello.greeting("Beth")
+    ```
+
+---
+
+# Modules
+
+-  When using a function from a module, use the syntax: `module_name.function_name`
+
+- The module can contain functions, as already described, but also variables of all types (lists, dictionaries, objects etc)
+
+- Developers often place configuration files in seperate modules.
+
+  - Save this code to `people.py`
+  
+    ```py
+    person_1 = {"name": "Aaron", "age": 31}
+    person_2 = {"name": "Beth", "age": 29}
+    ```
+  
+  - Save this code to `main.py`
+  
+    ```py
+    import people
+    
+    print(people.person_1)
+    print(people.person_2)
+    ```
+
+---
+
+# Modules (Re-naming)
+
+- You can create an alias when you import a module, by using the `as` keyword:
+
+  ```py
+  import people as p
+  
+  print(p.person_1)
+  print(p.person_2)
+  ```
+
+- Very common to abbreviate modules
+
+  - `import numpy as np`
+  - `import pandas as pd`
+  
+  - Developers like to type less.
+
+---
+
+# Modules (Built-In)
+
+- There are several built-in modules in Python, which you can import whenever you like.
+
+  ```py
+  import platform
+
+  print(platform.system())
+  print(platform.node())
+  ```
+  
+  ```py
+  import os
+  
+  print(os.getcwd())
+  ```
+
+- https://docs.python.org/3/py-modindex.html
+
+---
+
+# Lambda functions
+
+- A lambda function is a small anonymous function - anonyomus in the sense that it does not actually have a name.
+
+- Python functions are typically defined using `def function_name()`.
+
+- Lambda functions can take any number of arguments, but must always have one expression.
+
+  ```py
+  x = lambda a, b : a * b
+  print(x(5, 6))
+  ```
+
+- A lambda function that sums argument a, b, and c and print the result
+
+  ```py
+  x = lambda a, b, c : a + b + c
+  print(x(5, 6, 2))
+  ```
+  
+- A lambda expression is a block of code that can be passed around to execute. A possible use case is to define filtering logic as the first argument for `filter()`
+
+---
+
+
+# Map
+
+- `map()` is a built in Python function that is used to apply a function to a sequence of elements.
+
+- It offers a very clean and elegant way to express an idea and most importantly it improves the readability of your code.
+
+```py
+def func(i):
+  return i*i
+  
+data = [1,10,100]
+
+result = map(func, data)
+
+print(list(result))
+```
+
+- It's more pythonic to use list comprehensions.
+
+---
+
+# Filter
+
+- `filter()` is a built in Python function that is very similar to `map()` however, `filter()` will only return the elements which the applied function returned as True.
+
+```py
+def remove_odd_numbers(num):
+    if num % 2 == 0:
+        return True
+    else:
+        return False
+
+
+numbers = range(15)
+filtered_numbers = filter(remove_odd_numbers, numbers)
+print(list(filtered_numbers))
+```
+
+---
+
+# List Comprehensions
+
+- List Comprehensions are a very powerful tool.
+
+- Creates a new list based on another list, in a single, readable line.
+
+- For example, let's say we need to create a list of integers which specify the length of each word in a certain sentence.
+  
+  ```py
+  sentence = "the quick brown fox jumps over the lazy dog"
+  words = sentence.split()
+  word_lengths = [len(word) for word in words]
+  print(words)
+  print(word_lengths)
+  ```
+
+---
+
+# Exercise
+
+- Using a list comprehension, create a new list called `new_list` out of the list `numbers`, which contains only the positive numbers from the list, as integers.
+
+  ```py
+  numbers = [34.6, -203.4, 44.9, 68.3, -12.2, 44.6, 12.7]
+  new_list = []  # Some logic
+  print(new_list)
+  
+  &gt; [34, 44, 68, 44, 12]
+  ```
+
+--
+
+- Solution
+
+  ```py 
+  numbers = [34.6, -203.4, 44.9, 68.3, -12.2, 44.6, 12.7]
+  newlist = [x for x in numbers if x &gt; 0]
+  print(newlist)
+  
+  &gt; [34, 44, 68, 44, 12]
+  
+  ```
+
+- List comprehension is popular and people like to display their skills. Simply break the commands down and process them step by step.
+
+---
+
+# Itertools
+
+- Python provides a module called *Itertools* that is a collection of tools for handling iterators.
+
+- An iterator is a data type that can be used to loop thorugh a collection of data items such lists, tuples and dictionaries.
+
+```py
+import itertools
+
+# Join two lists into a list of tuples
+for i in zip([1, 2, 3], ['a', 'b', 'c']):
+    print(i)
+
+# Group data values
+data = sorted([1, 2, 1, 3, 2, 1, 2, 3, 4, 5])
+for key, value in itertools.groupby(data):
+    print(key, list(value))
+
+print(list(itertools.permutations('AB')))
+print(list(itertools.accumulate([1, 2, 3, 4])))
+print(list(itertools.chain([1, 2], [3, 4])))
+```
+---
+
+# Generators
+
+- Generator functions allow you to declare functions that behave similar to an iterator but can be much more efficient.
+
+- Consider calculating the sum of numbers from 1 to 1000 using a list and a for loop. This could require 1000 integer values to be stored in memory. Small memory usage.
+
+- Consider calculating the sum of numbers from 1 to 1,000,000,000. This would create a huge list in memory, especially if the data items were floats.
+
+- The solution is to use a generator that will create elements and store them in memory only as it needs (one at a time).
+
+```py
+def generate_numbers(n):
+    num = 0
+    while num &lt; n:
+        yield num
+        num += 1
+
+total = sum(generate_numbers(100000))
+print(total)
+
+```
+
+---
+
+# Decorators
+
+- Decorators allows programmers to modify the behaviour of a function or class.
+
+- Wrap a function with extended logic without modifying the original code. Sometimes the source code to the original code might not be available.
+
+- Everything in Python is an object, even functions. 
+
+- Functions can be stored as a variable, passed as a parameter to another function, returned from another function and stored in data structures.
+
+```py
+# Stored as a variable
+def func(a):
+  print(a)
+
+func('Hello')
+
+x = func
+x('Hello')
+```
+
+---
+
+# Decorators
+
+
+```py
+# Passed as a parameter to another function
+
+def shout(text):
+    return text.upper()
+
+
+def whisper(text):
+    return text.lower()
+
+
+def greet(func):
+    msg = func(f'I was created by {func.__name__}')
+    print(msg)
+
+greet(shout)
+greet(whisper)
+```
+
+---
+
+# Decorators
+
+
+```py
+# Returned from another function
+
+def create_adder(x):
+    def adder(y):
+        return x + y
+
+    return adder
+
+add_15 = create_adder(15)
+
+print(add_15(10))
+print(add_15(100))
+```
+
+---
+
+# Decorators
+
+
+```py
+def test_decorator(func):
+    def wrapper(*args, **kwargs):
+        print(f'Before {func.__name__} is called')
+        result = func(*args, **kwargs)
+        print(f'After {func.__name__} is called')
+        return result
+
+    return wrapper
+
+
+@test_decorator
+def add_func(a, b):
+    print(f'Inside add()')
+    return a + b
+
+
+a, b = 2, 5
+print(add_func(a, b))
+
+```
+
+---
+
 # Getters and Setters
 
 - Avoid `get_` and `set_` methods, not pythonic.
@@ -540,94 +881,7 @@ c.temperature = -300
 
 ---
 
-# Test-Driven Development Demo
 
-greetings.py
-```py
-def get_greetings():
-    return 'Hello World!'
-```
-
-simple_unit_tests.py or main.py (repl.it)
-
-```py
-import unittest
-import greetings
-
-class GreetingsTests(unittest.TestCase):
-    
-    def test_get_greetings(self):
-      self.assertEqual(greetings.get_greetings(), 'Hello World!')
-    
-    def test_something(self):
-      self.assertTrue(2&lt;1)
-
-if __name__ == '__main__':
-    unittest.main()
-    
-# In jupyter notebook
-if __name__ == '__main__':
-    unittest.main(argv=['first-arg-is-ignored'], exit=False)
-```
-
----
-
-# List Comprehension
-
-- List Comprehensions is a very powerful tool.
-
-- Creates a new list based on another list, in a single, readable line.
-
-- For example, let's say we need to create a list of integers which specify the length of each word in a certain sentence. **Demo**
-
-  ```py
-  sentence = "the quick brown fox jumps over the lazy dog"
-  words = sentence.split()
-  word_lengths = []
-  for word in words:
-      word_lengths.append(len(word))
-  print(words)
-  print(word_lengths)
-  ```
-  
-  ```py
-  sentence = "the quick brown fox jumps over the lazy dog"
-  words = sentence.split()
-  word_lengths = [len(word) for word in words]
-  print(words)
-  print(word_lengths)
-  ```
-
----
-
-# Exercise
-
-- Using a list comprehension, create a new list called `new_list` out of the list `numbers`, which contains only the positive numbers from the list, as integers.
-
-  ```py
-  numbers = [34.6, -203.4, 44.9, 68.3, -12.2, 44.6, 12.7]
-  new_list = []  # Some logic
-  print(new_list)
-  
-  &gt; [34, 44, 68, 44, 12]
-  ```
-
---
-
-- Solution
-
-  ```py 
-  numbers = [34.6, -203.4, 44.9, 68.3, -12.2, 44.6, 12.7]
-  newlist = [x for x in numbers if x &gt; 0]
-  print(newlist)
-  
-  &gt; [34, 44, 68, 44, 12]
-  
-  ```
-
-- List comprehension is popular and people like to display their skills. Simply break the commands down and process them step by step.
-
----
 
 # File Handling
 
@@ -652,8 +906,6 @@ if __name__ == '__main__':
 # Open a File
 
 - To open a file for reading it is enough to specify the name of the file
-
-**Demo on repl.it**
 
 - Create a new file named `data.txt`
 
@@ -745,7 +997,7 @@ if __name__ == '__main__':
 
 # Create a new file
 
-- To create a new file in Python, use the open() method, with one of the following parameters:
+- To create a new file in Python, use the `open()` method, with one of the following parameters:
 
   - "x" - Create - will create a file, returns an error if the file exists
 
@@ -769,14 +1021,14 @@ if __name__ == '__main__':
 
 # Delete a file or folder
 
-- To delete a file, you must import the OS module, and run its os.remove() function
+- To delete a file, you must import the OS module, and call `os.remove()` function.
 
   ```py
   import os
   os.remove("data.txt")
   ```
 
-- To delete an entire folder, use the os.rmdir() method
+- To delete an entire folder, call the `os.rmdir()` function.
 
   ```py
   import os
@@ -787,291 +1039,36 @@ if __name__ == '__main__':
 
 ---
 
-# Modules
 
-- Consider a module to be the same as a code library.
+# Test-Driven Development Demo
 
-- A file containing a set of functions you want to include in your application.
+greetings.py
+```py
+def get_greetings():
+    return 'Hello World!'
+```
 
-- To create a module just save the code in a file with the extension `.py`.
+main.py
+```py
+import unittest
+import greetings
 
-  - Save this code to a file named `hello.py`
-
-    ```py
-    def greeting(name):
-      print(f"Hello {name}")
-    ```
+class GreetingsTests(unittest.TestCase):
     
-  - Save this code to a file names `main.py`
-  
-    ```py
-    import hello
+    def test_get_greetings(self):
+      self.assertEqual(greetings.get_greetings(), 'Hello World!')
     
-    hello.greeting("Aaron")
-    hello.greeting("Beth")
-    ```
----
+    def test_something(self):
+      self.assertTrue(2&lt;1)
 
-# Modules
-
--  When using a function from a module, use the syntax: `module_name.function_name`
-
-- The module can contain functions, as already described, but also variables of all types (lists, dictionaries, objects etc)
-
-- Developers often place configuration files in seperate modules.
-
-  - Save this code to `people.py`
-  
-    ```py
-    person_1 = {"name": "Aaron", "age": 31}
-    person_2 = {"name": "Beth", "age": 29}
-    ```
-  
-  - Save this code to `main.py`
-  
-    ```py
-    import people
+if __name__ == '__main__':
+    unittest.main()
     
-    print(people.person_1)
-    print(people.person_2)
-    ```
-
----
-
-# Modules (Re-naming)
-
-- You can create an alias when you import a module, by using the `as` keyword:
-
-  ```py
-  import people as p
-  
-  print(p.person_1)
-  print(p.person_2)
-  ```
-
-- Very common to abbreviate modules
-
-  - `import numpy as np`
-  - `import pandas as pd`
-  
-  - Developers like to type less.
-
----
-
-# Modules (Built-In)
-
-- There are several built-in modules in Python, which you can import whenever you like.
-
-  ```py
-  import platform
-  
-  x = platform.system()
-  print(x)
-  
-  &gt; Linux
-  ```
-
-- https://docs.python.org/3/py-modindex.html
-
----
-
-# Lambdas
-
-- A lambda function is a small anonymous function.
-
-- A lambda function can take any number of arguments, but can only have one expression.
-
-- Syntax `lambda arguments : expression`
-
-  - The expression is executed and the result is returned
-  
-- Examples
-
-  - A lambda function that adds 10 to the number passed in as an argument, and prints the result
-  
-  ```py
-  x = lambda a : a + 10
-  print(x(5))
-  
-  &gt; 15
-  ```
-
----
-
-# Lambdas
-
-- Lambda functions can take any number of arguments
-
-  ```py
-  x = lambda a, b : a * b
-  print(x(5, 6))
-  
-  &gt; 30
-  ```
-
-- A lambda function that sums argument a, b, and c and print the result
-
-  ```py
-  x = lambda a, b, c : a + b + c
-  print(x(5, 6, 2))
-  
-  &gt; 13
-  ```
-  
-- A lambda expression is a block of code that can be passed around to execute.
-
----
-
-# Numpy (Demo)
-
-- NumPy is a module for Python. The name refers to "Numeric Python" or "Numerical Python".
-
-```py
-import numpy as np
-
-celsius = [20.1, 20.8, 21.9, 22.5, 22.7, 22.3, 21.8, 21.2, 20.9, 20.1]
-
-C = np.array(celsius)
-
-print(type(C))
-
-print(C)
-
+# In jupyter notebook
+if __name__ == '__main__':
+    unittest.main(argv=['first-arg-is-ignored'], exit=False)
 ```
 
-Output: [20.1 20.8 21.9 22.5 22.7 22.3 21.8 21.2 20.9 20.1]
-
-```py
-print(C * 9 / 5 + 32)
-```
-
-Output: [68.18 69.44 71.42 72.5 72.86 72.14 71.24 70.16 69.62 68.18]
-
-- The array `C` remains unchanged
-
----
-
-# Numpy Arrays
-
-```py
-import numpy as np
-
-a = np.array([1, 2, 3])
-b = np.array([[1,2,3],[4,5,6]])
-
-print(a.shape)
-print(b.shape)
-
-print(a[0],a[1])
-print(b[0, 1], b[1, 0])
-```
-
----
-
-# Numpy Arrays
-
-```py
-a = np.zeros((4,4))   # Create an array of all zeros
-print(a)
-
-b = np.ones((2,2))    # Create an array of all ones
-print(b)
-
-c = np.full((2,2), 5)  # Create a constant array
-print(c)
-
-d = np.eye(3)         # Create a 2x2 identity matrix
-print(d)
-
-e = np.random.random((3,3))  # Create an array filled with random values
-print(e)
-```
----
-
-# Numpy Array Indexing
-
-```py
-a = np.array([[1,2,3,4], [5,6,7,8], [9,10,11,12]])
-b = a[:2, 1:3]
-
-print (a)
-print(b)
-```
-
-A slice of an array is a view into the same data, so modifying it will modify the original array.
-
-```py
-b[0, 0] = 88
-print(a[0, 1])
-```
----
-
-# Numpy Datatypes
-
-```py
-x = np.array([1, 2])   
-print(x.dtype) 
-
-x = np.array([1.0, 2.0])   
-print(x.dtype)
-
-x = np.array([1, 2], dtype=np.int64)   # Force a particular datatype
-print(x.dtype)
-```
-
----
-
-# Numpy Array Math
-
-```py
-x = np.array([[1,2],[3,4]], dtype=np.float64)
-y = np.array([[5,6],[7,8]], dtype=np.float64)
-
-print(x + y)
-
-print(np.add(x, y))
-
-print(x - y)
-
-print(np.subtract(x, y))
-
-print(x * y)
-
-print(np.multiply(x, y))
-
-print(x / y)
-
-print(np.divide(x, y))
-
-print(np.sqrt(x))
-```
-
----
-
-# Numpy Sum
-
-```py
-x = np.array([[1,2],[3,4]])
-
-print(np.sum(x))
-
-print(np.sum(x, axis=0))  # Compute sum of each column 
-
-print(np.sum(x, axis=1))  # Compute sum of each row 
-```
-
-```py
-x = np.array([[1,2,3], [4,5,6], [7,8,9], [10, 11, 12]])
-
-v = np.array([1, 0, 1])
-
-y = np.empty_like(x) # Create an empty matrix with the same shape as x
-
-for i in range(4):
-    y[i, :] = x[i, :] + v
-
-print(y)
-```
 ---
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

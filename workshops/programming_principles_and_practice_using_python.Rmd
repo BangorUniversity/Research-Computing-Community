@@ -2,7 +2,7 @@
 title: "Programming Principles and Practice using Python"
 author: "Ade Fewings, Aaron Owen"
 institute: "Bangor University"
-date: "2019/12/02 (updated: `r Sys.Date()`)" 
+date: "Updated: `r Sys.Date()`" 
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -13,11 +13,11 @@ output:
     css: [default, metropolis, metropolis-fonts]
 ---
 
-# Research Computing Community
+# eResearch
 
 - Background
 
-  - SuperComputing Wales
+  - SuperComputing Wales, eResearch @ Bangor
   
   - Research Software Engineers supporting Bangor researchers
 
@@ -32,7 +32,7 @@ output:
   - Projects
   
   - Acknowledgements
-
+  
 ---
 
 # Training Workshops
@@ -137,11 +137,7 @@ Suggestions for new training welcome.
 
 - Login using your Bangor University credentials.
 
-- Select the `Terminal` application.
-
-- Type `ssh compute` and hit enter
-  
-- `$` Presented with a prompt, indicating that the shell is ready to accept input 
+- Click the `Python 3.8` notebook.
 
 ---
 
@@ -1256,7 +1252,7 @@ Boiling point of water: 100.0 C
 
 # Nested Functions
 
-- It is possible to called a function from within another function.
+- It is possible to call a function from within another function.
 
 - Try to avoid to much inner function calling, can be difficult to debug.
 
@@ -1596,7 +1592,7 @@ assert len(input_list) > 0, 'List length must be non-zero'
 
 ```py
 # A possible post-condition:
-assert numpy.min(input_list) <= average <= numpy.max(input_list),
+assert min(input_list) <= average <= max(input_list),
 'Average should be between min and max of input values (inclusive)'
 ```
 

@@ -4,6 +4,7 @@
     <title>Introduction to the Linux Shell</title>
     <meta charset="utf-8" />
     <meta name="author" content="Ade Fewings, Aaron Owen" />
+    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
@@ -15,24 +16,23 @@ class: center, middle, inverse, title-slide
 # Introduction to the Linux Shell
 ### Ade Fewings, Aaron Owen
 ### Bangor University
-### 2019/11/10 (updated: 2020-11-16)
+### Updated: 2022-02-13
 
 ---
 
 
-# Research Computing Community
+# eResearch
 
-- Background
+- Supercomputing Wales
 
-  - SuperComputing Wales
+  - Available to researchers at Bangor
   
-  - Research Software Engineers supporting Bangor researchers
+- Research Software Engineers
 
-- Future
-  
-  - Collate expert knowledge into an open and shared centralised repository
-      - [Yammer](https://www.yammer.com/bangor.ac.uk/#/threads/inGroup?type=in_group&amp;feedId=12756205568&amp;view=all)
-      - [Github](https://github.com/BangorUniversity/Research-Computing-Community)
+- Collate expert knowledge into an open and shared centralised repository
+
+  - [Yammer](https://www.yammer.com/bangor.ac.uk/#/threads/inGroup?type=in_group&amp;feedId=12756205568&amp;view=all)
+  - [Github](https://github.com/BangorUniversity/Research-Computing-Community)
   
   - Workshops
   
@@ -89,9 +89,9 @@ Suggestions for new training welcome.
 
 ---
 
-# Why GNU Bash?
+# Why Bash?
 
-- Installed as the default interactive shell for users on most Linux and macOS systems
+- Installed as the default interactive shell for users on most Linux systems
 
 - The use of **G**raphical **U**ser **I**nterfaces does not scale well when delivering instructions to a computer
 
@@ -103,10 +103,10 @@ Suggestions for new training welcome.
 
 - Bash will take some time to get familiar with, however, a small number of commands gets you a long way
 
-- SCW platform
+- Basic Bash knowledge required to use the Supercomputing Wales service
 
 ---
-# Option 1: Access a GNU/Linux machine
+# Option 1: Access a Linux machine
 
 - Visit https://jupyter.bangor.ac.uk/jupyter/hub/login
 
@@ -123,7 +123,7 @@ Suggestions for new training welcome.
 - `$` Presented with a prompt, indicating that the shell is ready to accept input 
 ---
 
-# Option 2: Access a GNU/Linux machine
+# Option 2: Access a Linux machine
 
 - Open an application called 'Putty'
 
@@ -145,7 +145,7 @@ Suggestions for new training welcome.
 
 #### Summary
 
-Established a connection from your desktop to a remote GNU/Linux machine
+Established a connection from your desktop to a remote Linux machine
 
 ---
 
@@ -153,11 +153,11 @@ Established a connection from your desktop to a remote GNU/Linux machine
 
 When you see an **Exercise** section, feel free to run the commands in the shell
 
-### Exercise 
+#### Exercise 
 
 - `cal` Display a calendar for the current month
 
-- `cal 2019` Display a calendar for 2020
+- `cal 2022` Display a calendar for the year
 
 - `date` Print the system date and time
 
@@ -183,7 +183,7 @@ When you see an **Exercise** section, feel free to run the commands in the shell
 
   - Press **q** to exit, **Spacebar** Go to next screen, **b** Go to the previous screen
   
-### Exercise
+#### Exercise
 
 - `help`
 
@@ -455,7 +455,7 @@ mkdir -vp samples/jan
 touch samples/jan/01.txt
 
 mkdir -vp samples/feb
-touch samples/jan/01.txt
+touch samples/feb/01.txt
 ```
 ---
 
@@ -618,7 +618,7 @@ A powerful feature in the Shell is the ability to combine commands and programs 
 
 # Filters
 
-### Exercise
+#### Exercise
 
 - `cat /tmp/bash/colours.txt`?
 
@@ -782,7 +782,7 @@ Syntax
 
 # Redirection of data
 
-Exercise
+#### Exercise
 
 - `echo "Line 1" &gt; data.txt`
 
@@ -816,7 +816,7 @@ Exercise
 
 - `find` Find files and directories whose names match simple patterns
 
-### Exercise
+#### Exercise
 
 - `cat /tmp/bash/colours.txt`
 
@@ -950,7 +950,7 @@ Task: Print the command but do not execute
   ACTIVE_SESSIONS=`users | wc -w`
   echo "There are ${ACTIVE_SESSIONS} user sessions currently active"
   ```
-- `chmod +x users.sh` Convert the file to an exectuable
+- `chmod +x users.sh` Convert the file to an executable
 
 - `./users.sh` or `bash users.sh`
 
@@ -977,7 +977,7 @@ Task: Sum the integers from 1 to 10
   echo "Total Sum:${sum}"
 ```
 
-- `chmod +x sum.sh` Convert the file to an exectuable
+- `chmod +x sum.sh` Convert the file to an executable
 
 - `./sum.sh` or `bash sum.sh` 
 
@@ -985,21 +985,276 @@ Task: Sum the integers from 1 to 10
 
 ---
 
-# Conditionals
+# Conditional Statements
 
-- TODO
+Conditional statements enable you to code decisions into your Bash scripts
+
+- `if` Perform a set of commands if a test is true
+
+- `else` If the test is not true then perform a different set of commands
+
+- `elif` If the previous test returned false perform a different test
+
+- `&amp;&amp;` Perform the **AND** operation
+
+- `||` Perform the **OR** operation
+
+- `case` Choose a set of commands to execute depending on a string matching a particular pattern
 
 ---
 
+# if
+
+If a particular test it true, then perform a given set of commands
+
+**Format**
+
+```
+if [&lt;test&gt;]; then
+  &lt;set of commands&gt;
+fi
+```
+
+**Examples**
+
+.pull-left[
+```bash
+i=10
+if [ $i -gt 5 ]; then
+  echo "$i is greater than 5"
+fi
+
+# Numerical comparison
+if [ 001 -eq 1 ]; then
+  echo "True"
+fi
+```
+]
+
+.pull-right[
+```bash
+name="Aaron"
+if [ $name = "Aaron" ]; then
+  echo "Hi Aaron!"
+fi
+
+# String comparison
+if [ 001 = 1 ]; then
+    echo "Hi"
+fi
+```
+]
+
+---
+
+# Arithmetic Comparisons
+
+- `x -eq y` Test identity
+
+- `x -ne y` Test inequality
+
+- `x -lt y` Less than
+
+- `x -gt y` Greater than
+
+- `x -le y` Less than or equal
+
+- `x -ge y` Greater than equal
+
+---
+
+# if else
+
+If the test is not true then perform a different set of commands
+
+**Format**
+
+```bash
+if [ &lt;test&gt; ]; then
+  &lt;set of commands&gt;
+else
+  &lt;set of commands&gt;
+fi
+```
+
+**Examples**
+
+
+```bash
+i=2
+if [ $i -gt 5 ]; then
+    echo "$i is greater than 5"
+else
+    echo "$i is less than or equal to 5"
+fi
+```
+
+---
+
+# if elif else
+
+If the previous test returned false perform a different test
+
+**Format**
+
+```bash
+if [ &lt;test1&gt; ]; then
+  &lt;set of commands&gt;
+elif [ &lt;test2&gt; ]; then
+  &lt;set of commands&gt;
+else
+  &lt;set of commands&gt;
+fi
+```
+
+**Examples**
+
+
+```bash
+i=20
+if [ $i -lt 10 ]; then
+    echo "$i is less than 10"
+elif [ $i -gt 10 ]; then
+    echo "$i is greater than 10."
+else
+    echo "None of the above tests returned true."
+fi
+
+```
+
+---
+
+# AND Operation
+
+Perform the **AND** operation
+
+```bash
+name="Aaron"
+i=20
+if [ $name == "Aaron" ] &amp;&amp; [ $i -eq 20 ]; then
+    echo "Both conditions returned true."
+fi
+```
+---
+
+# OR Operation
+
+Perform the **OR** operation
+
+```bash
+name="Aaron"
+i=10
+if [ $name == "Aaron" ] || [ $i -eq 20 ]; then
+    echo "One of the conditions returned true."
+fi
+```
+
+---
+
+# Case Statements
+
+Choose a set of commands to execute depending on a string matching a particular pattern
+
+.pull-left[
+**Format**
+
+```bash
+case &lt;variable&gt; in
+&lt;pattern 1&gt;)
+  &lt;set of commands&gt;
+  ;;
+&lt;pattern 2&gt;)
+  &lt;set of commands&gt;
+  ;;
+esac
+```
+]
+
+.pull-right[
+**Example**
+
+```bash
+status="start"
+case $status in
+start)
+    echo "Starting"
+    ;;
+stop)
+    echo "Stopping"
+    ;;
+restart)
+    echo "Restarting"
+    ;;
+**)
+    echo "Unknown status"
+    ;;
+esac
+```
+]
+
+---
 # Functions
 
-- TODO
+A function is essentially a set of commands that can be called numerous times. It improves the readability of code and avoids writing the same code repeatedly.
+
+.pull-left[
+**Format**
+
+```bash
+// Multi line
+function_name () {
+  commands
+}
+
+// Single line
+function_name () { commands; }
+```
+
+]
+
+.pull-right[
+**Example**
+
+```bash
+hello_world() {
+    echo "Hello World!"
+}
+hello_world
+
+hello() {
+    echo "Hello $1!"
+}
+hello "Aaron"
+
+```
+]
+
+
 
 ---
 
-# Local Variables
+# Variables Scope
 
-- TODO
+**Global variables** are variables that can be accessed from anywhere in the script regardless of the scope. In Bash, all variables by default are defined as global, even if declared inside the function.
+
+**Local variables** can be declared within the function body with the local keyword and can be used only inside that function. You can have local variables with the same name in different functions.
+
+```bash
+#!/usr/bin/env bash
+
+x=1
+y=2
+
+test_function() {
+    local x=3
+    y=4
+    echo "Inside function: x: $x, y: $y"
+}
+
+echo "Before executing function: x: $x, y: $y"
+test_function
+echo "After executing function: x: $x, y: $y"
+```
 
 ---
 
@@ -1058,6 +1313,8 @@ Task: Sum the integers from 1 to 10
 ---
 
 # Links
+
+- [Bash scripting cheatsheet](https://devhints.io/bash/)
 
 - [GNU Bash](https://www.gnu.org/software/bash/)
 

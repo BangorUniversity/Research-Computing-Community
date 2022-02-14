@@ -2,7 +2,7 @@
 title: "Parallel Processing in Python"
 author: "Ade Fewings, Aaron Owen"
 institute: "Bangor University"
-date: "2019/12/02 (updated: `r Sys.Date()`)" 
+date: "Updated: `r Sys.Date()`" 
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -13,11 +13,11 @@ output:
     css: [default, metropolis, metropolis-fonts]
 ---
 
-# Research Computing Community
+# eResearch
 
 - Background
 
-  - SuperComputing Wales
+  - SuperComputing Wales, eResearch @ Bangor
   
   - Research Software Engineers supporting Bangor researchers
 
@@ -32,7 +32,6 @@ output:
   - Projects
   
   - Acknowledgements
-
 ---
 
 # Training Workshops
@@ -64,7 +63,7 @@ Suggestions for new training welcome.
 
 - Login using your Bangor University credentials.
 
-- Select the `Terminal` application.
+- Click the `Python 3.8` notebook.
 
 ---
 
@@ -84,7 +83,7 @@ Suggestions for new training welcome.
 
 - Multiprocessing examples.
 
-- Using the Supercomputing Wales cluster. 
+- Using the Supercomputing Wales. 
 
 - Desktop to cluster.
 
@@ -164,7 +163,7 @@ Suggestions for new training welcome.
 
 - It prevents two threads from executing simultaneously in the same process.
 
-- Libraries like Numpy bypass this limitation by running external code in C.
+- Libraries like Numpy bypass this limitation by running external code in C which can manually release the GIL to speed up computations.
 
 - The most popular solution is to use **multiprocessing**.
 
@@ -226,7 +225,85 @@ Suggestions for new training welcome.
 
 - It enables users to use multiple processors on a machine.
 
-- **Diagram**
+- The management of worker processes can be simplified with the *Pool* object.
+
+
+---
+
+# Process example
+
+
+```py
+from multiprocessing import Process
+
+
+def func(name):
+    print(f'Hello {name}')
+
+
+def main():
+    p = Process(target=func, args=('Aaron', ))
+    p.start()
+
+
+if __name__ == '__main__':
+    main()
+    #print('Why is this printing first?')
+```
+
+---
+
+# Process example
+
+
+```py
+from multiprocessing import Process
+
+
+def func(name):
+    print(f'Hello {name}')
+
+
+def main():
+    p = Process(target=func, args=('Aaron', ))
+    p.start()
+    p.join()
+
+
+if __name__ == '__main__':
+    main()
+    print('Why is this printing last?')
+```
+
+---
+
+# Process id
+
+```py
+from multiprocessing import Process
+import os
+
+
+def func():
+    print(f"\tfunc's process id {os.getpid()}")
+    print(f"\t\tfunc's parent process id = {os.getppid()}")
+
+
+def main():
+    p1 = Process(target=func)
+    p1.start()
+    p1.join()
+
+    p2 = Process(target=func)
+    p2.start()
+    p2.join()
+
+
+if __name__ == '__main__':
+    print(f"Main's process id is {os.getpid()}")
+    main()
+
+```
 
 ---
 
@@ -270,35 +347,52 @@ print(f'Number of processors: {mp.cpu_count()}')
 
 # Multiprocessing Pool
 
+- Map `func` to list items and print value
+
 ```py
 import multiprocessing as mp
 
-def my_func(x):
-  print(x*x)
 
-num_cores=mp.cpu_count()
+def func(x):
+    print(x * x)
 
-pool = mp.Pool(num_cores)
 
-pool.map(my_func, [4,2,3])
+def main():
+    num_cores = mp.cpu_count()
+    pool = mp.Pool(num_cores)
+    pool.map(func, [4, 2, 3])
+
+
+if __name__ == '__main__':
+    main()
+    print('done')
+
 ```
 
 ---
 
 # Multiprocessing Pool
 
+- Map `func` to list items and return values
+
 ```py
 import multiprocessing as mp
 
-def my_func(x):
-  return(x*x)
 
-num_cores=mp.cpu_count()
+def func(x):
+    return (x * x)
 
-pool=mp.Pool(num_cores)
 
-result=pool.map(my_func, [4,2,3])
-print(result)
+def main():
+    num_cores = mp.cpu_count()
+    pool = mp.Pool(num_cores)
+    result = pool.map(func, [4, 2, 3])
+    print(result)
+
+
+if __name__ == '__main__':
+    main()
+    print('done')
 ```
 
 
@@ -308,40 +402,49 @@ print(result)
 ```py
 import multiprocessing as mp
 
-work_items=["Aaron", "Beth", "George", "Mia"]
+work_items = ["Aaron", "Beth", "George", "Mia"]
+
 
 def worker_func(work_item):
-  print(f'Process {work_item}')
+    print(f'Process {work_item}')
 
-num_cores=mp.cpu_count()
-print(f'Python has found {num_cores} cores')
 
-work_pool=mp.Pool(num_cores)
-work_pool.map(worker_func, work_items)
+def main():
+    num_cores = mp.cpu_count()
+    work_pool = mp.Pool(num_cores)
+    work_pool.map(worker_func, work_items)
+
+
+if __name__ == '__main__':
+    main()
 ```
 ---
 
 # Multiprocessing Pool with process id
 
-- Is Aaron telling the truth?
+- Print process id
 
 ```py
 import multiprocessing as mp
 
 # This could be a list of any Python datatype (lists, functions, dicts)
-work_items=["Aaron", "Beth", "George", "Mia"]
+work_items = ["Aaron", "Beth", "George", "Mia"]
+
 
 def worker_func(work_item):
-  process_id=mp.current_process()
-  print(f'Process {work_item} on process {process_id}')
+    process_id = mp.current_process()
+    print(f'Process {work_item} on process {process_id}')
 
-num_cores=mp.cpu_count()
-print(f'Python has found {num_cores} cores')
 
-work_pool=mp.Pool(num_cores)
-work_pool.map(worker_func, work_items) # map_async
+def main():
+    num_cores = mp.cpu_count()
+    work_pool = mp.Pool(num_cores)
+    work_pool.map(worker_func, work_items)  # map_async
 
-print('done')
+
+if __name__ == '__main__':
+    main()
+    print('done')
 ```
 ---
 
@@ -356,14 +459,20 @@ import multiprocessing as mp
 # List of scripts or args to program?
 scripts = ['script_1.py', 'script_2.py', 'script_3.py']
 
+
 def run_python_script(script):
-  os.system(f'python {script}')  # args?
+    os.system(f'python {script}')  # args?
 
-num_cores=mp.cpu_count()
-print(f'Python has found {num_cores} cores')
 
-pool= mp.Pool(processes=num_cores)
-pool.map(run_python_script, scripts)
+def main():
+    num_cores = mp.cpu_count()
+    pool = mp.Pool(processes=num_cores)
+    pool.map(run_python_script, scripts)
+
+
+if __name__ == '__main__':
+    main()
+    print('done')
 ```
 
 ---
@@ -387,21 +496,27 @@ pool.map(run_python_script, scripts)
 ```py
 import multiprocessing as mp
 
-def worker_func(a,b,c,d):
-  process_id=mp.current_process()
-  print(f'Process {a} {b} {c} {d} on process {process_id}')
 
-num_cores=mp.cpu_count()
-print(f'Python has found {num_cores} cores')
+def worker_func(a, b, c, d):
+    process_id = mp.current_process()
+    print(f'Process {a} {b} {c} {d} on process {process_id}')
 
-work_pool=mp.Pool(num_cores)
-work_pool.starmap(worker_func, [
-  (1,2,3,4),  # process 1
-  (5,6,7,8),  # process 2
-])
-# starmap_async
 
-print('done')
+def main():
+    num_cores = mp.cpu_count()
+    work_pool = mp.Pool(num_cores)
+    work_pool.starmap(
+        worker_func,
+        [
+            (1, 2, 3, 4),  # process 1
+            (5, 6, 7, 8),  # process 2
+        ])
+    # starmap_async
+
+
+if __name__ == '__main__':
+    main()
+    print('done')
 ```
 ---
 
@@ -417,178 +532,44 @@ print('done')
 
 ---
 
-# Synchronous and Asynchronous
+# Locks
+
+- If required, we can manually aquire and release a lock to control the order in which processes run.
+
+```py
+from multiprocessing import Process, Lock
+
+
+def func(lock, num):
+    lock.acquire()
+    try:
+        print(f'In order? Number is {num}')
+    finally:
+        lock.release()
+
+
+def main():
+    lock = Lock()
+
+    for num in range(10):
+        Process(target=func, args=(lock, num)).start()
+
+
+if __name__ == '__main__':
+    main()
+```
+
+- Without using the lock output from the different processes is liable to be mixed up.
+
+---
+
+# Pool and Process
 
 - There are two main classes in the multiprocessing module to implement parallel execution: The **Pool** Class and the **Process** Class.
 
 - The general way to parallelise any operation is to take a particular function that should run multiple times and make it run in parallel on different processors.
 
----
-
-# Pool and apply
-
-- The **Pool** class provides `apply()`, `map()` and `starmap()` methods to make any function run in parallel.
-
-- Both `apply()` and `map()` take the function to be parallelised as the main argument.
-
-- The difference is that `apply()` lets you pass an `args` argument that is passed to the function.
-
-- Use `map()` for simple operations.
-
-- Use `apply()` for more complex operations.
-
----
-
-# Serial I/0 heavy task
-
-- Let's write 1000 lines to a file and time it.
-
-```py
-import time
-
-def io_heavy(n):
-    t0 = time.time()
-    
-    f = open('output.txt', 'w')
-    for i in range(n):
-      f.write('Some repeated text\n')
-    f.close()
-    
-    t1 = time.time()
-    
-    print(f'io_heavy took {t1-t0}')
-
-io_heavy(1000)
-
-```
-
----
-
-# Parallel I/O heavy task
-
-- Can we use the **Pool** class to parallelise the function?
-
-```py
-import multiprocessing as mp
-
-num_cores=mp.cpu_count()
-print(f'Python has found {num_cores} cores')
-
-def io_heavy(num_lines, file_idx):
-    f = open(f'output_{file_idx}.txt', 'w')
-    for i in range(num_lines):
-      f.write('Some repeated text\n')
-    f.close()
-    process_id=mp.current_process()
-    print(f'io_heavy on {process_id}')
-
-work_pool=mp.Pool(num_cores)
-work_pool.starmap(io_heavy, [
-  (500,1,), # process 1
-  (500,2,)  # process 2
-])
-# starmap_async
-
-print('done')
-```
----
-
-# Serial CPU Heavy task
-
-```py
-import time
-
-def cpu_heavy(n):
-
-    t0 = time.time()
-    
-    count = 0
-    for i in range(n):
-        count += i
-        
-    t1 = time.time()
-    
-    print(f'cpu_heavy took {t1-t0}')
-        
-cpu_heavy(1000)
-
-```
-
----
-
-# Parallel CPU Heavy task
-
-- Can we use the **Pool** class to parallelise the function?
-
-
-```py
-import multiprocessing as mp
-
-num_cores=mp.cpu_count()
-print(f'Python has found {num_cores} cores')
-
-def cpu_heavy(n):
-    count = 0
-    for i in range(n):
-        count += i
-    process_id=mp.current_process()
-    print(f'cpu_heavy on process {process_id}')
-
-work_pool=mp.Pool(num_cores)
-work_pool.starmap(cpu_heavy, [
-  (500,),   # process 1
-  (500,),  # process 2
-])
-# starmap_async
-
-print('done')
-```
----
-
-# Numpy
-
-```py
-import numpy as np
-import pandas as pd
-import multiprocessing as mp
-
-df = pd.DataFrame(np.random.randint(3, 10, size=[5, 2]))
-print(df.head())
-```
-
----
-
-# Row wise Operation
-
-```py
-def hypotenuse(row):
-  return round(row[1]**2 + row[2]**2, 2)**0.5
-
-with mp.Pool(4) as pool:
-  result = pool.imap(hypotenuse, df.itertuples(name=False), chunksize=10)
-  output = [round(x, 2) for x in result]
-
-print(output)
-
-> [9.43, 5.83, 5.0, 5.66, 11.4] 
-```
-
----
-
-# Column wise Operation
-
-```py
-def sum_of_squares(column):
-  return sum([i**2 for i in column[1]])
-
-with mp.Pool(2) as pool:
-  result = pool.imap(sum_of_squares, df.iteritems(), chunksize=10)
-  output = [x for x in result]
-
-print(output)
-
-```
-
+- Feel free to ask Aaron for help when adding parallel features to code.
 ---
 
 # SuperComputing Wales
@@ -615,28 +596,56 @@ print(output)
 ```sh
 #!/usr/bin/env bash
 
-#SBATCH --job-name=parallel
+# Run main.py on 4 cores
+# Usage: sbatch run.slurm
 
-#SBATCH --output=%J.out
-#SBATCH --error=%J.err
+#SBATCH --job-name=map
 
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=40
-
-#SBATCH --account=scw1124
+#SBATCH --output=logs/map.%J.out
+#SBATCH --error=logs/map.%J.err
 
 #SBATCH --partition=htc
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
 
-#SBATCH --time=00-03:00
+#SBATCH --account=scw1124
+#SBATCH --time=00-00:05
 
 module purge
-
 module load python/3.7.0
 
-python3 filename.py # filename.py contains the logic for multiprocessing
+python3 main.py
 ```
 
+---
+
+# Multiprocessing python script
+
+```py
+import os
+import multiprocessing as mp
+
+
+def worker_func(data):
+    process_id = mp.current_process()
+    print(f'worker_func is running on process {process_id}, data={data}')
+
+
+def main():
+    # How many cores were assigned to the slurm job allocation?
+    num_cores = int(os.getenv('SLURM_CPUS_PER_TASK'))
+    print(f'Found {num_cores} cores')
+
+    pool = mp.Pool(num_cores)
+    worker_data = range(10)
+    pool.map(worker_func, worker_data)
+
+
+if __name__ == "__main__":
+    main()
+
+```
 ---
 
 # GNU Parallel slurm script
@@ -655,13 +664,11 @@ python3 filename.py # filename.py contains the logic for multiprocessing
 
 #SBATCH --account=scw1124
 
-#SBATCH --partition=htc
-
 #SBATCH --time=00-03:00
 
 module purge
 
-module load python/3.7.0
+module load python/3.9.2
 module load parallel
 
 echo "Start!"

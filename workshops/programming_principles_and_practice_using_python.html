@@ -15,16 +15,16 @@ class: center, middle, inverse, title-slide
 # Programming Principles and Practice using Python
 ### Ade Fewings, Aaron Owen
 ### Bangor University
-### 2019/12/02 (updated: 2020-11-18)
+### Updated: 2021-10-25
 
 ---
 
 
-# Research Computing Community
+# eResearch
 
 - Background
 
-  - SuperComputing Wales
+  - SuperComputing Wales, eResearch @ Bangor
   
   - Research Software Engineers supporting Bangor researchers
 
@@ -39,7 +39,7 @@ class: center, middle, inverse, title-slide
   - Projects
   
   - Acknowledgements
-
+  
 ---
 
 # Training Workshops
@@ -144,11 +144,7 @@ Suggestions for new training welcome.
 
 - Login using your Bangor University credentials.
 
-- Select the `Terminal` application.
-
-- Type `ssh compute` and hit enter
-  
-- `$` Presented with a prompt, indicating that the shell is ready to accept input 
+- Click the `Python 3.8` notebook.
 
 ---
 
@@ -1263,7 +1259,7 @@ Boiling point of water: 100.0 C
 
 # Nested Functions
 
-- It is possible to called a function from within another function.
+- It is possible to call a function from within another function.
 
 - Try to avoid to much inner function calling, can be difficult to debug.
 
@@ -1603,7 +1599,7 @@ assert len(input_list) &gt; 0, 'List length must be non-zero'
 
 ```py
 # A possible post-condition:
-assert numpy.min(input_list) &lt;= average &lt;= numpy.max(input_list),
+assert min(input_list) &lt;= average &lt;= max(input_list),
 'Average should be between min and max of input values (inclusive)'
 ```
 

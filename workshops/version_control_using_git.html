@@ -15,16 +15,16 @@ class: center, middle, inverse, title-slide
 # Version Control Using Git
 ### Ade Fewings, Aaron Owen
 ### Bangor University
-### 2019/11/10 (updated: 2020-11-16)
+### Updated: 2021-10-31
 
 ---
 
 
-# Research Computing Community
+# eResearch
 
 - Background
 
-  - SuperComputing Wales
+  - SuperComputing Wales, eResearch @ Bangor
   
   - Research Software Engineers supporting Bangor researchers
 
@@ -39,7 +39,7 @@ class: center, middle, inverse, title-slide
   - Projects
   
   - Acknowledgements
-
+  
 ---
 
 # Training Workshops
@@ -65,30 +65,37 @@ Suggestions for new training welcome.
 
 ---
 
-# Theory: Version Control Systems
+# Theory: Version Control Systems (VCS)
 
-- A tool that records changes to files or a set of files over time
+- A program or set of programs that tracks changes to a collection of files.
 
-- Can recall specific versions of files
+- Can recall specific versions of files.
 
   - No need for *file-new, file-new-new, file-old, file-latest, file-working*
 
-- Not restricted to software development
+- Not restricted to software development.
+  - Often used to write books, papers and online tutorials.
 
-- Can be local, centralised and decentralised
+- Can be local, centralised and decentralised.
 
-- Simplifies collaboration on a project with others
-  - Users are notified when there is a possibility your changes may conflict with another person's work
+- Enables several team members to work on a project, even on the same file at the same time without affecting each other's work.
+
+  - Users are notified when there is a possibility that changes may conflict.
 
 ---
 
 # Theory: Version Control Systems
 
-- Users can collaborate on documents in parallel - Paper Writing
+- Users can revert to a previous version - Unlimited undo.
 
-- Users can revert to a previous version - Unlimited undo
+- See all the changes made to a project, when the changes were made and who made them.
 
-- Many different version control systems
+- Include messages on each save (commit) to explain a reason behind it.
+
+- Create branches, where changes to code can be tested without affecting the main branch.
+  - Can merge branches back into the main branch.
+
+- Many different version control systems:
 
   - CVS, SVN, **Git**, Mercurial
 
@@ -96,11 +103,15 @@ Suggestions for new training welcome.
 
 # Theory: Version Control Systems
 
-- Start with a base version of a document
+- Initialise the VCS within a directory.
 
-- Records changes you make each step of the way
+- Create or copy a base version of a file.
 
-- Can rewind to the base document and playback each change
+- VCS will record changes you make each step of the way.
+
+- Are able to save snapshots and include a message. 
+
+- Can rewind to the base file and playback each change.
 
 &lt;img src="images/play-changes.svg"&gt;
 
@@ -108,11 +119,11 @@ Suggestions for new training welcome.
 
 # Theory: Version Control Systems
 
-- Think of the changes as separate from the document itself
+- Think of the changes as separate from the file itself.
 
-- Different sets of changes can result in different versions of the document
+- Different sets of changes can result in different versions of the file.
 
-- Two users can make independent sets of changes on the same document
+- Two users can make independent sets of changes on the same file.
 
 &lt;img src="images/versions.svg"&gt;
 
@@ -120,11 +131,11 @@ Suggestions for new training welcome.
 
 # Theory: Version Control Systems 
 
-- If users make changes to different parts of a document
-  - You can incorporate two sets of changes into the same base document
+- If users make changes to different parts of a file.
+  - You can incorporate two sets of changes into the same base file
   
-- If users make changes to the same part of a document
-  - This will result in a *conflict* and needs to be reviewed
+- If users make changes to the same part of a file.
+  - This will result in a *conflict* and needs to be reviewed.
 
 &lt;img src="images/merge.svg"&gt;
 
@@ -132,25 +143,39 @@ Suggestions for new training welcome.
 
 # Git and GitHub
 
+### Git
+
+- *Git* is a command-line tool but Git also integrates with a wide variety of graphical development environments.
+  - Free and open-source version control system, originally developed by Linus Torvalds in 2005.
+  - We include *command line*, *RStudio* and *Visual Studio Code* practical elements in this course.  Please follow which you need.
+  
 ### Github
 
-- *GitHub* is a Git repository hosting service, but it adds many of its own features
+- *GitHub* is a Git repository hosting service, but it adds many of its own features.
+  - Web-based graphical interface. 
+  - Access control and several collaboration features, such as wikis and basic task management tools for every project.
 
-- *Git* is a command-line tool but Git also integrates with a wide variety of graphical development environments
-  - We include *command line*, *RStudio* and *Visual Studio Code* practical elements in this course.  Please follow which you need.
+---
 
-- GitHub provides a web-based graphical interface 
+# Create a GitHub account
 
-- Also provides access control and several collaboration features, such as wikis and basic task management tools for every project
-
-
-**Create a GitHub account**
-  
+#### Sign up
 - Visit https://github.com/
-
 - Sign up
-
 - Verify account
+
+#### Create a Personal Access Token
+
+- https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token 
+
+- From your GitHub account
+  - Settings
+  - Developer settings
+  - Personal access token
+  - Generate new token 
+  - Fill in the form
+  - Click Generate token
+  - Copy the token - will be used shortly
 
 ---
 
@@ -163,44 +188,14 @@ Suggestions for new training welcome.
 - Select the `Terminal` application.
 
 - Type `ssh compute` and hit enter
-
-- Can see last login credentials?
-  
-  - `Last login: Thu Nov 14 08:33:32 2019 from ssh.ad.bangor.ac.uk`
   
 - `$` Presented with a prompt, indicating that the shell is ready to accept input 
----
-
-# Option 2: Access a Linux machine
-
-- Open an application called 'Putty'
-
-- Host Name : `ssh.bangor.ac.uk`
-
-- Click 'Open'
-
-- Enter your university username and hit enter
-
-- Enter your university password and hit enter
-
-- Type `ssh compute` and hit enter
-
-- Can see last login credentials?
-  
-  - `Last login: Thu Nov 14 08:33:32 2019 from ssh.ad.bangor.ac.uk`
-  
-- `$` Presented with a prompt, indicating that the **shell** is ready to accept input 
 
 ---
-
-# Command Line: Access a Linux machine
-
-- `ssh bangor-username@ssh.bangor.ac.uk`
-
+# Option 2: Command Line access a Linux machine
+- `ssh {bangor-username}@ssh.bangor.ac.uk`
 - `ssh compute`
-
 &lt;img src="images/cmd-ssh-compute.png" width=90%&gt;
-
 ---
 
 # Command Line: What is a Shell?
@@ -211,11 +206,11 @@ Suggestions for new training welcome.
 
 .right-column[
 
-- A program that provides a user interface for Unix-like operating systems (kernel)
+- A program that provides a user interface for Unix-like operating systems (kernel).
 
-- Its job is to translate the user's commands into operating system instructions
+- Its job is to translate the user's commands into operating system instructions.
 
-- The operating system starts a shell for each user when they log in or open a terminal window
+- The operating system starts a shell for each user when they log in or open a terminal window.
 
 - Examples of Shells
 
@@ -232,23 +227,25 @@ Suggestions for new training welcome.
 
 # Command Line: Configure Git
 
-- Need to configure Git on the `compute` machine for your account
+- Details below should match those when creating an account on GitHub.
 
-- Details below should match those when creating an account on GitHub
-
-- Need to set your username
+- Need to set your username.
 
   - `git config --global user.name "issa16"`
   
-- Need to set your email address
+- Need to set your email address.
 
   - `git config --global user.email "issa16@bangor.ac.uk"`
 
-- Optionally set the default text editor for Git
+- Set the default branch for projects
+
+  - `git config --global init.defaultBranch main`
+
+- Optionally set the default text editor for Git.
 
   - `git config --global core.editor "nano -w"`
 
-- Username and password will be linked to your Git activity
+- Username and password will be linked to your Git activity.
 
 - `--global` For every Git project, use these settings
 
@@ -256,11 +253,11 @@ Suggestions for new training welcome.
 
 # Theory: Line Endings
 
-- Different Operating Systems using different characters to represent to the end of a line
+- Different Operating Systems (OS) using different characters to represent to the end of a line in a file.
 
-- Git uses these characters to compare files, it may cause unexpected issues when editing a file on different machines
+- Git uses these characters to compare files, it may cause unexpected issues when editing a file on different machines.
 
-- `dos2unix` - Converts plain text files in DOS format to UNIX format
+- `dos2unix` - Converts plain text files in DOS format to UNIX format.
 
 Linux and macOS
 
@@ -276,7 +273,7 @@ Windows
 
 `git config --list`
 
-- You can change your configuration as many times as you want
+- You can change your configuration as many times as you want.
 
 &lt;img src="images/cmd-git-config.png" width=90%&gt;
 
@@ -291,7 +288,7 @@ Windows
   
 #### Summary
 
-Use `git config` to change the Git configuration and preferences
+Use `git config` to change the Git configuration and preferences.
 
 ---
 # RStudio and Git
@@ -312,25 +309,23 @@ Use `git config` to change the Git configuration and preferences
 ---
 # Visual Studio Code and Git
 
-
-
 ---
 # Command Line: Create Local Repository
 
-- `cd` Change your working directory to your *home* directory
+- `cd` Change your working directory to your *home* directory.
 
-- `mkdir hello_world` Create a directory named *hello_world*
+- `mkdir hello_world` Create a directory named *hello_world*.
 
-- `cd hello_world` Change your working directory to the *hello_world* directory
+- `cd hello_world` Change your working directory to the *hello_world* directory.
 
-- `git init` Initialise a git repository
+- `git init` Initialise a git repository.
 
   - Output: `Initialized empty Git repository in /some/path`?
 
-- `git status` Check git status
+- `git status` Check git status.
   
   ```bash
-  # On branch master
+  # On branch main
   #
   # Initial commit 
   #
@@ -367,15 +362,15 @@ This local repository can then be *cloned* in RStudio via a local URL style like
 
 # Command Line: Hello World Explained
 
-- We created a directory named *hello_world* to store versions of our files
+- We created a directory named *hello_world* to store versions of our files.
 
 - `ls` Empty?
 
 - `ls -a` Hidden files?
 
-- Git uses a special sub-directory to store all the information about the project
+- Git uses a special sub-directory to store all the information about a project.
 
-- If we were to delete the `.git` directory, we would lose the project's history
+- If we were to delete the `.git` directory, we would lose the project's history.
 
 - `git status`
 
@@ -383,23 +378,21 @@ This local repository can then be *cloned* in RStudio via a local URL style like
 
 - `git init` initialises a repository
 
-- Git stores all of its repository data in the `.git` directory
+- Git stores all of its repository data in the `.git` directory.
 
 ---
 
 # Command Line: Tracking Changes
 
-- `cd ~/hello_world &amp;&amp; nano data.txt` 
+- `cd ~/hello_world &amp;&amp; echo "Hello" &gt; data.txt` 
   - Inside the `hello_world` directory create a file called `data.txt`
 
-- Add random text or favourite song title, save the file and exit
-
-- `cat data.txt` Verify save was successful
+- `cat data.txt` View contents of data.txt.
 
 - `git status` Git has picked up a new file?
 
 - `data.txt` is listed as an **Untracked File** 
-  - This means that Git is not keeping track of the file
+  - This means that Git is not keeping track of the contents of data.txt
 
 - `git add data.txt`
   - Git will now track this file
@@ -410,7 +403,7 @@ This local repository can then be *cloned* in RStudio via a local URL style like
 
 # Command Line: Tracking Changes
 
-- Git knows to track `data.txt` but hasn't recorded these changes as a commit
+- Git knows to track `data.txt` but hasn't recorded these changes as a commit.
 
 - `git commit -m "Added data.txt"`
 
@@ -429,7 +422,7 @@ a copy permanently inside the special `.git` directory
 
 # Command Line: Tracking Changes
 
-- `nano data.txt` Add a new line of data
+- `echo "Updates" &gt; data.txt` Update data.txt
 
 - `git status`?
 
@@ -461,22 +454,24 @@ a copy permanently inside the special `.git` directory
 ---
 
 # Command Line: Using Github
+
 There are a couple of ways to use a Github repo as the backend storage for a repository.
 
 For an existing local repo, connect your local git repo to GitHub like this:
 
 1. Create a repo on Github using the web-based graphical interface 
-  - Clone url : `https://github.com/issa16/test.git`
   
-2. In your local shell run the following command to connect the remote repo on Github to your local repo
-  - `git init`
-  - `git remote add origin https://github.com/issa16/test.git`
-  
+2. In your local shell run the following command to connect the remote repo on Github to your local repo.
+  ```bash
+  git remote add origin https://github.com/issa16/test.git
+  git branch -M main
+  git push -u origin main
+  ```
 3. Check the two repos are connected
   - `git remote -v`
 
 4. One time operation to store credentials
-  - `git config credential.helper store`
+  - `git config --global credential.helper store`
 
 ---
 # Command Line: Using Github
@@ -486,7 +481,7 @@ Alternatively, create the project initially on GitHub and begin local work with 
 1. Create a project on Github
 
 2. Clone the repository
-  - `cd ~ &amp;&amp; git clone https://some/url`
+  - `cd &amp;&amp; git clone https://github.com/issa16/test.git`
   
 *We use HTTPS here because it does not require additional configuration. After the workshop, you may want to set up SSH access, which is more secure.*
 
@@ -534,6 +529,7 @@ To *clone* in RStudio from GitHub, we simply use a URL that points to the GitHub
 # Command Line: Push To Github
 
 Once we have a working clone locally, we can push our changes to GitHub by first *committing* them as above, and then *pushing* them:
+
 
 - `git push origin main` Push changes from the local repository to Github
 
@@ -642,6 +638,29 @@ Similarly, to ignore files in RStudio, under the 'Git' tab, we can click the Blu
 
 ---
 
+# Branches
+
+- A branch represents an independent line of development.
+
+- Think of them as way to request a brand new working directory, staging area and project history.
+
+- List all branches in our repository.
+
+  - `git branch`
+  
+- Create a new branch
+
+  - `git checkout -b &lt;name_of_branch&gt;`
+  
+- Push updates
+
+  - `git push origin &lt;name_of_branch&gt;`
+  
+- Switch branch
+
+  - `git checkout &lt;name_of_branch&gt;`
+---
+
 # Github and Collaboration
 
 The power of version control systems comes into its own when we start to collaborate with other people.
@@ -652,17 +671,17 @@ Version control allows a particular project state at a point in time to be store
 
 As changes are required to be attributed to a user, accountability is also introduced.  This, with helpful user interfaces and meaningful messages about change enable a far more collaborative working environment.
 
-
-
 ---
 
 # Github Project Collaboration
 
 To configure a GitHub hosted repository for collaboration among users, some simple settings are applied in the GitHub interface:
 
-- Settings &gt; Collaborators
+- Settings
 
-- Add a Collaborator
+- Manage access
+
+- Add people
 
 - The collaborator must accept access
 
