@@ -78,30 +78,42 @@ Suggestions for new training welcome.
 
 # Formatted strings
 
-- Old style
+.pull-left[
 
-```py
-name='Aaron'
-print('Hello %s', name)
-```
+  #### % Operator
+  
+  ```py
+  name='Aaron'
+  print('Hello %s %d' % (name, 32))
+  ```
+  
+  #### str.format
+  
+  ```py
+  print('Hello {n} {a}'.format(
+    n=name, 
+    a=32
+  ))
+  ```
+]
 
-- New style
-
-```py
-print('Hello {n}'.format(n=name))
-```
-
-- f-strings (Python 3.6+)
-
-```py
-print(f'Hello {name}')
-
-a=5
-b=10
-print(f'{2*(a+b)}')
-
-```
-
+.pull-right[
+  
+  #### F Strings (Python 3.6+)
+  
+  ```py
+  name='Aaron'
+  age=32
+  print(f'Hello {name} {age}')
+  ```
+  
+  ```py
+  a=5
+  b=10
+  print(f'{2*(a+b)}')
+  ```
+  
+]
 
 ---
 
@@ -460,6 +472,28 @@ p1.name="Beth"
 print(p1.name)
 
 ```
+
+---
+
+# Store a collection of Objects
+
+- Create multiple objects, store them in a list and invoke a function.
+
+```py
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+p1 = Person("Aaron", 32)
+p2 = Person("Beth", 28)
+p3 = Person("George", 2)
+
+people = [p1,p2,p3]
+
+for person in people:
+    print(f'{person.name} is {person.age} years old')
+```
 ---
 
 # Assertions
@@ -485,7 +519,7 @@ print(p1.name)
 
 - A file containing a set of functions you want to include in your application.
 
-- To create a module just save the code in a file with the extension `.py`.
+- To create a module save the code in a file with the extension `.py`.
 
   - Save this code to a file named `hello.py`
 
@@ -494,7 +528,7 @@ print(p1.name)
       print(f"Hello {name}")
     ```
     
-  - Save this code to a file names `main.py`
+  - Save this code to a file named `main.py`
   
     ```py
     import hello
