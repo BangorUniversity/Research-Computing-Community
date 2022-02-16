@@ -480,7 +480,7 @@ There are four collection data types in the Python programming language:
 
 # Lists (Add an item)
 
-- To add an item to the end of the list, use the append() method:
+- To add an item to the end of the list, use the `append()` method:
 
   ```py
   names = ["Aaron", "Beth", "George"]
@@ -496,7 +496,7 @@ There are four collection data types in the Python programming language:
 
 # Lists (Add an item at specified index)
 
-To add an item at the specified index, use the insert() method:
+To add an item at the specified index, use the `insert()` method:
 
   ```py
   names = ["Aaron", "Beth", "George"]
@@ -509,9 +509,55 @@ To add an item at the specified index, use the insert() method:
   ```
 ---
 
+# Lists (Find an item)
+
+- The `index()` method returns the index in the list of the first item whose value is equal to x.
+
+```py
+  names = ["Aaron", "Beth", "George", "George"]
+  x = "Beth"
+  idx = names.index(x)
+  print(f'Found {x} at the following index: {idx}')
+```
+
+```sh
+  Found Beth at the following index: 1
+```
+  
+---
+
+# Lists (Find an item)
+
+- To find all occurrences of items whose value is equal to x, we can use a `for` loop and the `enumerate` function.
+- More on this in later in the slides.
+
+```py
+  names = ["Aaron", "Beth", "George", "George"]
+  x = "George"
+  idxs = []
+  for idx, val in enumerate(names):
+    if val == x:
+      idxs.append(idx)
+  print(f'Found {x} at the following indexes: {idxs}')
+```
+
+```sh
+  Found George at the following indexes: [2, 3]
+```
+
+
+##### Advanced
+```py
+  names = ["Aaron", "Beth", "George", "George"]
+  x = "George"
+  idxs = [idx for idx, val in enumerate(names) if val == x]
+  print(f'Found {x} at the following indexes: {idxs}')
+```
+---
+
 # Lists (Remove an item)
 
-- The remove() method removes the specified item:
+- The `remove()` method removes the specified item:
 
   ```py
   names = ["Aaron", "Beth", "George"]
@@ -527,7 +573,7 @@ To add an item at the specified index, use the insert() method:
 
 # Lists (Clear a list)
 
-- The clear() method empties the list:
+- The `clear()` method empties the list:
 
   ```py
   names = ["Aaron", "Beth", "George"]

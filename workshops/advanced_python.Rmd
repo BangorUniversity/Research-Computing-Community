@@ -15,24 +15,22 @@ output:
 
 # eResearch
 
-- Background
+- Supercomputing Wales
 
-  - SuperComputing Wales, eResearch @ Bangor
+  - Available to researchers at Bangor
   
-  - Research Software Engineers supporting Bangor researchers
+- Research Software Engineers
 
-- Future
-  
-  - Collate expert knowledge into an open and shared centralised repository
-      - [Yammer](https://www.yammer.com/bangor.ac.uk/#/threads/inGroup?type=in_group&feedId=12756205568&view=all)
-      - [Github](https://github.com/BangorUniversity/Research-Computing-Community)
+- Collate expert knowledge into an open and shared centralised repository
+
+  - [Yammer](https://www.yammer.com/bangor.ac.uk/#/threads/inGroup?type=in_group&feedId=12756205568&view=all)
+  - [Github](https://github.com/BangorUniversity/Research-Computing-Community)
   
   - Workshops
   
   - Projects
   
   - Acknowledgements
-  
 ---
 
 # Training Workshops
