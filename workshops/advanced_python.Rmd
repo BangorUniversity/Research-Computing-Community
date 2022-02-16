@@ -90,6 +90,7 @@ Suggestions for new training welcome.
   #### str.format
   
   ```py
+  name='Aaron'
   print('Hello {n} {a}'.format(
     n=name, 
     a=32
@@ -394,6 +395,18 @@ finally:
 
 - All classes have a function called `__init__()`, which is always executed automatically when the class is being initiated.
 
+
+.pull-left[
+```py
+class Test:
+    def __init__(self):
+        print("Test's __init__ func()")
+
+obj = Test()
+```
+]
+
+.pull-right[
 ```py
 class Person:
   def __init__(self, name, age):
@@ -408,6 +421,7 @@ p2 = Person("Beth", 29)
 print(p2.name)
 print(p2.age)
 ```
+]
 ---
 
 # Object Methods
@@ -477,7 +491,7 @@ print(p1.name)
 
 # Store a collection of Objects
 
-- Create multiple objects, store them in a list and invoke a function.
+- Create multiple objects and store them in a list.
 
 ```py
 class Person:
@@ -494,22 +508,6 @@ people = [p1,p2,p3]
 for person in people:
     print(f'{person.name} is {person.age} years old')
 ```
----
-
-# Assertions
-
-- Fall into three categories
-
-  - Precondition
-      - A condition must be true at the start of a function for it to work correctly. Example, checking input args.
-  
-  - Postcondition
-      - A condition that the function guarantees is true when it finishes. Example, checking result is valid.
-  
-  - Invariant
-      - A condition that is always true at a particular point inside a piece of code. Example, age can't be negative.
-
-- Extremely useful to ensure your object maintains a valid state (age?).
 
 ---
 
@@ -565,6 +563,56 @@ for person in people:
 
 ---
 
+# Importing Classes
+
+- Best practice is to store the class definition in a separate file and import the class when required.
+
+#### Person.py
+```py
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+```
+
+#### main.py
+```py
+from Person import Person
+
+p1 = Person("Aaron", 32)
+p2 = Person("Beth", 28)
+p3 = Person("George", 2)
+
+people = [p1,p2,p3]
+
+for person in people:
+    print(f'{person.name} is {person.age} years old')
+```
+
+---
+
+# Importing Functions
+
+- Best practice is to store the function definition in a separate file and import the function when required.
+
+#### util.py
+```py
+def add(x,y):
+    print(x+y)
+  
+def divide(x,y):
+    print(x/y)
+```
+
+#### main.py
+```py
+from util import add, divide
+
+add(5,6)
+divide(5,2)
+```
+---
+
 # Modules (Re-naming)
 
 - You can create an alias when you import a module, by using the `as` keyword:
@@ -603,6 +651,47 @@ for person in people:
   ```
 
 - https://docs.python.org/3/py-modindex.html
+
+---
+
+# Assertions
+
+- Fall into three categories
+
+  - Precondition
+      - A condition must be true at the start of a function for it to work correctly. Example, checking input args.
+  
+  - Postcondition
+      - A condition that the function guarantees is true when it finishes. Example, checking result is valid.
+  
+  - Invariant
+      - A condition that is always true at a particular point inside a piece of code. Example, age can't be negative.
+
+- Extremely useful to ensure your object maintains a valid state (age?).
+
+---
+
+# Pre and Post Conditions Demo
+
+- Suppose you are writing a function called average that calculates the average numbers in a list. What pre and post conditions would you check for?
+
+```py
+# A possible pre-condition:
+assert len(input_list) > 0, 'List length must be non-zero'
+```
+
+```py
+# A possible post-condition:
+assert min(input_list) <= average <= max(input_list),
+'Average should be between min and max of input values (inclusive)'
+```
+---
+
+# Assertions
+
+- They are not just about catching errors.
+- They help people to understand your code - documentation.
+- Whenever you fix a bug or error in your code, write an assertion that catches the mistake.
 
 ---
 
