@@ -18,7 +18,7 @@
 
 - [Introduction to the Linux Shell](<workshops/Introduction to the Linux Shell.pdf>)
 - [Programming Principles and Practice using Python](<workshops/Programming Principles and Practice using Python.pdf>)
-- [Advanced Python](workshops/advanced_python.ipynb)
+- [Advanced Python](<workshops/Advanced Python.pdf>)
 - [Parallel Processing in Python](workshops/parallel_processing_in_python.ipynb)
 
 ---
