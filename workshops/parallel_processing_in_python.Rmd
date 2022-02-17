@@ -15,17 +15,16 @@ output:
 
 # eResearch
 
-- Background
+- Supercomputing Wales
 
-  - SuperComputing Wales, eResearch @ Bangor
+  - Available to researchers at Bangor
   
-  - Research Software Engineers supporting Bangor researchers
+- Research Software Engineers
 
-- Future
-  
-  - Collate expert knowledge into an open and shared centralised repository
-      - [Yammer](https://www.yammer.com/bangor.ac.uk/#/threads/inGroup?type=in_group&feedId=12756205568&view=all)
-      - [Github](https://github.com/BangorUniversity/Research-Computing-Community)
+- Collate expert knowledge into an open and shared centralised repository
+
+  - [Yammer](https://www.yammer.com/bangor.ac.uk/#/threads/inGroup?type=in_group&feedId=12756205568&view=all)
+  - [Github](https://github.com/BangorUniversity/Research-Computing-Community)
   
   - Workshops
   
@@ -57,7 +56,7 @@ Suggestions for new training welcome.
 
 # Environment
 
-**Python3 at Bangor**
+**Python at Bangor**
 
 - Visit https://jupyter.bangor.ac.uk/jupyter/hub/login
 
@@ -248,7 +247,7 @@ def main():
 
 if __name__ == '__main__':
     main()
-    #print('Why is this printing first?')
+    print('Why is this line printing first?')
 ```
 
 ---
@@ -477,6 +476,30 @@ if __name__ == '__main__':
 
 ---
 
+# Launch multiple programs
+
+```py
+def run_script(script):
+    app = None
+    
+    if script.endswith('.py'):
+      app = 'python3'
+    
+    if script.endswith('.R'):
+      app = 'Rscript'
+    
+    if app:
+      os.system(f'{app} {script}')  # args?
+    else:
+      print('Unable to determine app')
+```
+
+#### Challenge
+
+- Extend the code to pass through the command line args
+
+---
+
 # map vs imap
 
 - A more optimised method is `imap`.
@@ -487,7 +510,7 @@ if __name__ == '__main__':
  
 - One thing to note is that `imap` and `map` can only pass one parameter to the function to be parallelised.
 
-- We can pass more than one arguement using `starmap`.
+- We can pass more than one argument using `starmap`.
 
 ---
 
@@ -539,21 +562,18 @@ if __name__ == '__main__':
 ```py
 from multiprocessing import Process, Lock
 
-
 def func(lock, num):
     lock.acquire()
     try:
-        print(f'In order? Number is {num}')
+        print(f'The sentence is not mixed up.')
     finally:
         lock.release()
-
 
 def main():
     lock = Lock()
 
     for num in range(10):
         Process(target=func, args=(lock, num)).start()
-
 
 if __name__ == '__main__':
     main()
