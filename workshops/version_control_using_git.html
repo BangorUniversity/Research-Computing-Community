@@ -4,6 +4,7 @@
     <title>Version Control Using Git</title>
     <meta charset="utf-8" />
     <meta name="author" content="Ade Fewings, Aaron Owen" />
+    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
@@ -15,24 +16,23 @@ class: center, middle, inverse, title-slide
 # Version Control Using Git
 ### Ade Fewings, Aaron Owen
 ### Bangor University
-### Updated: 2021-10-31
+### Updated: 2022-02-20
 
 ---
 
 
 # eResearch
 
-- Background
+- Supercomputing Wales
 
-  - SuperComputing Wales, eResearch @ Bangor
+  - Available to researchers at Bangor
   
-  - Research Software Engineers supporting Bangor researchers
+- Research Software Engineers
 
-- Future
-  
-  - Collate expert knowledge into an open and shared centralised repository
-      - [Yammer](https://www.yammer.com/bangor.ac.uk/#/threads/inGroup?type=in_group&amp;feedId=12756205568&amp;view=all)
-      - [Github](https://github.com/BangorUniversity/Research-Computing-Community)
+- Collate expert knowledge into an open and shared centralised repository
+
+  - [Yammer](https://www.yammer.com/bangor.ac.uk/#/threads/inGroup?type=in_group&amp;feedId=12756205568&amp;view=all)
+  - [Github](https://github.com/BangorUniversity/Research-Computing-Community)
   
   - Workshops
   
@@ -179,75 +179,25 @@ Suggestions for new training welcome.
 
 ---
 
-# Option 1: Access a GNU/Linux machine
-
-- Visit https://jupyter.bangor.ac.uk/jupyter/hub/login
-
-- Login using your Bangor University credentials.
-
-- Select the `Terminal` application.
-
-- Type `ssh compute` and hit enter
-  
-- `$` Presented with a prompt, indicating that the shell is ready to accept input 
-
----
-# Option 2: Command Line access a Linux machine
-- `ssh {bangor-username}@ssh.bangor.ac.uk`
-- `ssh compute`
-&lt;img src="images/cmd-ssh-compute.png" width=90%&gt;
----
-
-# Command Line: What is a Shell?
-
-.left-column[
-  ![shell-layer](images/shell-layer.svg)
-]
-
-.right-column[
-
-- A program that provides a user interface for Unix-like operating systems (kernel).
-
-- Its job is to translate the user's commands into operating system instructions.
-
-- The operating system starts a shell for each user when they log in or open a terminal window.
-
-- Examples of Shells
-
-  - Bourne Family: sh, ash, ksh, **bash**
-
-  - C Family: csh, tcsh
-
-  - Perl Family: perlsh, zoidberg
-
-  - Microsoft Family: cmd.exe, Windows PowerShell
-]
-
----
-
 # Command Line: Configure Git
 
-- Details below should match those when creating an account on GitHub.
+- Open *Git Bash* and run the configure the following:
 
-- Need to set your username.
+  - Set your username.
 
-  - `git config --global user.name "issa16"`
+      - `git config --global user.name "issa16"`
   
-- Need to set your email address.
+  - Set your email address.
 
-  - `git config --global user.email "issa16@bangor.ac.uk"`
+      - `git config --global user.email "issa16@bangor.ac.uk"`
 
-- Set the default branch for projects
+  - Set the default branch for projects
 
-  - `git config --global init.defaultBranch main`
+      - `git config --global init.defaultBranch main`
 
-- Optionally set the default text editor for Git.
+  - Username will be linked to your Git activity.
 
-  - `git config --global core.editor "nano -w"`
-
-- Username and password will be linked to your Git activity.
-
-- `--global` For every Git project, use these settings
+      - `--global` For every Git project, use these settings
 
 ---
 
@@ -291,23 +241,39 @@ Windows
 Use `git config` to change the Git configuration and preferences.
 
 ---
+
 # RStudio and Git
 
 - Version control doesn't have to be at the command-line. It integrates nicely with Development Environments as well.
 
-- To use with RStudio, you must have these installed (for Windows):
+- To use with RStudio, you must have these installed:
 
-  - R
-    - https://cran.r-project.org/bin/windows/base/
-  - RStudio
-    - https://rstudio.com/products/rstudio/download/
-  - Git
-    - https://git-scm.com/download/win
+  - **R**
+      - https://cran.r-project.org
+  - **RStudio**
+      - https://rstudio.com/products/rstudio/download/
+  - **Git**
+      - https://git-scm.com/downloads
     
 - Once you have a repository in Github (creating a new one through Github's web interface is the easiest way, if necessary) you can check it out in RStudio and perform the full Version Control cycle therein.
 
 ---
-# Visual Studio Code and Git
+# Visual Studio (VS) Code and Git
+
+- To use Visual Studio Code, you must have these installed:
+
+  - **Git**
+      - https://git-scm.com/downloads
+  - **Visual Studio Code**
+      - https://code.visualstudio.com/
+
+- Optional package to work with GitHub
+  - **GitHub Pull Requests and Issues extension**
+      - https://code.visualstudio.com/docs/editor/github
+    
+- Once you have a repository in Github (creating a new one through Github's web interface is the easiest way, if necessary) you can check it out in Visual Studio Code and perform the full Version Control cycle therein.
+
+- Tutorial: https://code.visualstudio.com/docs/editor/github
 
 ---
 # Command Line: Create Local Repository
@@ -320,18 +286,17 @@ Use `git config` to change the Git configuration and preferences.
 
 - `git init` Initialise a git repository.
 
-  - Output: `Initialized empty Git repository in /some/path`?
+  - Output: `Initialized empty Git repository in /some/path/.git`?
 
 - `git status` Check git status.
   
   ```bash
-  # On branch main
-  #
-  # Initial commit 
-  #
+  On branch main
+  
+  Initial commit 
+  
   nothing to commit (create/copy files and use "git add" to track)
   ```
-
 
 ---
 # Command Line: Create Local Repository
@@ -347,19 +312,45 @@ Use `git config` to change the Git configuration and preferences.
 
 It is not possible to create a local Git repository in RStudio's interface, but only to *clone* one that exists elsewhere - be it on a local file system or on GitHub.
 
-So, to create a local one, use the command line and run *git init*.
+.pull-left[
+To create a local one, use the command line and run `git init`.
 In Windows, open *Command Prompt* and run something like this:
 
-- `mkdir myrepo`
-- `cd myrepo`
+- `mkdir hello_world`
+- `cd hello_world`
 - `git init`
 
+]
+
+.pull-right[
 This local repository can then be *cloned* in RStudio via a local URL style like this:
 
-&lt;img src="images/rstudio-clonelocalrepo.png" width=33%&gt;
-
+&lt;img src="images/rstudio-clonelocalrepo.png" width=100%&gt;
+]
 ---
 
+# VS Code: Creating a Local Repository
+
+It is not possible to create a local Git repository in VS Code's interface, but you can *clone* one that exists elsewhere or *open* one that is on a local file system.
+
+.pull-left[
+To create a local git repository, open VS Code and press **CTRL + '** on Linux, macOS or Windows and type the following:
+
+- `mkdir hello_world`
+- `cd hello_world`
+- `git init`
+
+]
+
+.pull-right[
+
+This local repository can then be *opened* in VS Code via the *Open Folder* option under the *Source Control* tab.
+
+&lt;img src="images/vscode-github-plugin.png" width=80%&gt;
+
+]
+
+---
 # Command Line: Hello World Explained
 
 - We created a directory named *hello_world* to store versions of our files.
@@ -379,6 +370,31 @@ This local repository can then be *cloned* in RStudio via a local URL style like
 - `git init` initialises a repository
 
 - Git stores all of its repository data in the `.git` directory.
+
+---
+
+# Staging Area &amp; Repositories
+
+Think of Git as taking snapshots or changes over the life of a project.
+
+Files can be stored in
+  - A project's working directory (user sees)
+  - The staging area (where the next commit is being built-up)
+  - The local repository (where the commits are permanently recorded)
+
+- *ADD* specifies what will go in a snapshot (staging area)
+
+- *COMMIT* takes the snapshot and makes a permanent record of it, multiple files typically being changed in one commit to represent a single functional change to the overall application.  Useful commit messages are a good idea for future tracking.
+
+---
+# Staging Area &amp; Repositories
+
+&lt;img src="images/git-staging-area.svg"&gt;
+
+- *PUSH* takes the permanent record and stores it in the main repository (typically on GitHub)
+
+- *PULL* updates our local working copy (clone) with changes from the repository
+
 
 ---
 
@@ -449,7 +465,49 @@ a copy permanently inside the special `.git` directory
   - RStudio will then show the output of the Git commit.  We now see the message that "Your branch is ahead of 'origin/master' by 1 commit" showing that we have not pushed this change from the stage to the main repository origin.
   
 ---
+
 # VS Code: Tracking Changes
+
+  - Inside the `hello_world` directory create a file called `data.txt`
+  
+  &lt;img src="images/vscode-new-file.png" width=33%&gt;
+  
+  - After doing so, you will see in the *Source Control* tab that the `data.txt` file shows up with the letter **U** besides it. **U** stands for *untracked file*, meaning a file that is new or changed, but has not yet been added to the repository.
+    
+  &lt;img src="images/vscode-untracked-file.png" width=45%&gt;
+  
+---
+
+# VS Code: Tracking Changes
+
+- Click the **plus** icon (**+**) by the `data.txt` file listing to track the file by the repository.
+
+  &lt;img src="images/vscode-stage-file.png" width=33%&gt;
+
+- Once added, the letter next to the file will change to **A**. **A** represents a new file that has been added to the repository. To *commit* the changes, type a commit message into the input box at the top of the *Source Control* tab and click the **check** icon to perform the commit.
+
+  &lt;img src="images/vscode-commit.png" width=33%&gt;
+
+- You will notice that there are now no pending changes.
+
+---
+
+# VS Code: Tracking Changes
+
+- Modify the contents of `data.txt` and save the file. In the *Source Control* tab you will see that the file has been changed. It will show the letter **M** next to it, which stands for a file that has been modified.
+
+  &lt;img src="images/vscode-data-modified.png" width=60%&gt;
+
+- Click the **plus** icon (**+**) by the `data.txt` file to add the file to the staging area. To *commit* the changes, type a commit message into the input box at the top of the *Source Control* tab and click the **check** icon to perform the commit.
+
+---
+
+# VS Code: Viewing Changes
+
+To view the changes, open the *Source Control* tab and double-click the `data.txt` file. This will open a typical diff view with the previously committed version of the file on the left and the current version of the file on the right.
+
+  &lt;img src="images/vscode-data-diff.png"&gt;
+
 
 ---
 
@@ -523,7 +581,30 @@ To *clone* in RStudio from GitHub, we simply use a URL that points to the GitHub
     
 ---
 # VS Code: Cloning from Github
-    
+.pull-left[
+
+Obtain the Github repository URL by clicking the **Code** button on the repository homepage.
+
+&lt;img src="images/vscode-github-clone-url.png"&gt;
+]
+
+.pull-right[
+
+This remote repository can then be *cloned* in VS Code via the *Clone Repository* option under the *Source Control* tab.
+
+&lt;img src="images/vscode-github-plugin.png" width=80%&gt;
+
+]
+---
+# VS Code: Cloning from Github
+
+- Paste in the repository URL and press Enter.
+
+&lt;img src="images/vscode-clone-url.png"&gt;
+
+- A window should open to select a location where the local clone will go. VS Code will then download the repository from Github and offer the option to open the files.
+
+&lt;img src="images/vscode-github-local-clone.png" width=33%&gt;
 
 ---
 # Command Line: Push To Github
@@ -537,16 +618,13 @@ Once we have a working clone locally, we can push our changes to GitHub by first
     
 ---
 # RStudio: Push to Github
+
   - Once we have staged changes and are ready to commit to the origin, this can be achieved either through the 'Review Changes' window or the main Git tab in the RStudio project editing window.
   - Simply select the green up arrow, provide your GitHub credentials if prompted and see a push result:
   
   &lt;img src="images/rstudio-pushed.png" width=33%&gt;
   
   - Our changes have now been pushed up to the repository on Github. 
-  
----
-# VS Code: Push to Github
-  
   
 ---
 # Command Line: Pull changes from Github
@@ -574,34 +652,28 @@ Which will result in display of the Git activity:
 &lt;img src="images/rstudio-pullresult.png" width=33%&gt;
 
 ---
-# VS Code: Pull changes from Github
 
+# VS Code: Publish Branch
+  
+To upload our local git repository to Github, select the *Publish Branch* option that will be available after the initial *commit* in the *Source Control* tab.
+
+&lt;img src="images/vscode-publish-branch.png" width=33%&gt;
+
+- Follow the prompt, you will be given the choice between a private and public repository.
+
+&lt;img src="images/vscode-publish-to-github.png"&gt;
+   
+---
+# VS Code: Sync Changes (Push and Pull)
+
+To upload our local commits to our Github repository, and to download any commits from Github to our local git repository, select the *Sync Changes* option that will be available after each *commit* in the *Source Control* tab.
+
+&lt;img src="images/vscode-sync-changes.png" width=33%&gt;
 
 
 ---
 
 
-# Summary: Staging Area &amp; Repositories
-
-Think of Git as taking snapshots or changes over the life of a project.
-
-Files can be stored in
-  - A project's working directory (user sees)
-  - The staging area (where the next commit is being built-up)
-  - The local repository (where the commits are permanently recorded)
-
-- *ADD* specifies what will go in a snapshot (staging area)
-
-- *COMMIT* takes the snapshot and makes a permanent record of it, multiple files typically being changed in one commit to represent a single functional change to the overall application.  Useful commit messages are a good idea for future tracking.
-
-&lt;img src="images/git-staging-area.svg"&gt;
-
-- *PUSH* takes the permanent record and stores it in the main repository (typically on GitHub)
-
-- *PULL* updates our local working copy (clone) with changes from the repository
-
-
----
 
 # Command Line: Ignoring Files
 
@@ -737,13 +809,14 @@ E.g.
 
 # Theory: Conflicts
 
-### Practical
+#### Practical
 
 - Git rejects the push because it detects that the remote repository has new updates that have not been incorporated into the local clone working copy
 
 - What we have to do is pull the changes from GitHub, merge them into the copy we’re currently working in, and then push that to Github
 
 ---
+
 # Command Line: Conflicts
 
 - `git pull origin main` - Pull in latest updates
@@ -829,6 +902,7 @@ E.g.
 - https://guides.github.com/
   
 ---
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

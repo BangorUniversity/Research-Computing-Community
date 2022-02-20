@@ -20,6 +20,7 @@
 - [Programming Principles and Practice using Python](<workshops/Programming Principles and Practice using Python.pdf>)
 - [Advanced Python](<workshops/Advanced Python.pdf>)
 - [Parallel Processing in Python](<workshops/Parallel Processing in Python.pdf>)
+- [Version Control Using Git](<workshops/Version Control Using Git.pdf>)
 
 ---
 ### Supercomputing Wales (SCW)
