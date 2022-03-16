@@ -74,7 +74,7 @@
 
 
     ```sh
-    Storage> 26
+    Storage> 27
     ```
 
 - Leave Oauth Client Id empty and press `Enter`.
