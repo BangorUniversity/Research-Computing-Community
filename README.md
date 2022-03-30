@@ -28,7 +28,7 @@
 ## Tutorials
 
 #### Data Storage
-- [Rclone and OneDrive](tutorials/data_storage/rclone.md)
+- [Rclone and Microsoft OneDrive](tutorials/data_storage/rclone.md)
 
 #### SSH
 - [Generate SSH keys](tutorials/ssh/generate_keys.md)
