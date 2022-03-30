@@ -1,4 +1,4 @@
-# Rclone and OneDrive
+# Rclone and Microsoft OneDrive
 
 - [Install Rclone on Windows](#install-rclone-on-windows)
 - [Install Rclone on Linux/macOS/BSD systems](#install-rclone-on-linuxmacosbsd-systems)
