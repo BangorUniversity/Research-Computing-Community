@@ -2,11 +2,11 @@
 
 - [Install Rclone on Windows](#install-rclone-on-windows)
 - [Install Rclone on Linux/macOS/BSD systems](#install-rclone-on-linuxmacosbsd-systems)
-- [List files on OneDrive](#list-files-on-onedrive)
-- [Upload files to OneDrive](#upload-files-to-onedrive)
-- [Download files from OneDrive](#download-files-from-onedrive)
-- [Sync files with OneDrive](#sync-files-with-onedrive)
-- [Connect SCW to OneDrive](#connect-scw-to-onedrive)
+- [List files on Microsoft OneDrive](#list-files-on-microsoft-onedrive)
+- [Upload files to Microsoft OneDrive](#upload-files-to-microsoft-onedrive)
+- [Download files from Microsoft OneDrive](#download-files-from-microsoft-onedrive)
+- [Sync files with Microsoft OneDrive](#sync-files-with-microsoft-onedrive)
+- [Connect SCW to Microsoft OneDrive](#connect-scw-to-microsoft-onedrive)
 
 ## About
 
@@ -34,12 +34,11 @@
     
     Example output
     ```
-    rclone v1.54.0
-    - os/arch: darwin/amd64
-    - go version: go1.15.7
+    rclone v1.58.0
+    - os/version: darwin 12.1 (64 bit)
     ```
 
-- For this tutorial we will connect to OneDrive, however a full list of supported providers and configuration details are available under the 'Supported Providers' heading on [Rclone's homepage](https://rclone.org/).
+- For this tutorial we will connect to Microsoft OneDrive, however a full list of supported providers and configuration details are available under the 'Supported Providers' heading on [Rclone's homepage](https://rclone.org/).
 
 - Create a remote called `bangor`.
 
@@ -69,7 +68,10 @@
 
 
     ```sh
-    Storage> 27
+    28 / Microsoft OneDrive
+        \ (onedrive)
+    
+    Storage> 28
     ```
 
 - Leave Oauth Client Id empty and press `Enter`.
@@ -89,6 +91,9 @@
 - Find the id number for 'Microsoft Cloud Global' from the list of national cloud regions, type the id number and press `Enter`.
 
     ```sh
+     1 / Microsoft Cloud Global
+        \ (global)
+   
     region> 1
     ```
 
@@ -107,28 +112,27 @@
     ```
 
 
-- A browser window should open, prompting you to login with your OneDrive credentials. Upon a successful login, a 'Success. All Done. Please go back to rclone.' message should be returned.
+- A browser window should open, prompting you to login with your Microsoft OneDrive credentials. Upon a successful login, a 'Success. All Done. Please go back to rclone.' message should be displayed.
 
-- Find the id number for 'OneDrive Personal or Business' from the site list, type the id number and press `Enter`.
+- Find the id number for 'OneDrive Personal or Business' from the config type list, type the id number and press `Enter`.
 
 
     ```sh
-    Your choice> 1
+    1 / OneDrive Personal or Business
+       \ (onedrive)
+   
+    config_type> 1
     ```
 
-
-- Find the id number for 'OneDrive (business)' from the drive list, type the id number and press `Enter` .
-
-
-    ```sh
-    Your choice> 0
-    ```
-
-
-- Confirm selection by typing `y` and press `Enter`.
+- Confirm the correct drive has been found by typing `y` and press `Enter`.
 
 
     ```sh
+    Drive OK?
+
+    Found drive "root" of type "business"
+    URL: https://bangoroffice365-my.sharepoint.com/personal/{username}_bangor_ac_uk/Documents
+
     y/n> y
     ```
 
@@ -160,7 +164,7 @@
     e/n/d/r/c/s/q> q
     ```
     
-## List files on OneDrive
+## List files on Microsoft OneDrive
 
 - View a list of files on the `bangor` remote.
 
@@ -177,44 +181,44 @@
     rclone lsd bangor:
     ```
 
-## Upload files to OneDrive
+## Upload files to Microsoft OneDrive
 
 
 **Note** Rclone `copy` will copy files from source to destination, skipping already copied.
 
 
-- Create a `copy_demo` directory.
+- Create a `upload_demo` directory.
 
 
     ```sh
-    mkdir copy_demo
+    mkdir upload_demo
     ```
 
 
-- Create a test file in the `copy_demo` directory.
+- Create a test file in the `upload_demo` directory.
 
 
     ```sh
-    echo "Hello, Rclone" > copy_demo/hello.txt
+    echo "Hello Rclone" > upload_demo/test.txt
     ```
 
 
-- Copy the `copy_demo` directory to the `bangor` remote.
+- Copy the `upload_demo` directory to the `bangor` remote.
 
 
     ```sh
-    rclone copy copy_demo bangor:copy_demo
+    rclone copy upload_demo bangor:upload_demo
     ```
 
 
-- Verify directory and test file has been copied.
+- Verify directory and test file has been uploaded.
 
 
     ```sh
-    rclone cat bangor:copy_demo/hello.txt
+    rclone cat bangor:upload_demo/test.txt
     ```
 
-## Download files from OneDrive
+## Download files from Microsoft OneDrive
 
 
 **Note** Rclone `copy` will copy files from source to destination, skipping already copied.
@@ -237,10 +241,84 @@
     rclone copy bangor:download_demo download_demo
     ```
     
-## Sync files with OneDrive
+## Sync files with Microsoft OneDrive
 
-- TODO
+**Note** Rclone `sync` will make the source and destination identical, modifying destination only.
 
-## Connect SCW to OneDrive
+- The difference between copying files and synchronising files is that `copy` creates duplicates from a source to a destination, but `sync` creates a replica of the source at the destination. 
+- If files are deleted from the source, synchronising the source and destination will delete files from the destination as well. 
+- Copying will never delete files in the destination.
 
-- TODO
+- Create a `sync_demo` directory.
+
+
+    ```sh
+    mkdir sync_demo
+    ```
+
+
+- Create a test file in the `sync_demo` directory.
+
+
+    ```sh
+    echo "Hello Rclone" > sync_demo/test.txt
+    ```
+
+
+- Sync the `sync_demo` directory to the `bangor` remote.
+
+
+    ```sh
+    rclone sync sync_demo bangor:sync_demo
+    ```
+
+
+- Verify directory and test file has been synced.
+
+
+    ```sh
+    rclone cat bangor:sync_demo/test.txt
+    ```
+    
+- Delete the test file in the `sync_demo` directory.
+
+    ```sh
+    rm sync_demo/test.txt
+    ```
+    
+- Sync the `sync_demo` directory to the `bangor` remote.
+
+    ```sh
+    rclone sync sync_demo bangor:sync_demo
+    ```
+    
+- Verify file has been deleted from the `bangor` remote.
+
+    ```sh
+    rclone lsd bangor:sync_demo
+    ```
+    
+## Connect SCW to Microsoft OneDrive
+
+- Rclone stores all its config in a single configuration file. This can easily be copied to SCW to enable access to Microsoft OneDrive.
+
+- First, find the config file by running `rclone config file`.
+
+    ```sh
+    $ rclone config file
+    
+    Configuration file is stored at:
+    /home/user/.rclone.conf
+    ```
+- Transfer it to SCW via scp
+
+    ```sh
+    scp /home/user/.rclone.conf username@hawklogin.cf.ac.uk:/home/username/.config/rclone/rclone.conf
+    ```
+- Login to SCW and test the rclone config by viewing a list of directories in the `bangor` remote.
+
+    ```
+    ssh username@hawklogin.cf.ac.uk
+    
+    rclone lsd bangor:
+    ```
