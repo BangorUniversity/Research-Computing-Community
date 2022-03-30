@@ -6,15 +6,13 @@
     Discussion and info re Research Computing Services &amp; Support for all users &amp; interested at Bangor.
 </p>
 
----
-### Online Software Environments
+## Online Software Environments
 
 - [Jupyter @ Bangor](https://jupyter.bangor.ac.uk/jupyter/)
 - [RStudio @ Bangor](https://rstudio.bangor.ac.uk/rstudio/)
 
 
----
-### Workshops
+## Workshops
 
 - [Introduction to the Linux Shell](<workshops/Introduction to the Linux Shell.pdf>)
 - [Programming Principles and Practice using Python](<workshops/Programming Principles and Practice using Python.pdf>)
@@ -22,14 +20,12 @@
 - [Parallel Processing in Python](<workshops/Parallel Processing in Python.pdf>)
 - [Version Control Using Git](<workshops/Version Control Using Git.pdf>)
 
----
-### Supercomputing Wales (SCW)
+## Supercomputing Wales (SCW)
 
 #### Data Storage
 - [Map SCW network drives](tutorials/scw/data_storage/map_scw_network_drives.md)
 
----
-### Tutorials
+## Tutorials
 
 #### Data Storage
 - [Rclone and OneDrive](tutorials/data_storage/rclone.md)
