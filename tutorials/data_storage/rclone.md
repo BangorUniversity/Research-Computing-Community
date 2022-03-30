@@ -1,34 +1,29 @@
-## Rclone and OneDrive
+# Rclone and OneDrive
 
-- [Setup on Windows](#setup-on-windows)
-- [Setup on MacOS and Linux](#setup-on-macos-and-linux)
+- [Install Rclone on Windows](#install-rclone-on-windows)
+- [Install Rclone on Linux/macOS/BSD systems](#install-rclone-on-linuxmacosbsd-systems)
 - [List files on OneDrive](#list-files-on-onedrive)
 - [Upload files to OneDrive](#upload-files-to-onedrive)
 - [Download files from OneDrive](#download-files-from-onedrive)
+- [Sync files with OneDrive](#sync-files-with-onedrive)
+- [Connect SCW to OneDrive](#connect-scw-to-onedrive)
 
----
-
-### About
+## About
 
 [Rclone](https://rclone.org/) is a command line program to manage files on cloud storage. It is a feature rich alternative to cloud vendors' web storage interfaces. Over 40 cloud storage products support rclone including S3 object stores, business & consumer file storage services, as well as standard transfer protocols.
 
----
+## Install Rclone on Windows
 
-### Setup on Windows
+- [Download](https://rclone.org/downloads/) the relevant binary.
+- Extract the rclone executable, rclone.exe on Windows, from the archive.
 
-- TODO
-
----
-
-### Setup on MacOS and Linux
+## Install Rclone on Linux/macOS/BSD systems
 
 - Install Rclone.
-
 
     ```sh
     sudo curl https://rclone.org/install.sh | bash
     ```
-
 
 - Verify installation was successful.    
 
@@ -165,9 +160,7 @@
     e/n/d/r/c/s/q> q
     ```
     
----
-
-### List files on OneDrive
+## List files on OneDrive
 
 - View a list of files on the `bangor` remote.
 
@@ -184,9 +177,7 @@
     rclone lsd bangor:
     ```
 
----
-
-### Upload files to OneDrive
+## Upload files to OneDrive
 
 
 **Note** Rclone `copy` will copy files from source to destination, skipping already copied.
@@ -223,9 +214,7 @@
     rclone cat bangor:copy_demo/hello.txt
     ```
 
----
-
-### Download files from OneDrive
+## Download files from OneDrive
 
 
 **Note** Rclone `copy` will copy files from source to destination, skipping already copied.
@@ -247,3 +236,11 @@
     ```sh
     rclone copy bangor:download_demo download_demo
     ```
+    
+## Sync files with OneDrive
+
+- TODO
+
+## Connect SCW to OneDrive
+
+- TODO
