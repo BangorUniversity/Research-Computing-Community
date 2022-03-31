@@ -2,12 +2,13 @@
 
 - [Install Rclone on Windows](#install-rclone-on-windows)
 - [Install Rclone on Linux/macOS/BSD systems](#install-rclone-on-linuxmacosbsd-systems)
-- [Configure Rclone](#configure-rclone)
-- [List files on Microsoft OneDrive](#list-files-on-microsoft-onedrive)
-- [Upload files to Microsoft OneDrive](#upload-files-to-microsoft-onedrive)
-- [Download files from Microsoft OneDrive](#download-files-from-microsoft-onedrive)
-- [Sync files with Microsoft OneDrive](#sync-files-with-microsoft-onedrive)
-- [Connect SCW to Microsoft OneDrive](#connect-scw-to-microsoft-onedrive)
+- [Configure Rclone to access OneDrive](#configure-rclone-to-access-onedrive)
+- [Configure Rclone to access a Teams site](#configure-rclone-to-access-a-teams-site)
+- [List files on OneDrive/Teams](#list-files-on-onedriveteams)
+- [Upload files to OneDrive/Teams](#upload-files-to-onedriveteams)
+- [Download files from OneDrive/Teams](#download-files-from-onedriveteams)
+- [Sync files with OneDrive/Teams](#sync-files-with-onedriveteams)
+- [Connect SCW to OneDrive/Teams](#connect-scw-to-onedriveteams)
 
 ## About
 
