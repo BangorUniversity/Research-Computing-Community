@@ -52,7 +52,7 @@ __R__
 
 WARNING: ignoring environment value of R_HOME
 
-R version 3.6.0 (2019-04-26) -- &quot;Planting of a Tree&quot;
+R version 3.6.0 (2019-04-26) -- 'Planting of a Tree'
 
 Copyright (C) 2019 The R Foundation for Statistical Computing
 
