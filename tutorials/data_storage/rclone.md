@@ -475,7 +475,7 @@
     
 ## Connect SCW to OneDrive/Teams
 
-- Rclone stores all its config in a single configuration file. This can easily be copied to SCW to enable access to Microsoft OneDrive.
+- Rclone stores all its config in a single configuration file. This can easily be copied to SCW to enable access to OneDrive/Teams.
 
 - First, find the config file by running `rclone config file`.
 
