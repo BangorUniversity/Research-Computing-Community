@@ -23,8 +23,12 @@
 
 ## Tutorials
 
+#### The Hawk Supercomputer
+- [Introduction to the Hawk Supercomputer for Bangor Researcers](tutorials/scw/introduction_to_hawk.md)
+- [Using Matlab, R and Python on Hawk](tutorials/scw/using_hawk_for_matlab_r_python.md)
+
 #### Data Storage
-- [Rclone and Microsoft OneDrive](tutorials/data_storage/rclone.md)
+- [Rclone and Microsoft OneDrive and Teams](tutorials/data_storage/rclone.md)
 - [Map SCW network drives](tutorials/scw/data_storage/map_scw_network_drives.md)
 
 #### SSH
