@@ -20,15 +20,12 @@
 - [Parallel Processing in Python](<workshops/Parallel Processing in Python.pdf>)
 - [Version Control Using Git](<workshops/Version Control Using Git.pdf>)
 
-## Supercomputing Wales (SCW)
-
-#### Data Storage
-- [Map SCW network drives](tutorials/scw/data_storage/map_scw_network_drives.md)
 
 ## Tutorials
 
 #### Data Storage
 - [Rclone and Microsoft OneDrive](tutorials/data_storage/rclone.md)
+- [Map SCW network drives](tutorials/scw/data_storage/map_scw_network_drives.md)
 
 #### SSH
 - [Generate SSH keys](tutorials/ssh/generate_keys.md)
