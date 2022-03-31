@@ -39,9 +39,9 @@
     - os/version: darwin 12.1 (64 bit)
     ```
     
-## Configure Rclone
+## Configure Rclone to access OneDrive
 
-- For this tutorial we will connect to Microsoft OneDrive, however a full list of supported providers and configuration details are available under the 'Supported Providers' heading on [Rclone's homepage](https://rclone.org/).
+- For this tutorial we will connect to Microsoft OneDrive, however a full list of supported providers and configuration details are available under the 'Supported Providers' heading on [Rclone's homepage](https://rclone.org/).  Also, see below for accessing a Teams site file storage (SharePoint).
 
 - Create a remote called `bangor`.
 
@@ -167,7 +167,178 @@
     e/n/d/r/c/s/q> q
     ```
     
-## List files on Microsoft OneDrive
+
+## Configure Rclone to access a Teams site
+
+- RClone can also access the 'Document' stores of a Teams site.  The configuration process is largely the same as OneDrive, but with a little fiddling required.  The first part is the same as with OneDrive.
+
+- Create a remote called `bangor_research_team`.
+
+
+    ```sh
+    rclone config
+    ```
+
+
+- Create a new remote by typing `n` and press `Enter`.
+
+
+    ```sh
+    n/s/q> n
+    ```
+
+
+- Set the name of the new remote by typing `bangor` and press `Enter`.
+
+
+    ```sh
+    name> bangor_research_team
+    ```
+
+
+- Find the id number for 'Microsoft Onedrive' from the list of supported providers, type the id number and press `Enter`.
+
+
+    ```sh
+    28 / Microsoft OneDrive
+        \ (onedrive)
+    
+    Storage> 28
+    ```
+
+- Leave Oauth Client Id empty and press `Enter`.
+
+
+    ```sh
+    client_id>
+    ```
+
+- Leave Oauth Client Secret empty and press `Enter`.
+
+
+    ```sh
+    client_secret>
+    ```
+
+- Find the id number for 'Microsoft Cloud Global' from the list of national cloud regions, type the id number and press `Enter`.
+
+    ```sh
+     1 / Microsoft Cloud Global
+        \ (global)
+   
+    region> 1
+    ```
+
+- Omit editing the advanced config by typing `n` and press `Enter`.
+
+
+    ```sh
+    y/n> n
+    ```
+
+- Select the auto config option by typing `y` and press `Enter`.    
+
+
+    ```sh
+    y/n> y
+    ```
+
+
+- A browser window should open, prompting you to login with your Microsoft OneDrive credentials. Upon a successful login, a 'Success. All Done. Please go back to rclone.' message should be displayed.
+
+- In order to specify which Teams site we wish to connect to, there are a number of options.  The best is to use the 'Search' functionality to search for the relevant name(s).Find the id number for this from the config type list, type the id number and press `Enter`.
+
+
+    ```sh
+     4 / Search for a Sharepoint site
+       \ (search)
+    
+    config_type> 4
+    ```
+
+- Next you need to specify the term to search for.  Enter it and pre `Enter`.
+
+
+    ```sh
+    Option config_search_term.
+    Search term
+    Enter a value.
+    config_search_term> research
+    ```
+
+- RClone will then present a list of matching sites.  Enter it and pre `Enter`.
+
+
+    ```sh
+    Option config_site.
+    Select the Site you want to use
+    Choose a number from below, or type in an existing string value.
+    Press Enter for the default (bangoroffice365.sharepoint.com,50f508fa-e541-4538-8f5f-8a4af61e95bd,53c342ef-a6a1-47a6-979a-2c1df94f764c).
+     1 / ITS - Research Computing Community (https://bangoroffice365.sharepoint.com/sites/ITS-ResearchComputingCommunity)
+       \ (bangoroffice365.sharepoint.com,50f508fa-e541-4538-8f5f-8a4af61e95bd,53c342ef-a6a1-47a6-979a-2c1df94f764c)
+
+    config_site> 1
+    ```
+
+- Then you will need to choose which library from the site you wish to use.  Enter it and pre `Enter`.
+
+
+    ```sh
+    Option config_driveid.
+    Select drive you want to use
+    Choose a number from below, or type in an existing string value.
+    Press Enter for the default (b!-gj1UEHlOEWPX4pK9h6Vve9Cw1OhpqZHl5osHflPdkw5yYVe5j5XT76zkoXsNHS-).
+     1 / Teams Wiki Data (documentLibrary)
+       \ (b!-gj1UEHlOEWPX4pK9h6Vve9Cw1OhpqZHl5osHflPdkw5yYVe5j5XT76zkoXsNHS-)
+     2 / Documents (documentLibrary)
+       \ (b!-gj1UEHlOEWPX4pK9h6Vve9Cw1OhpqZHl5osHflPdkyeEQnZw76pSbyO2Dri2mWm)
+    config_driveid> 2
+    ```
+
+
+- Confirm the correct drive has been found by typing `y` and press `Enter`.  If you're not happy, press 'n' to repeat the drive selection process.
+
+
+    ```sh
+    Drive OK?
+
+    Found drive "root" of type "documentLibrary"
+    URL: https://bangoroffice365.sharepoint.com/sites/ITS-ResearchComputingCommunity/Shared%20Documents
+
+    y/n> y
+    ```
+
+
+- Confirm configuration by typing `y` and press `Enter`.
+
+
+    ```sh
+    y/n> y
+    ```
+
+
+- The `bangor` remote should be listed in the current remotes output.  
+
+
+    ```sh
+    Current remotes:
+    
+    Name                   Type
+    ====                   ====
+    bangor                 onedrive
+    bangor_research_team   onedrive
+    ```
+    
+    
+- Quit setup by typing `q` and press `Enter`.    
+
+
+    ```sh
+    e/n/d/r/c/s/q> q
+    ```
+    
+
+## List files on OneDrive/Teams
 
 - View a list of files on the `bangor` remote.
 
@@ -184,7 +355,7 @@
     rclone lsd bangor:
     ```
 
-## Upload files to Microsoft OneDrive
+## Upload files to OneDrive/Teams
 
 
 **Note** Rclone `copy` will copy files from source to destination, skipping already copied.
@@ -221,7 +392,7 @@
     rclone cat bangor:upload_demo/test.txt
     ```
 
-## Download files from Microsoft OneDrive
+## Download files from OneDrive/Teams
 
 
 **Note** Rclone `copy` will copy files from source to destination, skipping already copied.
@@ -244,7 +415,7 @@
     rclone copy bangor:download_demo download_demo
     ```
     
-## Sync files with Microsoft OneDrive
+## Sync files with OneDrive/Teams
 
 **Note** Rclone `sync` will make the source and destination identical, modifying destination only.
 
@@ -301,7 +472,7 @@
     rclone lsd bangor:sync_demo
     ```
     
-## Connect SCW to Microsoft OneDrive
+## Connect SCW to OneDrive/Teams
 
 - Rclone stores all its config in a single configuration file. This can easily be copied to SCW to enable access to Microsoft OneDrive.
 
