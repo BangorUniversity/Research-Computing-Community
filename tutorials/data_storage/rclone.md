@@ -2,6 +2,7 @@
 
 - [Install Rclone on Windows](#install-rclone-on-windows)
 - [Install Rclone on Linux/macOS/BSD systems](#install-rclone-on-linuxmacosbsd-systems)
+- [Configure Rclone](#configure-rclone)
 - [List files on Microsoft OneDrive](#list-files-on-microsoft-onedrive)
 - [Upload files to Microsoft OneDrive](#upload-files-to-microsoft-onedrive)
 - [Download files from Microsoft OneDrive](#download-files-from-microsoft-onedrive)
@@ -37,6 +38,8 @@
     rclone v1.58.0
     - os/version: darwin 12.1 (64 bit)
     ```
+    
+## Configure Rclone
 
 - For this tutorial we will connect to Microsoft OneDrive, however a full list of supported providers and configuration details are available under the 'Supported Providers' heading on [Rclone's homepage](https://rclone.org/).
 
