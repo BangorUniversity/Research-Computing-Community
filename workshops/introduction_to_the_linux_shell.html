@@ -16,7 +16,7 @@ class: center, middle, inverse, title-slide
 # Introduction to the Linux Shell
 ### Ade Fewings, Aaron Owen
 ### Bangor University
-### Updated: 2022-02-15
+### Updated: 2022-04-28
 
 ---
 
@@ -1302,7 +1302,80 @@ echo "After executing function: x: $x, y: $y"
 
 # Jobs
 
-- TODO
+- Typically when you run a command in the terminal, you have to wait until the 
+command finishes before you can enter another one.
+
+- This is called running the command in the **foreground** or a **foreground process**.
+
+  `sleep 5 &amp;&amp; echo "Hello World"`
+
+- If a command takes a long time to finish and you want to run another command in 
+the meantime you have two options. You can either open up a new terminal and run the 
+command or run the command as a **background process**.
+
+- Think of running a **background process** as dispatching the command to the 
+operating system and freeing up the terminal.
+
+---
+
+# Jobs
+
+- To run a command as a background process, add `nohup` before the command and the ampersand symbol `&amp;` at the end of the command.
+
+  `nohup sleep 5 &amp;&amp; echo "Hello World" &amp;`
+
+- The **job id** and **process id** will be printed to the terminal.
+
+  `[1] 195684`
+  
+- By default, the example above will print the message "Hello World" to the terminal after 5 seconds. This is less than ideal, especially if we are the middle of writing a complex command to launch. The solution is to capture any error or output messages from the command into a log file.
+
+- To redirect error and output messages, use the ampersand and greater than symbols `&amp;&gt;` following by the name of the log file.
+  
+  - `nohup sleep 5 &amp;&amp; echo "Hello World" &amp;&gt; job.log &amp;`
+  
+---
+
+# Jobs
+
+- Once we have created a background process we can view its status via the `jobs` command.
+
+  - `jobs -l`
+  
+- The output includes the job id, process id, job state and the command that started the job.
+
+- If you wanted to bring background process to the foreground you can use the `fg` commands.
+
+  - `fg`
+  
+- If you have multiple background processes, include `%` and the job id after the `fg` command.
+
+  - `fg %2`
+  
+- Note: The `jobs` command will only show background processes that are started, running or stopped in the current terminal.
+---
+
+# Jobs
+
+#### Exercise 
+
+- Log in into to the compute node at Bangor via JupyterLab.
+
+- Start a Matlab background process.
+  
+  `nohup matlab -nodesktop -nosplash -r "disp('Hello World'); exit;" &amp;&gt; matlab.log &amp;`
+  
+  `[1] 80706`
+
+- Logout using the `exit` command.
+
+- Log back in into to the compute node using the `ssh compute` command.
+  
+- View the contents of matlab.log using the `cat matlab.log` command.
+  
+- If you want to stop a background process manually, you can use the `kill` command followed by the jobs process id.
+
+  `kill 80706`
 
 ---
 
