@@ -1337,7 +1337,7 @@ operating system and freeing up the terminal.
   
 - The output includes the job id, process id, job state and the command that started the job.
 
-- If you wanted to bring background process to the foreground you can use the `fg` commands.
+- If you wanted to bring background process to the foreground you can use the `fg` command.
 
   - `fg`
   
@@ -1366,7 +1366,7 @@ operating system and freeing up the terminal.
   
 - View the contents of matlab.log using the `cat matlab.log` command.
   
-- If you want to stop a background process manually, you can use the `kill` command followed by the job's process id.
+- If you want to stop a background process manually, you can use the `kill` command followed by the jobs process id.
 
   `kill 80706`
 
