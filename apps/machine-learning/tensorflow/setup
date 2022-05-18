@@ -4,4 +4,4 @@ module purge
 module load cuDNN python/3.9.2
 module list
 
-pip3 install --user tensorflow2
+pip3 install --user tensorflow
