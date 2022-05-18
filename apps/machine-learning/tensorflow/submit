@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly work_dir="examples"
+readonly work_dir="$PWD/examples"
 readonly dir_names=("single-cpu" "multi-gpu" "single-gpu" "multi-gpu")
 
 for dir_name in "${dir_names[@]}"; do
