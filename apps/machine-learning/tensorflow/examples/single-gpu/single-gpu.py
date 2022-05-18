@@ -2,7 +2,7 @@ import os
 
 import tensorflow as tf
 
-num_threads = os.getenv('OMP_NUM_THREADS')
+num_threads = int(os.getenv('OMP_NUM_THREADS'))
 
 tf.config.threading.set_inter_op_parallelism_threads(num_threads)
 tf.config.threading.set_intra_op_parallelism_threads(num_threads)

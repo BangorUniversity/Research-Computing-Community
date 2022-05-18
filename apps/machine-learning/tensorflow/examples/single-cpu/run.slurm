@@ -15,6 +15,7 @@
 export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK}"
 
 module purge
-module load python/3.9.2
+module load cuDNN python/3.9.2
+module list
 
 python3 single-cpu.py
