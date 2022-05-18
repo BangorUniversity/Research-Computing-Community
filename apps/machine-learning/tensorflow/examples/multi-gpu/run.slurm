@@ -7,6 +7,7 @@
 
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:2
+#SBATCH --cpus-per-task=40
 
 #SBATCH --time=00-00:10
 

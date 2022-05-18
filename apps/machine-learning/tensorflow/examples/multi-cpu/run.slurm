@@ -8,7 +8,7 @@
 #SBATCH --partition=htc
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=10
+#SBATCH --cpus-per-task=40
 
 #SBATCH --time=00-00:10
 
