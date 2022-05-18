@@ -1,12 +1,16 @@
+import os
+
 import tensorflow as tf
 
-tf.config.threading.set_inter_op_parallelism_threads()
-tf.config.threading.set_intra_op_parallelism_threads()
+num_threads = os['OMP_NUM_THREADS']
+
+tf.config.threading.set_inter_op_parallelism_threads(num_threads)
+tf.config.threading.set_intra_op_parallelism_threads(num_threads)
 tf.config.set_soft_device_placement(True)
 
 print('*' * 80)
-num_threads = tf.config.threading.get_inter_op_parallelism_threads()
-print(f'Num threads: {num_threads}')
+parallel_threads = tf.config.threading.get_inter_op_parallelism_threads()
+print(f'Num threads: {parallel_threads}')
 
 print('*' * 80)
 logical_devices = tf.config.list_logical_devices('GPU')
