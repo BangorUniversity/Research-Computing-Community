@@ -18,7 +18,7 @@
     mkdir tensorflow
     cd tensorflow
     wget https://github.com/BangorUniversity/Research-Computing-Community/raw/master/apps/machine-learning/tensorflow/examples.zip
-    unzip -j examples.zip
+    unzip examples.zip
     ./setup
     ```
 
