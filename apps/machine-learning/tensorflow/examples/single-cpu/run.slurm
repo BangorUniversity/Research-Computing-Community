@@ -12,6 +12,8 @@
 
 #SBATCH --time=00-00:10
 
+export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK}"
+
 module purge
 module load python/3.9.2
 

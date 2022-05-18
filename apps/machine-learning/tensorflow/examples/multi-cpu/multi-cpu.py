@@ -1,5 +1,9 @@
 import tensorflow as tf
 
+tf.config.threading.set_inter_op_parallelism_threads()
+tf.config.threading.set_intra_op_parallelism_threads()
+tf.config.set_soft_device_placement(True)
+
 print('*' * 80)
 num_threads = tf.config.threading.get_inter_op_parallelism_threads()
 print(f'Num threads: {num_threads}')

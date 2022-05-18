@@ -10,6 +10,8 @@
 
 #SBATCH --time=00-00:10
 
+export OMP_NUM_THREADS="${SLURM_CPUS_PER_TASK}"
+
 module purge
 module load cuDNN python/3.9.2
 module list
