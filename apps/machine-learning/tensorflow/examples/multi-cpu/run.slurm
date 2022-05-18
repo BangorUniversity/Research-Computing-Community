@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-#SBATCH --job-name=single-cpu
+#SBATCH --job-name=multi-cpu
 
-#SBATCH --output=logs/single-cpu.%J.out
-#SBATCH --error=logs/single-cpu.%J.err
+#SBATCH --output=logs/multi-cpu.%J.out
+#SBATCH --error=logs/multi-cpu.%J.err
 
 #SBATCH --partition=htc
 #SBATCH --nodes=1
