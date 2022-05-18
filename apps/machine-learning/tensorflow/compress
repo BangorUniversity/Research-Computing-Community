@@ -1,3 +1,5 @@
 #!/bin/bash
 
-zip -r examples.zip examples -x ".*" -x "__MACOSX"
+cd examples || exit 1
+zip -r examples.zip . -x ".*" -x "__MACOSX"
+mv examples.zip ../
