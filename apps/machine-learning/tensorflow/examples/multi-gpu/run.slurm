@@ -8,7 +8,7 @@
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:2
 
-s#SBATCH --time=00-00:10
+#SBATCH --time=00-00:10
 
 module purge
 module load cuDNN python/3.9.2
