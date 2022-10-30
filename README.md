@@ -14,11 +14,11 @@
 
 ## Workshops
 
-- [Introduction to the Linux Shell](<workshops/Introduction to the Linux Shell.pdf>)
-- [Programming Principles and Practice using Python](<workshops/Programming Principles and Practice using Python.pdf>)
-- [Advanced Python](<workshops/Advanced Python.pdf>)
-- [Parallel Processing in Python](<workshops/Parallel Processing in Python.pdf>)
-- [Version Control Using Git](<workshops/Version Control Using Git.pdf>)
+- [Introduction to the Linux Shell](<workshops/beginner_linux.pptx>)
+- [Programming Principles and Practice using Python](<workshops/beginner_python.pptx>)
+- [Advanced Python](<workshops/advanced_python.pptx>)
+- [Parallel Processing in Python](<workshops/parallel_processing.pptx>)
+- [Version Control Using Git](<workshops/version_control.pptx>)
 
 
 ## Tutorials
