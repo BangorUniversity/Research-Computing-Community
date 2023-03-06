@@ -24,7 +24,7 @@
 ## Tutorials
 
 #### The Hawk Supercomputer
-- [Introduction to the Hawk Supercomputer for Bangor Researcers](tutorials/scw/introduction_to_hawk.md)
+- [Introduction to the Hawk Supercomputer for Bangor Researchers](tutorials/scw/introduction_to_hawk.md)
 - [Using Matlab, R and Python on Hawk](tutorials/scw/using_hawk_for_matlab_r_python.md)
 
 #### Data Storage
