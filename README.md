@@ -21,11 +21,11 @@
 - [Version Control Using Git](<workshops/version_control.pptx>)
 
 
-## Tutorials
+## Documentation
 
-#### The Hawk Supercomputer
-- [Introduction to the Hawk Supercomputer for Bangor Researchers](tutorials/scw/introduction_to_hawk.md)
-- [Using Matlab, R and Python on Hawk](tutorials/scw/using_hawk_for_matlab_r_python.md)
+- [Research Computing Services Documentation on Bangor Sharepoint Intranet](https://bangoroffice365.sharepoint.com/sites/DigitalServices/SitePages/Research-Services.aspx)
+
+## Tutorials
 
 #### Data Storage
 - [Rclone and Microsoft OneDrive and Teams](tutorials/data_storage/rclone.md)
